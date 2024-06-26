@@ -21,3 +21,18 @@
 </head>
 
 <body>
+	<header>
+		<div class="logo">
+			<?php the_custom_logo(); ?>
+		</div>
+		<nav>
+			<?php
+			wp_nav_menu(array(
+				'theme location' =>	'menu principal',
+				'container' => false,
+				'menu_class' => 'menu',
+				)
+			);
+			?>
+		</nav>
+	</header>

@@ -71,12 +71,6 @@ Text Domain: motaphoto
   font-style: italic;
   font-weight: 400;
 }
-menu li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 h1 {
   font-family: "SpaceMono";
   color: #e00000;
@@ -103,15 +97,32 @@ nav {
 }
 
 /***************MENU***********/
-menu {
+.menu {
   display: flex;
   gap: 50px;
 }
-menu li {
+.menu li {
   list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-menu a {
+.menu a {
   color: #000000;
   text-decoration: none;
   font-family: "SpaceMono", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.menu a:hover {
+  font-weight: 700;
+}
+
+/***************FOOTER***********/
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px #000000 solid;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

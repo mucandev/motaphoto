@@ -17,11 +17,17 @@ $font--body: "Poppins", sans-serif;
 
 
 
-
-// placeholder
-%flex-center{
+// mixin
+@mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+
+// placeholder
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

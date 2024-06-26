@@ -24,16 +24,33 @@ nav{
 }
 
 /***************MENU***********/
-menu{
+
+
+.menu {
     display: flex;
     gap: 50px;
-    & li{
+    & li {
         list-style: none;
-        @extend %flex-center;
+        @include flex-center;
+        //@extend %flex-center;
     }
-    & a{
+    & a {
         color: $color--black;
         text-decoration: none;
         font-family: $font--header;
+        font-weight: 400;
+        font-style: normal;
+        &:hover{
+            font-weight: 700;
+        }
     }
-    }
+}
+
+/***************FOOTER***********/
+
+footer {
+    @include flex-center;
+    border-top: 1px $color--black solid;
+    width: 100%;
+
+}
