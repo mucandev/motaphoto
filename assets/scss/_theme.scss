@@ -1,0 +1,39 @@
+h1 {
+    font-family: "SpaceMono";
+    color: $color--red;
+}
+
+/***************HEADER***********/
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 0 4px 4px 0 $color--black-opacity;
+}
+nav{
+    margin-right: 100px;
+}
+
+.logo{
+    margin-left: 100px;
+    & img{
+        max-width: 250px;
+    }
+}
+
+/***************MENU***********/
+menu{
+    display: flex;
+    gap: 50px;
+    & li{
+        list-style: none;
+        @extend %flex-center;
+    }
+    & a{
+        color: $color--black;
+        text-decoration: none;
+        font-family: $font--header;
+    }
+    }

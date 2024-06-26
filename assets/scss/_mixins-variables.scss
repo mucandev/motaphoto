@@ -1,0 +1,27 @@
+//colors
+$color--black:#000000;  //text
+$color--deepgrey:#313144;
+$color--grey:#c4c4c4; //bordure field form
+$color--cleargrey:#d8d8d8;
+$color--palegrey:#e5e5e5;
+
+$color--red:#e00000;  //button selected
+$color--clearred:#fe5858;  //button pressing
+$color--palered:#ffd6d6;  //button hover
+
+$color--black-opacity: rgba($color--black, 0.8);
+
+//fonts
+$font--header: "SpaceMono", sans-serif;
+$font--body: "Poppins", sans-serif;
+
+
+
+
+// placeholder
+%flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
