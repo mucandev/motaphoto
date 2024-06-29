@@ -2,7 +2,7 @@
 
 <main >
 <!-- // temporaire : situer la page -->
-    <h1 >page</h1>
+    <h1 > home</h1>
     <?php
 
     while ( have_posts() ) :

@@ -1,12 +1,15 @@
 @charset "UTF-8";
 /*
 Theme Name: motaphoto
+Theme URI: https://github.com/mucandev/motaphoto
 Author: mucandev
-Description: Thème personnalisé de Nathalie Mota photographe
+Author URI: https://github.com/mucandev
+Description: Thème personnalisé du site de Nathalie Mota photographe
 Version: 1.0.0
-Tags: catalogue photo, lightbox
+Tags: Nathalie Mota, photographie, catalogue photo, lightbox
 Text Domain: motaphoto
 */
+/* utilisation des polices Google Fonts en local */
 /*  regular 400 : SpaceMono regular*/
 @font-face {
   font-family: "SpaceMono";
@@ -71,6 +74,13 @@ Text Domain: motaphoto
   font-style: italic;
   font-weight: 400;
 }
+/*10px */
+/*14px */
+/*18px */
+/*46px */
+/*66px */
+/*96px */
+/*27.6px */
 h1 {
   font-family: "SpaceMono";
   color: #e00000;
@@ -82,7 +92,7 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -94,6 +104,7 @@ nav {
 }
 .logo img {
   max-width: 250px;
+  height: auto;
 }
 
 /***************MENU***********/
@@ -113,6 +124,7 @@ nav {
   font-family: "SpaceMono", sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-transform: uppercase;
 }
 .menu a:hover {
   font-weight: 700;
@@ -125,4 +137,111 @@ footer {
   align-items: center;
   border-top: 1px #000000 solid;
   width: 100%;
+}
+
+.modale {
+  display: none;
+}
+.modale-block {
+  display: block;
+}
+
+#contact-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 95px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.contact-popup {
+  width: 596px;
+  min-height: 770px;
+  max-height: 950px;
+  border: 5px #000000 solid;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 45%;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+.contact-popup img {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 150%;
+}
+
+.contact-form {
+  width: 260px;
+}
+
+.wpcf7 {
+  margin-top: 30px;
+}
+.wpcf7 label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+.wpcf7-form-control {
+  border-radius: 8px;
+  border: 1px #c4c4c4 solid;
+  height: 36px;
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.wpcf7-textarea {
+  height: 210px;
+  margin-bottom: 4px;
+  resize: none;
+}
+.wpcf7-submit {
+  background: #c4c4c4;
+  color: #000000;
+  padding: 15px 0;
+  height: 50px;
+  font-size: 0.72rem;
+  font-family: "SpaceMono", sans-serif;
+  border-radius: 3px;
+  border: 0;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+}
+.wpcf7-submit:hover {
+  background: #000000;
+  color: #ffffff;
+}
+.wpcf7-not-valid-tip {
+  color: #fe5858;
+  position: absolute;
+  bottom: 34px;
+  left: 90px;
+  text-transform: lowercase;
+}
+.wpcf7-response-output {
+  border-radius: 25px;
+  background-color: #ffd6d6;
+  border-color: #ffd6d6 !important;
+  position: absolute;
+  bottom: 90px;
+  left: 440px;
+  width: 110px;
+  font-size: 0.72rem;
+  font-family: "Poppins", sans-serif;
+  animation: 3s ease-in-out;
+}
+
+.popup-message .wpcf7-not-valid-tip {
+  bottom: 225px;
 }/*# sourceMappingURL=style.css.map */

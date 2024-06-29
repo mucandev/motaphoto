@@ -1,9 +1,7 @@
 <?php
 /**
  * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
+ **
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package motaphoto
@@ -16,23 +14,31 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title><?php bloginfo('name') ?> - <?php bloginfo('description') ?></title>
-    <link rel="icon" type="image/vnd.icon" href="<?php echo get_template_directory_uri() . '/assets/images/motaphoto-icon.png'; ?>" >
 	<?php wp_head(); ?>
 </head>
 
 <body>
 	<header>
 		<div class="logo">
-			<?php the_custom_logo(); ?>
+            <?php
+            if (function_exists('the_custom_logo')) {
+                the_custom_logo();
+            } else {
+                echo '<h1>' . get_bloginfo('name') . '</h1>';
+            }
+            ?>
 		</div>
 		<nav>
 			<?php
 			wp_nav_menu(array(
-				'theme location' =>	'menu principal',
+				'theme_location' =>	'menu_principal',
 				'container' => false,
 				'menu_class' => 'menu',
-				)
-			);
+				));
 			?>
+			<div class="modale">
+				<?php get_template_part('/templates_part/modale'); ?>
+			</div>
 		</nav>
 	</header>
+

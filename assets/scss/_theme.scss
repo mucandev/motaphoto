@@ -10,7 +10,7 @@ header{
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    box-shadow: 0 4px 4px 0 $color--black-opacity;
+    box-shadow: 0 4px 4px 0 rgba($color--black, 0.1);
 }
 nav{
     margin-right: 100px;
@@ -20,6 +20,7 @@ nav{
     margin-left: 100px;
     & img{
         max-width: 250px;
+        height: auto;
     }
 }
 
@@ -28,7 +29,7 @@ nav{
 
 .menu {
     display: flex;
-    gap: 50px;
+    gap: 40px;
     & li {
         list-style: none;
         @include flex-center;
@@ -40,6 +41,7 @@ nav{
         font-family: $font--header;
         font-weight: 400;
         font-style: normal;
+        text-transform: uppercase;
         &:hover{
             font-weight: 700;
         }

@@ -1,9 +1,11 @@
 /*
 Theme Name: motaphoto
+Theme URI: https://github.com/mucandev/motaphoto
 Author: mucandev
-Description: Thème personnalisé de Nathalie Mota photographe
+Author URI: https://github.com/mucandev
+Description: Thème personnalisé du site de Nathalie Mota photographe
 Version: 1.0.0
-Tags: catalogue photo, lightbox
+Tags: Nathalie Mota, photographie, catalogue photo, lightbox
 Text Domain: motaphoto
 */
 
@@ -13,3 +15,4 @@ Text Domain: motaphoto
 @import 'fonts';
 @import 'mixins-variables';
 @import 'theme';
+@import 'modale';
