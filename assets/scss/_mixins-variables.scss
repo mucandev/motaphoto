@@ -46,3 +46,23 @@ $font-size-H1m: 1.97rem; /*27.6px */
     justify-content: center;
     align-items: center;
 }
+
+//_____________________________ FADE IN 
+$fade_in_time: 150ms;
+
+@mixin fade_in($animationName, $yValue) {
+    @keyframes #{$animationName} {
+        from {
+            opacity: 0;
+            transform: translateY(#{$yValue});
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    animation: #{$animationName} ease $fade_in_time;
+}
+
+$shake-intensity: 5%;
+

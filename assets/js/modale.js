@@ -7,10 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let openModal = false;
 
+     // Fonction pour gérer les clics
+    const logClick = (e) => {
+        console.log(`clic sur ${e.target.textContent} passe en`, openModal);
+    };
+
     // toggle sur le contact du menu
     const togglePopup = (e) => {
         openModal = !openModal;
-        console.log(`clic sur ${e.target.textContent} passe en`,openModal );
+        logClick(e);
         openModal ? openPopup() : closePopup();
     };
 
@@ -37,18 +42,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // fermeture modale au clic sur la croix
     boutonClose.addEventListener('click', (e) => {
-        console.log(`clic sur ${e.target.textContent}`);
         openModal = false;
+        logClick(e);
         closePopup();
     });
 
     // Fermeture modale au clic hors de la modale 
-    window.addEventListener('click', (e) => {
+    window.addEventListener('click', (e) => {        
         if (e.target === conteneurModale) {
             openModal = false;
+            console.log(`clic sur overlay passe en`,openModal );
             closePopup();
         }
     });
+
+    //soumission du formulaire Contact Form 7
+    document.querySelector('.wpcf7-submit').addEventListener('click', (e) => {
+    logClick(e);
+    });
+
 });
 
 

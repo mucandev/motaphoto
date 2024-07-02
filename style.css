@@ -110,7 +110,7 @@ nav {
 /***************MENU***********/
 .menu {
   display: flex;
-  gap: 50px;
+  gap: 40px;
 }
 .menu li {
   list-style: none;
@@ -226,22 +226,73 @@ footer {
   color: #fe5858;
   position: absolute;
   bottom: 34px;
-  left: 90px;
+  left: 60px;
   text-transform: lowercase;
+  animation: fadeIndbUp ease 150ms;
+}
+@keyframes fadeIndbUp {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.wpcf7-not-valid-tip .popup-message {
+  bottom: 225px;
 }
 .wpcf7-response-output {
-  border-radius: 25px;
+  margin: 0 !important;
+  padding: 18px !important;
+  border-radius: 90px !important;
+  border: none !important;
+  text-align: center;
   background-color: #ffd6d6;
-  border-color: #ffd6d6 !important;
   position: absolute;
-  bottom: 90px;
+  bottom: 40px;
   left: 440px;
   width: 110px;
   font-size: 0.72rem;
   font-family: "Poppins", sans-serif;
-  animation: 3s ease-in-out;
+}
+.wpcf7-response-output form.invalid {
+  background-color: #fe5858 !important;
 }
 
 .popup-message .wpcf7-not-valid-tip {
   bottom: 225px;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.spam .wpcf7-response-output {
+  background-color: #fe5858 !important;
+  max-width: 155px;
+  animation: invalidShake 150ms cubic-bezier(0.4, 0.1, 0.6, 0.9);
+  animation-iteration-count: 3;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  max-width: 80px;
+  animation: fadeInUp ease 150ms;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes invalidShake {
+  25% {
+    transform: translateX(5%);
+  }
+  75% {
+    transform: translateX(-5%);
+  }
 }/*# sourceMappingURL=style.css.map */

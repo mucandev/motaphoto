@@ -4,32 +4,28 @@ document.addEventListener("DOMContentLoaded", function () {
 	const getModale = document.querySelector(".modale");
 	const boutonClose = document.querySelector(".close-btn");
 	const conteneurModale = document.getElementById("contact-overlay");
-	
-    boutonContact.addEventListener("click", function() {
-        console.log('clic sur contact')
-        // Gestion de la fermeture de la modale - En cliquant à nouveau sur Contact
-        if (getModale.style.display === "block") {
-            getModale.style.display = "none";
-        }
-        else {
-            getModale.style.display = "block";
-        }
-    });
-    // Recherche élément de menu avec le texte "Contact"
+
+    // recherche élément menu "Contact" et écoute
     let menuContact;
     menuItems.forEach(item => {
         if (item.textContent.trim().toLowerCase() === "contact") {
             menuContact = item;
+
+            menuContact.addEventListener("click", function() {
+                console.log('clic sur contact')
+                // Gestion de la fermeture de la modale - En cliquant à nouveau sur Contact
+                if (getModale.style.display === "block") {
+                    getModale.style.display = "none";
+                }
+                else {
+                    getModale.style.display = "block";
+                }
+            });
         }
     });
 
-    // Ajout eventListener à l'élément de menu "Contact"
-    if (menuContact) {
-        menuContact.addEventListener('click', togglePopup);
-    } else {
-        console.error("L'élément de menu 'Contact' n'a pas été trouvé.");
-    }
-    
+	
+
 
     // Fermeture de la modale lorsqu'on clic sur la croix
     boutonClose.addEventListener("click", function() {

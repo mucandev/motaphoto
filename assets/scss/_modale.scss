@@ -72,28 +72,59 @@
             color: $color--white;     
         }
     }
+    //messages field invalid
     &-not-valid-tip{
         color: $color--clearred;  
         position: absolute;
         bottom: 34px;
-        left: 90px;   
+        left: 60px;   
         text-transform: lowercase;
+        @include fade_in('fadeIndbUp', 200px);
+        & .popup-message {
+            bottom: 225px;
+        }    
     }
     &-response-output{
-        border-radius: 25px;
+        margin: 0 !important;
+        padding: 18px !important;
+        border-radius: 90px !important ;
+        border: none !important;
+        text-align: center;
         background-color: $color--palered;
-        border-color: $color--palered !important;
         position: absolute;  
-        bottom: 90px;
+        bottom: 40px;
         left: 440px;
         width: 110px;
         font-size: $font-size-S;      
         font-family: $font--body;    
-        animation: 3s ease-in-out;  
+        & form.invalid{
+            background-color: $color--clearred !important;
+        }
     }
 }
+ //messages field invalid textarea
 .popup-message .wpcf7-not-valid-tip {
     bottom: 225px;
 }
 
-// .wpcf7-form.invalid .wpcf7-not-valid-tip
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.spam .wpcf7-response-output {
+    background-color: $color--clearred !important;
+    max-width: 155px;
+    animation: invalidShake 150ms cubic-bezier(.4,.1,.6,.9);
+    animation-iteration-count: 3;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+    max-width: 80px;
+    @include fade_in('fadeInUp', 100px);
+}
+
+@keyframes invalidShake {
+    25% {
+        transform: translateX(#{$shake-intensity});
+    }
+    75%{
+        transform: translateX($shake-intensity * -1);
+    }
+}

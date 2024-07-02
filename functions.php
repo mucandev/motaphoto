@@ -12,6 +12,10 @@ function motaphoto_enqueue_styles() {
     //  Chargement du script JS de la modale
     wp_enqueue_script('jquery');
     wp_enqueue_script('script modale', get_template_directory_uri() . '/assets/js/modale.js');
+
+        //  script alternatif modale
+    //wp_enqueue_script('script modaleB', get_template_directory_uri() . '/assets/js/modaleB.js');
+
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_styles');
 
