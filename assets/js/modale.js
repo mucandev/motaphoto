@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const getModale = document.querySelector(".modale");
     const boutonClose = document.querySelector(".close-btn");
     const conteneurModale = document.getElementById("contact-overlay");
-    
+
     let openModal = false;
 
-     // Fonction pour gérer les clics
+    // Fonction pour gérer les clics
     const logClick = (e) => {
         console.log(`clic sur ${e.target.textContent} passe en`, openModal);
     };
@@ -21,14 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ouverture modale
     const openPopup = () => {
-        getModale.classList.add('modale-block');
-        getModale.classList.remove('modale');
+        getModale.classList.remove('hide');
+        getModale.classList.add('show');
+        setTimeout(() => {
+            getModale.style.display = 'flex';
+        }, 500); // Le délai doit correspondre à la durée de l'animation
     };
 
     // fermeture modale
     const closePopup = () => {
-        getModale.classList.remove('modale-block');
-        getModale.classList.add('modale');
+        getModale.classList.remove('show');
+        getModale.classList.add('hide');
+        setTimeout(() => {
+            getModale.style.display = 'none';
+        }, 500); // Le délai doit correspondre à la durée de l'animation
     };
 
     // recherche élément menu "Contact" et écoute
@@ -56,11 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //soumission du formulaire Contact Form 7
+    // soumission du formulaire Contact Form 7
     document.querySelector('.wpcf7-submit').addEventListener('click', (e) => {
-    logClick(e);
+        logClick(e);
     });
-
 });
-
-

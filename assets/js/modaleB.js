@@ -8,12 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // recherche élément menu "Contact" et écoute
     let menuContact;
     menuItems.forEach(item => {
+        // recherche élément menu "Contact" et écoute
         if (item.textContent.trim().toLowerCase() === "contact") {
             menuContact = item;
 
             menuContact.addEventListener("click", function() {
                 console.log('clic sur contact')
-                // Gestion de la fermeture de la modale - En cliquant à nouveau sur Contact
+                //  fermeture modale - reclick Contact
                 if (getModale.style.display === "block") {
                     getModale.style.display = "none";
                 }
@@ -24,15 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-	
-
-
-    // Fermeture de la modale lorsqu'on clic sur la croix
+	// fermeture modale au clic sur la croix
     boutonClose.addEventListener("click", function() {
         getModale.style.display = "none";
     });
 
-    // Fermeture de la modale lorsqu'on clic hors de la modale - facultatif
+    // Fermeture modale au clic hors de la modale 
     window.addEventListener('click', (event) => {
         if (event.target === conteneurModale) {
             getModale.style.display = "none";

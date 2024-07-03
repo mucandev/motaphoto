@@ -9,6 +9,7 @@ Version: 1.0.0
 Tags: Nathalie Mota, photographie, catalogue photo, lightbox
 Text Domain: motaphoto
 */
+/** imports parts**/
 /* utilisation des polices Google Fonts en local */
 /*  regular 400 : SpaceMono regular*/
 @font-face {
@@ -81,6 +82,22 @@ Text Domain: motaphoto
 /*66px */
 /*96px */
 /*27.6px */
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 h1 {
   font-family: "SpaceMono";
   color: #e00000;
@@ -139,11 +156,17 @@ footer {
   width: 100%;
 }
 
+/***************MODALE***********/
+/* Modale cachée par défaut */
 .modale {
   display: none;
 }
-.modale-block {
-  display: block;
+.modale.show {
+  display: flex;
+  animation: show 0.5s forwards;
+}
+.modale.hide {
+  animation: hide 0.5s forwards;
 }
 
 #contact-overlay {
@@ -155,7 +178,95 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 999;
+}
+
+.close-btn {
+  text-align: center;
+  color: #000000;
+  z-index: 2;
+  position: absolute;
+  transform-origin: center;
+  top: -10px;
+  right: -10px;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid;
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+.close-btn:active {
+  color: red;
+}
+.close-btn > .line {
+  height: 2px;
+  background-color: #000000;
+  display: block;
+  margin: auto;
+  margin-block: 2px;
+  width: 15px;
+}
+.close-btn > .line:nth-child(1) {
+  position: absolute;
+  transform: rotate(45deg);
+}
+.close-btn > .line:nth-child(2) {
+  position: absolute;
+  transform: rotate(-45deg);
+}
+
+.title-contact {
+  color: #000000;
+  font-family: "SpaceMono", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 4.1rem;
+  line-height: 3.5rem;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+.title-contact-left {
+  margin: 0;
+  position: relative;
+  right: 140px;
+  animation: slideInLeft ease-in-out 500ms;
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.title-contact-right {
+  margin: 0;
+  position: relative;
+  right: 100px;
+  animation: slideInRight ease-in-out 500ms;
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .contact-popup {
@@ -167,18 +278,11 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  position: absolute;
-  top: 45%;
+  position: relative;
+  top: 0;
   right: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-}
-.contact-popup img {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 150%;
+  bottom: 5%;
+  left: 0;
 }
 
 .contact-form {
@@ -244,8 +348,8 @@ footer {
   bottom: 225px;
 }
 .wpcf7-response-output {
-  margin: 0 !important;
-  padding: 18px !important;
+  margin: 4em !important;
+  padding: 30px !important;
   border-radius: 90px !important;
   border: none !important;
   text-align: center;
@@ -267,25 +371,15 @@ footer {
 
 .wpcf7 form.invalid .wpcf7-response-output,
 .wpcf7 form.spam .wpcf7-response-output {
+  color: #ffffff;
   background-color: #fe5858 !important;
-  max-width: 155px;
-  animation: invalidShake 150ms cubic-bezier(0.4, 0.1, 0.6, 0.9);
-  animation-iteration-count: 3;
+  animation: invalidShake 200ms ease;
+  animation-iteration-count: 2;
 }
 
 .wpcf7 form.sent .wpcf7-response-output {
   max-width: 80px;
-  animation: fadeInUp ease 150ms;
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: show 0.25s forwards;
 }
 
 @keyframes invalidShake {

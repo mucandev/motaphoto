@@ -1,7 +1,14 @@
-.modale{
+/***************MODALE***********/
+
+/* Modale cachée par défaut */
+.modale {
     display: none;
-    &-block{
-        display: block;
+    &.show {
+    display: flex; 
+    animation: show 0.5s forwards;
+    }
+    &.hide {
+    animation: hide 0.5s forwards;
     }
 }
 
@@ -10,7 +17,73 @@
     height: 100%;
     background: rgba($color--black, 0.8);
     @include Position(fixed, 95px, 0, 0, 0);
+    @include flex-center;
     z-index: 999;
+}
+
+.close-btn {
+    text-align: center;
+    color: $color--black;
+    z-index: 2;
+    position: absolute;
+    transform-origin: center;
+    top: -10px;
+    right: -10px;
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+    border: 1px solid;
+    background: $color--white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    &:active{
+        color: red;
+    }
+    & > .line{
+        height: 2px;
+        background-color: $color--black;
+        display: block;
+        margin: auto;
+        margin-block: 2px;
+        width: 15px;
+        &:nth-child(1){
+            position: absolute;
+            transform: rotate(45deg);
+        }
+        &:nth-child(2){
+            position: absolute;
+            transform:  rotate(-45deg);
+        }
+    }
+}
+
+.title-contact {
+    color: $color--black;
+    font-family: $font--header;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 4.1rem;
+    line-height: 3.5rem;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+    &-left{
+        margin: 0;
+        position: relative;
+        right: 140px;
+        @include slide_in('slideInLeft', 100px);  
+    }
+    &-right{
+        margin: 0;
+        position: relative;
+        right: 100px;
+        @include slide_in('slideInRight', -100px);  
+    }
 }
 
 .contact-popup {
@@ -22,14 +95,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    @include Position(absolute, 45%, 0, 0,50%);
-    transform: translate(-50%,-50%);
-    overflow: hidden;
-    & img{
-        margin-top: 10px;
-        margin-bottom: 20px;
-        width: 150%;
-    }
+    @include Position(relative, 0, 0, 5%, 0);
 }
 
 .contact-form{
@@ -85,8 +151,8 @@
         }    
     }
     &-response-output{
-        margin: 0 !important;
-        padding: 18px !important;
+        margin: 4em !important;
+        padding: 30px !important;
         border-radius: 90px !important ;
         border: none !important;
         text-align: center;
@@ -109,15 +175,15 @@
 
 .wpcf7 form.invalid .wpcf7-response-output,
 .wpcf7 form.spam .wpcf7-response-output {
+    color: $color--white;
     background-color: $color--clearred !important;
-    max-width: 155px;
-    animation: invalidShake 150ms cubic-bezier(.4,.1,.6,.9);
-    animation-iteration-count: 3;
+    animation: invalidShake 200ms ease;
+    animation-iteration-count: 2;
 }
 
 .wpcf7 form.sent .wpcf7-response-output {
     max-width: 80px;
-    @include fade_in('fadeInUp', 100px);
+    animation: show 0.25s forwards;
 }
 
 @keyframes invalidShake {

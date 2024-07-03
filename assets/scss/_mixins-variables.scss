@@ -66,3 +66,34 @@ $fade_in_time: 150ms;
 
 $shake-intensity: 5%;
 
+@mixin slide_in($animationSlideName, $yValue) {
+    @keyframes #{$animationSlideName} {
+        from {
+            opacity: 0;
+            transform: translateX(#{$yValue});
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    animation: #{$animationSlideName} ease-in-out 500ms;
+}
+
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

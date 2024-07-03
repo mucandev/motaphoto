@@ -37,8 +37,11 @@
 				));
 			?>
 			<div class="modale">
-				<?php get_template_part('/templates_part/modale'); ?>
+				<?php get_template_part('/template_parts/modale'); ?>
 			</div>
 		</nav>
 	</header>
+
+	<main>
+
 
