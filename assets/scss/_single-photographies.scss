@@ -1,0 +1,92 @@
+//partie 1
+.photo-choice {
+    // height: 100vh;
+    width: 100%;
+}
+//partie 1 zone 1
+.infos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between; 
+    gap: 20px;
+}
+
+.description {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    border-bottom: 2px solid $color--black;
+    & > h2{
+        max-width: 75%;
+        line-height: 68px;
+        margin-bottom: 20px;
+    }
+}
+
+.photo-choice-img {
+    width: 50%;
+    height: auto;
+    & figure {
+        padding: 0;
+        margin: 0;
+        object-fit: contain;
+    }
+}
+
+//partie 1 zone 2
+.photo-choice-interactions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.photo-choice-contact {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 38px;
+    margin-bottom: 30px;
+}
+
+.btn-choice {
+    width: 270px;
+    height: 50px;
+    border: 0;   
+    border-radius: 3px;     
+    background: $color--grey;       
+    color: $color--black;             
+    padding: 15px 0;      
+    font-size: $font-size-S;  
+    font-family: $font--heading;          
+    transition: .3s ease-in-out;
+    &:hover{
+        background: $color--black;
+        color: $color--white;     
+    }
+}
+
+.photo-choice-navigation {
+    width: 50%;
+}
+
+//partie  2
+.siblings {
+    border-top: 2px solid $color--black;
+    padding-top: 60px;
+    width: 100%;
+    
+    &-row {
+        display: flex;
+        gap: 20px;
+        padding-top: 20px;
+
+    }
+}

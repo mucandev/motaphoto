@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         getModale.classList.add('show');
         setTimeout(() => {
             getModale.style.display = 'flex';
-        }, 500); // Le délai doit correspondre à la durée de l'animation
+        }, 500); 
     };
 
     // fermeture modale
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         getModale.classList.add('hide');
         setTimeout(() => {
             getModale.style.display = 'none';
-        }, 500); // Le délai doit correspondre à la durée de l'animation
+        }, 500); 
     };
 
     // recherche élément menu "Contact" et écoute

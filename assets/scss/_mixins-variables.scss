@@ -12,7 +12,7 @@ $color--palered:#ffd6d6;  //button hover
 
 
 //fonts
-$font--header: "SpaceMono", sans-serif;
+$font--heading: "SpaceMono", sans-serif;
 $font--body: "Poppins", sans-serif;
 
 $font-size-S: 0.72rem; /*10px */
@@ -23,6 +23,8 @@ $font-size-H2: 4.71rem; /*66px */
 $font-size-H1: 6.86rem; /*96px */
 $font-size-H1m: 1.97rem; /*27.6px */
 
+//dimensions
+$margeX: 146px;
 
 @mixin Position($position, $top, $right, $bottom, $left){
     position: $position;

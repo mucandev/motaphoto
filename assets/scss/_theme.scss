@@ -1,7 +1,61 @@
-h1 {
-    font-family: "SpaceMono";
-    color: $color--red;
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1440px ;
 }
+section {
+    margin: 0 auto;
+    max-width: 1148px ;
+}
+
+h1{
+    color: $color--black;
+    font-family: $font--heading;
+    font-size: $font-size-H1;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: $color--black;
+    font-family: $font--heading;
+    font-size: $font-size-H2;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 58px;
+    text-transform: uppercase;;
+}
+
+h3 {
+    color: $color--black;
+    font-family: $font--heading;
+    font-size: $font-size-H3;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.description p{
+    color: $color--black;
+    font-family: $font--heading;
+    font-size: $font-size-M;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+p {
+    color: $color--black;
+    font-family: $font--body;
+    font-size: $font-size-M;
+    font-weight: 300;
+    font-style: normal;
+}
+
 
 /***************HEADER***********/
 
@@ -12,12 +66,13 @@ header{
     width: 100%;
     box-shadow: 0 4px 4px 0 rgba($color--black, 0.1);
 }
+
 nav{
-    margin-right: 100px;
+    margin-right: $margeX;
 }
 
 .logo{
-    margin-left: 100px;
+    margin-left: $margeX;
     & img{
         max-width: 250px;
         height: auto;
@@ -25,7 +80,6 @@ nav{
 }
 
 /***************MENU***********/
-
 
 .menu {
     display: flex;
@@ -38,7 +92,7 @@ nav{
     & a {
         color: $color--black;
         text-decoration: none;
-        font-family: $font--header;
+        font-family: $font--heading;
         font-weight: 400;
         font-style: normal;
         text-transform: uppercase;
@@ -54,5 +108,4 @@ footer {
     @include flex-center;
     border-top: 1px $color--black solid;
     width: 100%;
-
 }

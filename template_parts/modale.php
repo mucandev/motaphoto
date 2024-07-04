@@ -5,8 +5,8 @@
             <span class="line"></span>
         </button>
         <div class="title-contact">
-            <p class="title-contact-left"> contactcontactcontact</p>
-            <p class="title-contact-right"> contactcontactcontact</p>
+            <p class="title-contact-top"> contactcontactcontact</p>
+            <p class="title-contact-bottom"> contactcontactcontact</p>
          </div>
         <div class="contact-form">
         <?php
