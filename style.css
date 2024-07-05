@@ -75,6 +75,7 @@ Text Domain: motaphoto
   font-style: italic;
   font-weight: 400;
 }
+/***************VARIABLES***************/
 /*10px */
 /*14px */
 /*18px */
@@ -98,6 +99,7 @@ Text Domain: motaphoto
     opacity: 0;
   }
 }
+/***************THEME***************/
 body {
   display: flex;
   flex-direction: column;
@@ -210,7 +212,7 @@ footer {
   width: 100%;
 }
 
-/***************MODALE***********/
+/***************TEMPLATE _modale***************/
 /* Modale cachée par défaut */
 .modale {
   display: none;
@@ -446,12 +448,14 @@ footer {
     transform: translateX(-5%);
   }
 }
+/***************TEMPLATE _bloc-photo***************/
 .bloc {
   width: 564px;
   height: 495px;
   background-color: #e5e5e5;
 }
 
+/***************CUSTOM POST single-photographies***************/
 .photo-choice {
   width: 100%;
 }
@@ -508,16 +512,16 @@ footer {
 }
 
 .btn-choice {
-  width: 270px;
-  height: 50px;
-  border: 0;
-  border-radius: 3px;
   background: #c4c4c4;
   color: #000000;
   padding: 15px 0;
+  height: 50px;
   font-size: 0.72rem;
   font-family: "SpaceMono", sans-serif;
+  border: 0;
+  border-radius: 3px;
   transition: 0.3s ease-in-out;
+  width: 270px;
 }
 .btn-choice:hover {
   background: #000000;
@@ -526,11 +530,37 @@ footer {
 
 .photo-choice-navigation {
   width: 50%;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.photo-navigation {
+  width: 80px;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.vignette-temp {
+  width: 80px;
+  height: 70px;
+  background-color: #ffd6d6;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px auto;
+  width: 100%;
 }
 
 .siblings {
   border-top: 2px solid #000000;
   padding-top: 60px;
+  padding-bottom: 60px;
   width: 100%;
 }
 .siblings-row {

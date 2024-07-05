@@ -1,4 +1,4 @@
-/***************MODALE***********/
+/***************TEMPLATE _modale***************/
 
 /* Modale cachée par défaut */
 .modale {
@@ -119,21 +119,9 @@
         resize:none;
     }
     &-submit{
-        background: $color--grey;       
-        color: $color--black;             
-        padding: 15px 0;   
-        height: 50px;    
-        font-size: $font-size-S;  
-        font-family: $font--heading; 
-        border: 0;               
-        border-radius: 3px;   
-        transition: .3s ease-in-out;
-        width: 100%;
-        &:hover{
-            background: $color--black;
-            color: $color--white;     
-        }
+        @include submit(100%);
     }
+
     //messages field invalid
     &-not-valid-tip{
         color: $color--clearred;  

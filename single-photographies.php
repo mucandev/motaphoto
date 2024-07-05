@@ -82,12 +82,13 @@ if ($custom_query->have_posts()) :
                     $first_post = new WP_Query($args_premier);
                 ?>
             <div class="photo-navigation">
+                <div class="vignette-temp"></div>
                 <div class="arrows">
                     <a href="#">
-                        <img class="..." src="<?php echo get_stylesheet_directory_uri() . '/assets/image/arrow-left.png' ?>" alt="previous" />
+                        <img class="arrow-left" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
                     </a>
                     <a href="#">
-                        <img class="..." src="<?php echo get_stylesheet_directory_uri() . '/assets/image/arrow-right.png' ?>" alt="next" />
+                        <img class="arrow-right" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
                     </a>
                 </div>
             </div>   

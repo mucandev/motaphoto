@@ -1,3 +1,4 @@
+/***************VARIABLES***************/
 //colors
 $color--white:#ffffff;  // form
 $color--black:#000000;  //text
@@ -34,7 +35,7 @@ $margeX: 146px;
     left: $left;
 }
 
-// mixin
+//----------------------- mixin
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -42,13 +43,29 @@ $margeX: 146px;
 }
 
 
-// placeholder
+// placeholder : marche pas
 %flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+@mixin submit ($width){
+    background: $color--grey;       
+    color: $color--black;             
+    padding: 15px 0;   
+    height: 50px;    
+    font-size: $font-size-S;  
+    font-family: $font--heading; 
+    border: 0;               
+    border-radius: 3px;   
+    transition: .3s ease-in-out;
+    width: $width;
+    &:hover{
+        background: $color--black;
+        color: $color--white;     
+    }
+}
 //_____________________________ FADE IN 
 $fade_in_time: 150ms;
 
