@@ -41,7 +41,6 @@ if ($custom_query->have_posts()) :
             <p>format : <?php foreach ($formats as $format) { echo esc_html($format->name);} ?></p>  
             <p>type : <?php echo $type;?></p>  
             <p>année : <?php echo $annee ;?></p>          
-            <!-- <p>année : <?php echo the_date('Y');?></p>  -->
         </div>
         <div class="photo-choice-img">
             <?php the_content('full');?>  <!--full ne marche pas -->
@@ -59,44 +58,26 @@ if ($custom_query->have_posts()) :
         <div class="photo-choice-contact"><!-- row -->
             <p>Cette photo vous intéresse ?</p> 
             <button class="btn-choice" >Contact</button><!-- appel de la modale contact avec numéro photo ref pré rempli  -->
-        </div>
-        
-        <div class="photo-choice-navigation">
-            <?php 
-                    // Requête  dernier post
-                    $args_dernier = array(
-                        'post_type' => 'photographies', 
-                        'posts_per_page' => 1,
-                        'orderby' => 'date',
-                        'order' => 'DESC',
-                    );
-                    $last_post = new WP_Query($args_dernier);
+        </div>     
 
-                    // Requête  premier post
-                    $args_premier = array(
-                        'post_type' => 'photographies', 
-                        'posts_per_page' => 1,
-                        'orderby' => 'date',
-                        'order' => 'ASC',
-                    );
-                    $first_post = new WP_Query($args_premier);
-                ?>
-            <div class="photo-navigation">
-                <div class="vignette-temp"></div>
-                <div class="arrows">
-                    <a href="#">
-                        <img class="arrow-left" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
-                    </a>
-                    <a href="#">
-                        <img class="arrow-right" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
+        <div class="photo-navigation">
+            <div class="vignette vignette-temp"></div>
+            <div class="arrows">
+                <div class="arrow-left">
+                    <?php $previous_post = get_previous_post(); ?>
+                    <a href="<?php echo get_permalink($previous_post); ?>">
+                        <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
                     </a>
                 </div>
-            </div>   
+                <div class="arrow-right">
+                    <?php $next_post = get_next_post(); ?>
+                    <a href="<?php echo get_permalink($next_post); ?>">
+                        <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
+                    </a>
+                </div>
+            </div>
+        </div>   
 
-
-
-
-        </div>
     </div>
 </section>
 
@@ -104,16 +85,13 @@ if ($custom_query->have_posts()) :
 <section class="siblings">
     <h3>Vous aimerez aussi</h3>
     <div class="siblings-row"><!-- row -->
-        <div class="photo-bloc"> 
-            <?php get_template_part('/template_parts/bloc-photo'); ?>
+        <div class="photo-block"> 
+            <?php get_template_part('/template_parts/block-photo'); ?>
         </div>
-        <div class="photo-bloc"> 
-            <?php get_template_part('/template_parts/bloc-photo'); ?>
+        <div class="photo-block"> 
+            <?php get_template_part('/template_parts/block-photo'); ?>
         </div>
     </div>
-
-
-
 </section>   
 
 

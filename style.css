@@ -449,7 +449,7 @@ footer {
   }
 }
 /***************TEMPLATE _bloc-photo***************/
-.bloc {
+.block {
   width: 564px;
   height: 495px;
   background-color: #e5e5e5;
@@ -507,8 +507,8 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 38px;
-  margin-bottom: 30px;
+  margin-top: 35px;
+  margin-bottom: 25px;
 }
 
 .btn-choice {
@@ -528,15 +528,8 @@ footer {
   color: #ffffff;
 }
 
-.photo-choice-navigation {
-  width: 50%;
-  display: flex;
-  align-items: end;
-  justify-content: end;
-}
-
 .photo-navigation {
-  width: 80px;
+  width: 50%;
   display: flex;
   align-items: end;
   justify-content: end;
@@ -553,8 +546,9 @@ footer {
 .arrows {
   display: flex;
   justify-content: space-between;
-  margin: 8px auto;
-  width: 100%;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  width: 80px;
 }
 
 .siblings {

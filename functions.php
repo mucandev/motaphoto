@@ -17,10 +17,7 @@ function motaphoto_enqueue_styles() {
 
     //  Chargement du script JS de la modale
     wp_enqueue_script('jquery');
-    wp_enqueue_script('script modale', get_template_directory_uri() . '/assets/js/modale.js');
-
-    //  script alternatif modale avec display:none dito ressource
-    //wp_enqueue_script('script modaleB', get_template_directory_uri() . '/assets/js/modaleB.js');
+        wp_enqueue_script('script-modale', get_template_directory_uri() . '/assets/js/modale.js');
 
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_styles');
@@ -48,4 +45,3 @@ function motaphoto_custom_logo_setup() {
     add_theme_support('custom-logo', $defaults);
 }
 add_action('after_setup_theme', 'motaphoto_custom_logo_setup');
-

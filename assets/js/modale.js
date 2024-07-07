@@ -7,15 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let openModal = false;
 
-    // Fonction pour gérer les clics
-    const logClick = (e) => {
-        console.log(`clic sur ${e.target.textContent} passe en`, openModal);
-    };
-
     // toggle sur le contact du menu
-    const togglePopup = (e) => {
+    const togglePopup = () => {
         openModal = !openModal;
-        logClick(e);
         openModal ? openPopup() : closePopup();
     };
 
@@ -23,18 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const openPopup = () => {
         getModale.classList.remove('hide');
         getModale.classList.add('show');
-        setTimeout(() => {
-            getModale.style.display = 'flex';
-        }, 500); 
+        setTimeout(() => { getModale.style.display = 'flex';}, 500); 
     };
 
     // fermeture modale
     const closePopup = () => {
         getModale.classList.remove('show');
         getModale.classList.add('hide');
-        setTimeout(() => {
-            getModale.style.display = 'none';
-        }, 500); 
+        setTimeout(() => { getModale.style.display = 'none';}, 500); 
     };
 
     // recherche élément menu "Contact" et écoute
@@ -47,9 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // fermeture modale au clic sur la croix
-    boutonClose.addEventListener('click', (e) => {
+    boutonClose.addEventListener('click', () => {
         openModal = false;
-        logClick(e);
         closePopup();
     });
 
@@ -57,13 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (e) => {        
         if (e.target === conteneurModale) {
             openModal = false;
-            console.log(`clic sur overlay passe en`,openModal );
             closePopup();
         }
     });
 
-    // soumission du formulaire Contact Form 7
-    document.querySelector('.wpcf7-submit').addEventListener('click', (e) => {
-        logClick(e);
-    });
+    // modale à partir de single-photographies
+    let currentURL = window.location.href;
+
+    if(currentURL.match(/photographies/)) {
+        const btnContact = document.querySelector('.btn-choice');    
+        let refSingle = document.getElementById("photo-ref").textContent;
+
+        btnContact.addEventListener('click', () => {
+            const refModale = document.querySelector(".popup-refPhoto input");
+            refModale.value = refSingle
+            openModal = true;
+            openPopup();            
+        });
+    }
+
 });

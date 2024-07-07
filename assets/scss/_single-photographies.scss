@@ -53,22 +53,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 38px;
-    margin-bottom: 30px;
+    margin-top: 35px;
+    margin-bottom: 25px;
 }
 
 .btn-choice {
     @include submit(270px);
 }
 
-.photo-choice-navigation {
-    width: 50%;
-    display: flex;
-    align-items: end;
-    justify-content: end;
-}
 .photo-navigation {
-    width: 80px;
+    width: 50%;
     display: flex;
     align-items: end;
     justify-content: end;
@@ -84,8 +78,9 @@
 .arrows {
     display: flex;
     justify-content: space-between;
-    margin: 8px auto;
-    width: 100%;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    width: 80px;
 }
 
 //partie  2
@@ -94,11 +89,9 @@
     padding-top: 60px;
     padding-bottom: 60px;
     width: 100%;
-    
-    &-row {
+        &-row {
         display: flex;
         gap: 20px;
         padding-top: 20px;
-
     }
 }
