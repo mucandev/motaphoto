@@ -43,7 +43,7 @@ if ($custom_query->have_posts()) :
             <p>année : <?php echo $annee ;?></p>          
         </div>
         <div class="photo-choice-img">
-            <?php the_content('full');?>  <!--full ne marche pas -->
+            <?php the_content('thumbnail');?>  <!--full ne marche pas -->
         </div>
     </div>
 
@@ -61,22 +61,89 @@ if ($custom_query->have_posts()) :
         </div>     
 
         <div class="photo-navigation">
-            <div class="vignette vignette-temp"></div>
-            <div class="arrows">
+
+            <div class="arrow">
+                <?php
+                    // Requête pour obtenir le dernier post
+                    $args_dernier = array(
+                        'post_type' => 'photographies', 
+                        'posts_per_page' => 1,
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                    );
+
+                    $last_post = new WP_Query($args_dernier);
+
+                    // Requête pour obtenir le premier post
+                    $args_premier = array(
+                        'post_type' => 'photographies', 
+                        'posts_per_page' => 1,
+                        'orderby' => 'date',
+                        'order' => 'ASC',
+                    );
+                    $first_post = new WP_Query($args_premier);
+                ?>
                 <div class="arrow-left">
                     <?php $previous_post = get_previous_post(); ?>
-                    <a href="<?php echo get_permalink($previous_post); ?>">
-                        <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
-                    </a>
+
+                    <?php if (!empty($previous_post)): ?>
+                        <a href="<?php echo get_permalink($previous_post); ?>">
+                            <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
+                        </a>
+
+                    <!-- boucle-->
+					<?php else : $last_post = $last_post->posts[0]; ?>
+						<a href="<?php echo get_permalink($last_post); ?>">
+                            <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
+						</a>
+					<?php endif; ?>
                 </div>
+
+                <div class="thumbnail-left">
+                    <?php
+                        // Récupération de la photo du post précédent
+                        if (!empty($previous_post)) {
+                            $thumbnail_left = get_post_field('post_content', $previous_post->ID);
+                        } else {
+                            $thumbnail_left = get_post_field('post_content', $last_post);
+                        }
+
+                        echo $thumbnail_left;
+                    ?>
+                </div>
+
                 <div class="arrow-right">
                     <?php $next_post = get_next_post(); ?>
-                    <a href="<?php echo get_permalink($next_post); ?>">
-                        <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
-                    </a>
+
+                    <?php if (!empty($next_post)): ?>
+                        <a href="<?php echo get_permalink($next_post); ?>">
+                            <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
+                        </a>
+
+                    <!-- boucle-->
+					<?php  else : $first_post = $first_post->posts[0]; ?>
+						<a href="<?php echo get_permalink($first_post); ?>">
+                            <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
+						</a>
+                    <?php endif; ?>
+
                 </div>
-            </div>
-        </div>   
+
+                <div class="thumbnail-right">
+                    <?php
+                        // Récupération de la photo du post suivant
+                        if (!empty($next_post)) {
+                            $thumbnail_right = get_post_field('post_content', $next_post->ID);
+                        } else {
+                            $thumbnail_right= get_post_field('post_content', $first_post);
+                        }
+
+                        echo $thumbnail_right;
+                    ?>
+                    
+                </div>
+            </div>        
+        </div> 
 
     </div>
 </section>
@@ -93,9 +160,6 @@ if ($custom_query->have_posts()) :
         </div>
     </div>
 </section>   
-
-
-
 
 <?php 
 get_footer(); 

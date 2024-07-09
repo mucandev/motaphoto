@@ -1,7 +1,7 @@
 /***************CUSTOM POST single-photographies***************/
 //partie 1
 .photo-choice {
-    // height: 100vh;
+  // height: calc(100vh-56px);
     width: 100%;
 }
 //partie 1 zone 1
@@ -20,7 +20,7 @@
     flex-direction: column;
     padding-bottom: 20px;
     border-bottom: 2px solid $color--black;
-    & > h2{
+    & > h2 {
         max-width: 75%;
         line-height: 68px;
         margin-bottom: 20px;
@@ -31,9 +31,18 @@
     width: 50%;
     height: auto;
     & figure {
-        padding: 0;
         margin: 0;
-        object-fit: contain;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 }
 
@@ -42,7 +51,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     gap: 20px;
 }
@@ -66,22 +75,55 @@
     display: flex;
     align-items: end;
     justify-content: end;
-    flex-direction: column;
-    margin-top: 8px;
+    flex-direction: column-reverse;
+   // background: rgba($color--palered, 0.5); //temporaire
 }
 
-.vignette-temp {
-    width: 80px;
-    height: 70px;
-    background-color: $color--palered;}
-
-.arrows {
+.arrow {
     display: flex;
     justify-content: space-between;
-    margin-top: 11px;
-    margin-bottom: 11px;
+    align-items: end;
+    margin: 10px 0;
     width: 80px;
+    &-left, &-right {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        z-index: 1; 
+    } 
+    &-left:hover ~  .thumbnail-left,
+    &-right:hover ~ .thumbnail-right {
+        opacity: 1;
+    }
 }
+
+.thumbnail-left, .thumbnail-right {    
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    display:flex;
+    align-items: center;
+    justify-content: center;   
+    margin-bottom: 25px;    
+    overflow: hidden;
+    opacity: 0; 
+    transition: opacity 0.3s ease;  
+    & > figure {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
 
 //partie  2
 .siblings {

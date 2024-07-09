@@ -66,6 +66,18 @@ $margeX: 146px;
         color: $color--white;     
     }
 }
+@mixin circle-icon ($diameter){
+    background: $color--black;   
+    color: $color--white;                
+    height: $diameter;    
+    width: $diameter;
+    font-size: calc($diameter/2); 
+    border: 0;               
+    border-radius: calc($diameter/2);   
+    transition: .3s ease-in-out;
+}
+
+
 //_____________________________ FADE IN 
 $fade_in_time: 150ms;
 
