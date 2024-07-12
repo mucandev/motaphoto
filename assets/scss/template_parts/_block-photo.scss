@@ -1,7 +1,9 @@
 /***************TEMPLATE _bloc-photo***************/
 .block {
-    width: 564px;
-    height: 495px;
+    // width: 564px;
+    width: 100%;
+    aspect-ratio: 10/8.8;
+    // height: 495px;
     position: relative;
     overflow: hidden;
     &-lien-photo{
@@ -64,3 +66,7 @@
     width:40px;
     height: auto;
 }
+
+// @media screen and (max-width: #{$breakpoint__large_phone}) {
+
+// }

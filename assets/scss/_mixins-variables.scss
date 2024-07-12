@@ -24,8 +24,15 @@ $font-size-H2: 4.71rem; /*66px */
 $font-size-H1: 6.86rem; /*96px */
 $font-size-H1m: 1.97rem; /*27.6px */
 
+// breakpoints
+$breakpoint__laptop: 1192px;
+$breakpoint__tablet: 1040px;
+$breakpoint__small_tablet: 920px;
+$breakpoint__large_phone: 700px;
+
 //dimensions
 $margeX: 146px;
+$margeXm: 40px;
 
 @mixin Position($position, $top, $right, $bottom, $left){
     position: $position;

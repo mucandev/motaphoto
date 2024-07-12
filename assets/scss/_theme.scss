@@ -112,3 +112,33 @@ footer {
     border-top: 1px $color--black solid;
     width: 100%;
 }
+
+
+
+
+@media screen and (max-width: #{$breakpoint__large_phone}) {
+    section {
+        max-width: 90% ;
+    }
+
+    h1{
+        font-size: $font-size-H1m;
+    }
+    h2 {
+        font-size: $font-size-H2m;
+        line-height: 48px;
+    }
+    .logo {
+        margin-left: $margeXm;
+        & img{
+            max-width: 140px;
+        }
+    }
+    footer .menu {
+        flex-direction: column;
+        padding-left: 0;
+        margin: 50px auto;
+    }
+    
+
+}

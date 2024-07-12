@@ -37,7 +37,6 @@
                     <a href="#">
                         <img class="icon-eye" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="infos photo" />
                     </a>
-
                 </div>
                 <div class="block-infos">
                     <div class="block-infos-ref">
@@ -46,7 +45,7 @@
                     <div class="block-infos-categorie">
                         <p><?php echo  $liste_categories ?></p>
                     </div>
-            </div>
+                </div>
             </div>
 
         </div>
