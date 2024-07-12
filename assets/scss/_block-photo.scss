@@ -1,21 +1,36 @@
 /***************TEMPLATE _bloc-photo***************/
-.sibling {
+.block {
     width: 564px;
     height: 495px;
-    background-color: $color--palegrey;
     position: relative;
+    overflow: hidden;
+    &-lien-photo{
+        display: none;
+    }
+    &-photo {
+        width: 100%;
+        height: 100%;
+        & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+    } 
     &-survol {
+        //display: none;
         display: block;
         @include Position(absolute, 0, 0, 0, 0); 
     }
     &-overlay {
         width: 100%;
         height: 100%;
-        background: rgba($color--black, 0.8);
+        background: rgba($color--black, 0.6);
         @include flex-center;
-        z-index: 3;
+        // position: relative;
+        // z-index: 3;
     }
     &-above {
+        box-sizing: border-box;
         padding: 10px;
         display: flex;
         flex-direction: column;
@@ -26,31 +41,26 @@
     &-lightbox-expand {       
         display: flex;
         justify-content: end;
-        margin-top: 10px;
-        &-icon{
-            @include flex-center;
-            @include circle-icon(50px);
-        }
     }
     &-info-eye {       
         @include flex-center;
-        font-size: 45px;
-        color: $color--white;   
     }
     &-infos {       
-        font-size: $font-size-M;
-        color: $color--white;
         display: flex;
         justify-content: space-between;
-        & p{
+        & p {
             color: $color--white;
             text-transform: uppercase;
+            margin-bottom: 0;
         }
-        &-categorie p{
+        &-categorie p {
             font-family: $font--heading ;
+            letter-spacing: 1.4px;
         } 
     }
 }
 
-
-
+.icon-lightbox {
+    width:40px;
+    height: auto;
+}

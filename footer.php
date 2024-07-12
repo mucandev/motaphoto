@@ -11,6 +11,9 @@
     </main >
 
     <footer>
+        <div class="modale">
+			<?php get_template_part('/template_parts/modale'); ?>
+        </div>
         <div>
             <?php
                 wp_nav_menu(array(

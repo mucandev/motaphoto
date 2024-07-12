@@ -43,7 +43,7 @@ if ($custom_query->have_posts()) :
             <p>année : <?php echo $annee ;?></p>          
         </div>
         <div class="photo-choice-img">
-            <?php the_content('thumbnail');?>  <!--full ne marche pas -->
+            <?php the_post_thumbnail('full') ?>
         </div>
     </div>
 
@@ -88,26 +88,25 @@ if ($custom_query->have_posts()) :
 
                     <?php if (!empty($previous_post)): ?>
                         <a href="<?php echo get_permalink($previous_post); ?>">
-                            <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
+                            <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
                         </a>
 
                     <!-- boucle-->
 					<?php else : $last_post = $last_post->posts[0]; ?>
 						<a href="<?php echo get_permalink($last_post); ?>">
-                            <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.png' ?>" alt="previous" />
+                            <img class="arrow-left-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
 						</a>
 					<?php endif; ?>
                 </div>
-
+                <!-- //$thumbnail_left = get_the_post_thumbnail('post_thumbnail', $previous_post->ID); -->
                 <div class="thumbnail-left">
                     <?php
                         // Récupération de la photo du post précédent
                         if (!empty($previous_post)) {
-                            $thumbnail_left = get_post_field('post_content', $previous_post->ID);
+                            $thumbnail_left = get_the_post_thumbnail($previous_post->ID, 'thumbnail');
                         } else {
-                            $thumbnail_left = get_post_field('post_content', $last_post);
+                            $thumbnail_left = get_the_post_thumbnail($last_post, 'thumbnail');
                         }
-
                         echo $thumbnail_left;
                     ?>
                 </div>
@@ -117,13 +116,13 @@ if ($custom_query->have_posts()) :
 
                     <?php if (!empty($next_post)): ?>
                         <a href="<?php echo get_permalink($next_post); ?>">
-                            <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
+                            <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
                         </a>
 
                     <!-- boucle-->
 					<?php  else : $first_post = $first_post->posts[0]; ?>
 						<a href="<?php echo get_permalink($first_post); ?>">
-                            <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.png' ?>" alt="next" />
+                            <img class="arrow-right-img" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
 						</a>
                     <?php endif; ?>
 
@@ -133,9 +132,9 @@ if ($custom_query->have_posts()) :
                     <?php
                         // Récupération de la photo du post suivant
                         if (!empty($next_post)) {
-                            $thumbnail_right = get_post_field('post_content', $next_post->ID);
+                            $thumbnail_right = get_the_post_thumbnail( $next_post->ID, 'thumbnail');
                         } else {
-                            $thumbnail_right= get_post_field('post_content', $first_post);
+                            $thumbnail_right= get_the_post_thumbnail( $first_post, 'thumbnail');
                         }
 
                         echo $thumbnail_right;
@@ -151,13 +150,40 @@ if ($custom_query->have_posts()) :
 <!-- partie 2-->
 <section class="siblings">
     <h3>Vous aimerez aussi</h3>
-    <div class="siblings-row"><!-- row -->
-        <div class="photo-block"> 
-            <?php get_template_part('/template_parts/block-photo'); ?>
-        </div>
-        <div class="photo-block"> 
-            <?php get_template_part('/template_parts/block-photo'); ?>
-        </div>
+    <div class="siblings-row">
+
+			<?php
+				// recup catégorie photo cette page
+				$categories = wp_get_post_terms(get_the_ID(), 'photocategories');
+				if ($categories && !is_wp_error($categories)) {
+					$ID_categories = wp_list_pluck($categories, 'term_id');
+					// 2 photos aléatoires même catégorie excluant celle de cette page
+					$photos_siblings = new WP_Query(array(
+						'post_type' => 'photographies',
+						'posts_per_page' => 2,
+						'post__not_in' => array(get_the_ID()), //requiert une array
+						'orderby' => 'rand',
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'photocategories',
+								'field' => 'id',
+								'terms' => $ID_categories,
+							),
+						),
+					));
+
+					if ($photos_siblings->have_posts()) {
+						while ($photos_siblings->have_posts()) {
+							$photos_siblings->the_post();
+                            // Affichage  template part
+							get_template_part('template_parts/block-photo');
+						}
+						wp_reset_postdata();
+					} else {			
+                        echo '<p>D\'autres photos similaires à découvrir... bientôt</p>';
+					}
+				}
+			?>
     </div>
 </section>   
 

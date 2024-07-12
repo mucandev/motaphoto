@@ -15,9 +15,10 @@ function motaphoto_enqueue_styles() {
     
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), null);
 
-    //  Chargement du script JS de la modale
+    //  Chargement des scripts J
     wp_enqueue_script('jquery');
-        wp_enqueue_script('script-modale', get_template_directory_uri() . '/assets/js/modale.js');
+    wp_enqueue_script('script-modale', get_template_directory_uri() . '/assets/js/modale.js', array(),'1.0.0', true);
+    wp_enqueue_script('script-block-photo', get_template_directory_uri() . '/assets/js/block-photo.js', array(),'1.0.0', true);
 
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_styles');
@@ -45,3 +46,11 @@ function motaphoto_custom_logo_setup() {
     add_theme_support('custom-logo', $defaults);
 }
 add_action('after_setup_theme', 'motaphoto_custom_logo_setup');
+
+//test thumbnails custom
+function motaphoto_thumbnails_sizes() {
+    add_image_size( 'nav-thumb', 80, 70, true ); 
+    add_image_size( 'current-thumb', 564, 0, true );
+}
+add_action( 'after_setup_theme', 'motaphoto_thumbnails_sizes' );
+
