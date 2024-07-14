@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // modale à partir de single-photographies
-    let currentURL = window.location.href;
+    // modale à partir de single-photographies ou page 404
+    const btnContact = document.querySelector('.btn-choice');  
+    const refSingleElement = document.getElementById("photo-ref");
+    let refSingle = refSingleElement ? refSingleElement.textContent : null;
 
-    if(currentURL.match(/photographies/)) {
-        const btnContact = document.querySelector('.btn-choice');    
-        let refSingle = document.getElementById("photo-ref").textContent;
+    if(btnContact && refSingle) {
 
         btnContact.addEventListener('click', () => {
             const refModale = document.querySelector(".popup-refPhoto input");
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal = true;
             openPopup();            
         });
-    }
+    };
+})
 
-});
+

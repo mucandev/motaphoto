@@ -1,0 +1,55 @@
+/***************THEME***************/
+.hero {
+    max-width: 1440px;
+    width: 100%;
+    @extend %flex-center;
+    position: relative;
+    &-title {
+        width: 70%;
+        height: auto;
+        @extend %flex-center;
+        position: absolute;
+        z-index: 1;
+    }
+    &-banner{
+        width: 100%;
+        max-width: 1440px;
+        height: 960px; //temporaire
+        //background: rgba($color--palegrey, 0.5);//temporaire
+        background-image: url('./assets/images/nathalie-mota-404.jpg');//temporaire
+        position: relative;
+    }
+}
+
+.filters {
+    width: 100%;
+    gap: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: 100px;
+    margin-bottom: 20px;
+    & > div {
+        width: 50%;
+        display: flex;
+            }
+    &-tax{
+        justify-content: space-between;
+    }
+    &-time{
+        justify-content: end;
+    }
+    & p{
+        text-transform: uppercase;
+        font-size: $font-size-S;
+    }
+}
+
+.select {
+    height: 43px;
+    width: 100%;
+    max-width: 260px;
+    border: 2px solid $color--grey;
+    border-radius: 10px ;
+    padding-left: 10px;
+}

@@ -122,6 +122,7 @@
         display: flex;
         gap: 20px;
         padding-top: 20px;
+        flex-wrap: wrap;
     }
 }
 
@@ -158,9 +159,9 @@
                 content: '';
                 position: absolute;
                 top: 0;
-                left: -60px; 
-                right: 60px;
-                width: calc(100% + 120px); 
+                left: -21%; 
+                right: +21%;
+                width: calc(100% + 42%); 
                 border-top: 2px solid $color--black;
             }
         }
@@ -185,9 +186,9 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -20px; 
-            right: 20px;
-            width: calc(100% + 40px); 
+            left: -5%; 
+            right: 5%;
+            width: calc(100% + 10%); 
             border-top: 2px solid $color--black;
         }
     }

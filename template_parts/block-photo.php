@@ -27,24 +27,22 @@
     </div>
     <div class="block-survol">
         <div class="block-overlay">
-            <div class="block-above">
-                <div class="block-lightbox-expand">
-                    <a href="#">
-                        <img class="icon-lightbox" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-lightbox.svg' ?>" alt="lightbox" />
-                    </a>
+            <div class="block-lightbox-expand">
+                <a href="#">
+                    <img class="icon-lightbox" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-lightbox.svg' ?>" alt="lightbox" />
+                </a>
+            </div>
+            <div class="block-info-eye">
+                <a href="#">
+                    <img class="icon-eye" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="infos photo" />
+                </a>
+            </div>
+            <div class="block-infos">
+                <div class="block-infos-ref">
+                <p><?php echo $reference_photo ?></p>
                 </div>
-                <div class="block-info-eye">
-                    <a href="#">
-                        <img class="icon-eye" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="infos photo" />
-                    </a>
-                </div>
-                <div class="block-infos">
-                    <div class="block-infos-ref">
-                    <p><?php echo $reference_photo ?></p>
-                    </div>
-                    <div class="block-infos-categorie">
-                        <p><?php echo  $liste_categories ?></p>
-                    </div>
+                <div class="block-infos-categorie">
+                    <p><?php echo  $liste_categories ?></p>
                 </div>
             </div>
 

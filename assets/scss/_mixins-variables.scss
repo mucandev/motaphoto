@@ -16,7 +16,8 @@ $color--palered:#ffd6d6;  //button hover
 $font--heading: "SpaceMono", sans-serif;
 $font--body: "Poppins", sans-serif;
 
-$font-size-S: 0.72rem; /*10px */
+$font-size-XS: 0.72rem; /*10px */
+$font-size-S: 0.86rem; /*12px */
 $font-size-M: 1rem; /*14px */
 $font-size-H3: 1.28rem; /*18px */
 $font-size-H2m: 3.28rem; /*46px */
@@ -42,14 +43,6 @@ $margeXm: 40px;
     left: $left;
 }
 
-//----------------------- mixin
-@mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
 // placeholder : marche pas
 %flex-center {
     display: flex;
@@ -57,12 +50,22 @@ $margeXm: 40px;
     align-items: center;
 }
 
+%link {
+    color: $color--black;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover{
+        font-weight: 700;
+    }
+}
+
+//----------------------- mixin
 @mixin submit ($width){
     background: $color--grey;       
     color: $color--black;             
     padding: 15px 0;   
     height: 50px;    
-    font-size: $font-size-S;  
+    font-size: $font-size-XS;  
     font-family: $font--heading; 
     border: 0;               
     border-radius: 3px;   

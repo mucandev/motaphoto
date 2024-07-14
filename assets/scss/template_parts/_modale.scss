@@ -17,7 +17,7 @@
     height: 100%;
     background: rgba($color--black, 0.8);
     @include Position(fixed, 0, 0, 0, 0);
-    @include flex-center;
+    @extend %flex-center;
     z-index: 999;
 }
 
@@ -25,7 +25,7 @@
     position: absolute;
     top: 50px;
     right: -18px;
-    @include flex-center;
+    @extend %flex-center;
     background: $color--white;
     border-radius: 20px;
     border: 5px $color--black solid;

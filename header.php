@@ -20,14 +20,19 @@
 <body>
 	<header>
 		<div class="logo">
-            <?php
-            if (function_exists('the_custom_logo')) {
-                the_custom_logo();
-            } else {
-                echo '<h1>' . get_bloginfo('name') . '</h1>';
-            }
-            ?>
+			<?php
+				if (function_exists('the_custom_logo')) {
+					the_custom_logo();
+				} else {
+					echo '<h1>' . get_bloginfo('name') . '</h1>';
+				}
+			?>
 		</div>
+		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+			<span class="line"></span>
+			<span class="line"></span>
+			<span class="line"></span>
+		</button>
 		<nav>
 			<?php
 			wp_nav_menu(array(
