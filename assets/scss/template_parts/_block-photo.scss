@@ -7,8 +7,11 @@
     max-height: 495px;
     position: relative;
     overflow: hidden;
+    background: rgba($color--palegrey, 0.5);
     &-lien-photo{
-        display: none;
+        opacity: 0;
+        position: absolute;
+        color: $color--white; 
     }
     &-photo {
         width: 100%;
@@ -18,17 +21,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            &:hover ~ .block-survol{
-                opacity: 1;
-            }
         }
     } 
     &-survol {
-        //display: none;
         display: block;
-        opacity: 1;
+        opacity: 0;
         transition: opacity 0.3s ease;  
         @include Position(absolute, 0, 0, 0, 0); 
+        &:hover {
+            opacity: 1;
+        }
     }
     &-overlay {
         width: 100%;

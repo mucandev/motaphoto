@@ -13,7 +13,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title><?php bloginfo('name') ?> - <?php bloginfo('description') ?></title>
+    <title><?php bloginfo('name') ?> | <?php bloginfo('description') ?> | <?php echo the_title();?></title>
 	<?php wp_head(); ?>
 </head>
 
@@ -28,12 +28,13 @@
 				}
 			?>
 		</div>
-		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-			<span class="line"></span>
-			<span class="line"></span>
-			<span class="line"></span>
-		</button>
 		<nav>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+				<span class="line"></span>
+				<span class="line"></span>
+				<span class="line"></span>
+			</button>
+			
 			<?php
 			wp_nav_menu(array(
 				'theme_location' =>	'menu_principal',
