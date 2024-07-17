@@ -25,8 +25,17 @@ $font-size-H2: 4.71rem; /*66px */
 $font-size-H1: 6.86rem; /*96px */
 $font-size-H1m: 1.97rem; /*27.6px */
 
+// variables CSS globales récupérables en javascript
+// :root {
+//     // breakpoints 
+//     --breakpoint-laptop: 1188px;
+//     --breakpoint-tablet: 1040px;
+//     --breakpoint-small-tablet: 920px;
+//     --breakpoint-large-phone: 700px;
+// }
+
 // breakpoints
-$breakpoint__laptop: 1188px;
+$breakpoint__laptop: 1192px;
 $breakpoint__tablet: 1040px;
 $breakpoint__small_tablet: 920px;
 $breakpoint__large_phone: 700px;
@@ -38,6 +47,12 @@ $laptopXcontent: 1148px;
 $margeX: 146px;
 $margeXm: 40px;
 $headerY: 56px;
+$gap30:30px;
+$gap20:20px;
+$gap10:10px;
+
+$current_width_blockPhoto: 564px;
+$current_height_blockPhoto: 495px;
 
 @mixin Position($position, $top, $right, $bottom, $left){
     position: $position;

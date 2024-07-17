@@ -175,7 +175,7 @@
     animation: show 0.25s forwards;
 }
 
-
+// @media screen and (max-width: var(--breakpoint-large-phone)){
 @media screen and (max-width: #{$breakpoint__large_phone}) {
     .close-btn {       
         top: 64px;

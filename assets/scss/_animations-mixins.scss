@@ -69,12 +69,8 @@ $shake-intensity: 5%;
     @include slideYfade('slideXfadeUp', 300px, 200ms);
 }
 
-.slideUpSlow{
-    @include slideYfade('slideXfadeUp', 200px, 400ms);
-}
-
 .fadeOut {
-    animation:  fadeOut  ease 400ms;
+    animation:  fadeOut  ease 200ms;
 }
 
 

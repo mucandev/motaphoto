@@ -12,9 +12,11 @@
     flex-direction: row;
     align-items: end;
     justify-content: space-between; 
-    gap: 20px;
-    &-photo {
-        width: 50%;
+    gap: $gap20;
+    & > div{
+        width: calc(50% - ($gap20/2));
+    }
+    &-photo {        
         height: auto;
         & img {
             display: flex;
@@ -30,7 +32,6 @@
 }
 
 .description {
-    width: 50%;
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
@@ -48,9 +49,11 @@
     flex-direction: row;
     align-items: end;
     justify-content: space-between;
-    gap: 20px;
+    gap: $gap20;
+    & > div {
+        width: calc(50% - ($gap20/2));
+    }
     &-contact {
-        width: 50%;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -60,17 +63,15 @@
     }
 }
 
-.btn-choice {
+.btn-contact {
     @include submit(270px);
 }
 
 .photo-navigation {
-    width: 50%;
     display: flex;
     align-items: end;
     justify-content: end;
     flex-direction: column-reverse;
-   // background: rgba($color--palered, 0.5); //temporaire
 }
 
 .arrow {
@@ -122,13 +123,14 @@
         display: flex;
         justify-content: center;
         gap: 20px;
-        padding-top: 20px;
+        margin: 20px auto;
         flex-wrap: wrap;
     }
 }
 
 
-@media screen and (max-width: #{$breakpoint__large_phone}) {
+// @media screen and (max-width: var(--breakpoint-large-phone)){
+@media screen and (max-width: #{$breakpoint__large_phone}) {    
     //partie 1 zone 1
     .photo-choice{
         width: 70%;;
@@ -180,7 +182,8 @@
             text-align: center;
         }
         &-items {
-            flex-direction: column-reverse;    
+            flex-direction: column;
+            align-items: center;
             padding-top: 0;
         }
         &::before{

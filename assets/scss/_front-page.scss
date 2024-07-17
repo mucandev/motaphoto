@@ -1,0 +1,87 @@
+/***************THEME***************/
+
+.hero {
+    max-width: 1440px;
+    width: 100%;
+    @extend %flex-center;
+    position: relative;
+    &-title {
+        width: 70%;
+        height: auto;
+        @extend %flex-center;
+        position: absolute;
+        z-index: 1;
+    }
+    &-banner{
+        width: 100%;
+        max-width: 1440px;
+        //height: 960px; //temporaire
+        //background: rgba($color--palegrey, 0.5);//temporaire
+        position: relative;
+        & > img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+.filters {
+    width: 100%;
+    column-gap: $gap30;
+    row-gap: $gap10;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;    
+    // height: 100px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    & > div {
+        width: calc(50% - ($gap30/2));
+        display: flex;
+        column-gap: $gap30;
+        row-gap: $gap10;
+        > div {
+        width: calc(50% - ($gap30/2));
+        }
+    }
+    &-tax{
+        justify-content: space-between;
+    }
+    &-time{
+        justify-content: end;
+    }
+    & p{
+        text-transform: uppercase;
+        font-size: $font-size-S;
+    }
+}
+
+.select {
+    height: 43px;
+    //min-width: 270px;
+    border: 2px solid $color--grey;
+    border-radius: 10px ;
+    padding-left: 10px;
+}
+
+.btn-chargerPlus {
+    @include submit(270px); 
+}
+
+// @media screen and (max-width: var(--breakpoint-laptop)){
+    @media screen and (max-width: #{$breakpoint__laptop}) {
+        .filters {
+            justify-content: center;
+            flex-wrap: wrap;
+            & > div {
+                width: $current_width_blockPhoto;
+                flex-wrap: wrap;
+                justify-content: center;
+                > div {
+                    width: 70%;
+                    min-width: 250px;
+                }
+            }
+        }
+    }

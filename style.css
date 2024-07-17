@@ -153,22 +153,8 @@ Text Domain: motaphoto
   }
 }
 
-.slideUpSlow {
-  animation: slideXfadeUp ease 400ms;
-}
-@keyframes slideXfadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .fadeOut {
-  animation: fadeOut ease 400ms;
+  animation: fadeOut ease 200ms;
 }
 
 @keyframes fadeOut {
@@ -276,14 +262,11 @@ header {
 
 .menu-toggle {
   display: block;
-}
-
-button {
   border: 0;
   background-color: transparent;
   margin-right: 40px;
 }
-button .line {
+.menu-toggle > .line {
   height: 2px;
   background-color: #000000;
   display: block;
@@ -291,13 +274,13 @@ button .line {
   margin-block: 4px;
   width: 20px;
 }
-button.active .line:nth-child(1) {
+.menu-toggle.active > .line:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
-button.active .line:nth-child(2) {
+.menu-toggle.active > .line:nth-child(2) {
   transform: rotate(-45deg);
 }
-button.active .line:nth-child(3) {
+.menu-toggle.active > .line:nth-child(3) {
   opacity: 0;
 }
 
@@ -325,7 +308,7 @@ footer {
   align-items: center;
 }
 
-@media screen and (max-width: 1188px) {
+@media screen and (max-width: 1192px) {
   section {
     max-width: 90%;
   }
@@ -408,23 +391,32 @@ footer {
 .hero-banner {
   width: 100%;
   max-width: 1440px;
-  height: 960px;
-  background-image: url("./assets/images/nathalie-mota-404.jpg");
   position: relative;
+}
+.hero-banner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .filters {
   width: 100%;
-  gap: 30px;
+  column-gap: 30px;
+  row-gap: 10px;
   display: flex;
   justify-content: space-between;
   align-items: end;
-  height: 100px;
+  margin-top: 60px;
   margin-bottom: 20px;
 }
 .filters > div {
-  width: 50%;
+  width: calc(50% - 15px);
   display: flex;
+  column-gap: 30px;
+  row-gap: 10px;
+}
+.filters > div > div {
+  width: calc(50% - 15px);
 }
 .filters-tax {
   justify-content: space-between;
@@ -439,13 +431,43 @@ footer {
 
 .select {
   height: 43px;
-  width: 100%;
-  max-width: 260px;
   border: 2px solid #c4c4c4;
   border-radius: 10px;
   padding-left: 10px;
 }
 
+.btn-chargerPlus {
+  background: #c4c4c4;
+  color: #000000;
+  padding: 15px 0;
+  height: 50px;
+  font-size: 0.72rem;
+  font-family: "SpaceMono", sans-serif;
+  border: 0;
+  border-radius: 3px;
+  transition: 0.3s ease-in-out;
+  width: 270px;
+}
+.btn-chargerPlus:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1192px) {
+  .filters {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .filters > div {
+    width: 564px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .filters > div > div {
+    width: 70%;
+    min-width: 250px;
+  }
+}
 /***************TEMPLATE _modale***************/
 /* Modale cachée par défaut */
 .modale {
@@ -784,8 +806,10 @@ footer {
   justify-content: space-between;
   gap: 20px;
 }
+.infos > div {
+  width: calc(50% - 10px);
+}
 .infos-photo {
-  width: 50%;
   height: auto;
 }
 .infos-photo img {
@@ -800,7 +824,6 @@ footer {
 }
 
 .description {
-  width: 50%;
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -820,8 +843,10 @@ footer {
   justify-content: space-between;
   gap: 20px;
 }
+.interactions > div {
+  width: calc(50% - 10px);
+}
 .interactions-contact {
-  width: 50%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -830,7 +855,7 @@ footer {
   margin-bottom: 25px;
 }
 
-.btn-choice {
+.btn-contact {
   background: #c4c4c4;
   color: #000000;
   padding: 15px 0;
@@ -842,13 +867,12 @@ footer {
   transition: 0.3s ease-in-out;
   width: 270px;
 }
-.btn-choice:hover {
+.btn-contact:hover {
   background: #000000;
   color: #ffffff;
 }
 
 .photo-navigation {
-  width: 50%;
   display: flex;
   align-items: end;
   justify-content: end;
@@ -903,7 +927,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding-top: 20px;
+  margin: 20px auto;
   flex-wrap: wrap;
 }
 
@@ -957,7 +981,8 @@ footer {
     text-align: center;
   }
   .siblings-items {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    align-items: center;
     padding-top: 0;
   }
   .siblings::before {

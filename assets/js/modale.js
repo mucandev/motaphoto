@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // modale à partir de single-photographies ou page 404
-    const btnContact = document.querySelector('.btn-choice');  
+    const btnContact = document.querySelector('.btn-contact');  
     const refSingleElement = document.getElementById("photo-ref");
     let refSingle = refSingleElement ? refSingleElement.textContent : null;
 

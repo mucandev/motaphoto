@@ -10,40 +10,10 @@
 ?>
 
 <?php get_header();?>
-<section class="hero">
-    <img class="hero-title" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/title-hero.svg' ?>" alt="photographz event" />
-    <div class="hero-banner">
-
-    </div>
-
 </section>
-<section class="catalogue">
-    <div class='filters'>
-        <div class='filters-tax'>
-            <div class="select event">
-                <p>catégories</p>
-            </div>
-            <div class="select format">
-                <p>format</p>
-            </div>
-        </div>
-        <div class='filters-time'>
-            <div class="select time">
-                <p>trier par</p>
-            </div>            
-        </div>
-    </div>  
-    <div class="siblings-items">
-
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-<?php get_template_part('template_parts/block-photo'); ?>
-
-</div> 
+<?php while(have_posts()) : the_post() ?>
+                    <h1><?php the_title() ?></h1>
+                    <?php the_content() ?>
+                <?php endwhile; ?>
 </section>
 <?php get_footer(); ?>

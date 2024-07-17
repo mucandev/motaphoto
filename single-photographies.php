@@ -59,7 +59,7 @@ endif;
     <div class="interactions-contact">
         <p>Cette photo vous intéresse ?</p> 
         <!-- appel de la modale contact avec numéro photo ref pré rempli  -->
-        <button class="btn-choice" >Contact</button>
+        <button class="btn-contact" >Contact</button>
     </div>     
 
     <div class="photo-navigation">

@@ -9,10 +9,9 @@
 
 
  //chargement des styles et des scripts
-function motaphoto_enqueue_styles() {
+function motaphoto_enqueue_assets() {
      //chargement des styles  (css compilé de sass) 
-    wp_enqueue_style('motaphoto-style', get_stylesheet_uri() );
-    
+    wp_enqueue_style('motaphoto-style', get_stylesheet_uri() );    
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), null);
 
     //  Chargement des scripts J
@@ -22,7 +21,7 @@ function motaphoto_enqueue_styles() {
     wp_enqueue_script('script-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(),'1.0.0', true);
 
 }
-add_action('wp_enqueue_scripts', 'motaphoto_enqueue_styles');
+add_action('wp_enqueue_scripts', 'motaphoto_enqueue_assets');
 
 
 // Ajout gestion menus dashboard 
@@ -51,7 +50,10 @@ add_action('after_setup_theme', 'motaphoto_custom_logo_setup');
 //test thumbnails custom
 function motaphoto_thumbnails_sizes() {
     add_image_size( 'nav-thumb', 80, 70, true ); 
-    add_image_size( 'current-thumb', 564, 0, true );
+    add_image_size( 'current-thumb', 564, 0);
+    add_image_size( 'banner-thumb', 1440, 0);
 }
 add_action( 'after_setup_theme', 'motaphoto_thumbnails_sizes' );
 
+
+    
