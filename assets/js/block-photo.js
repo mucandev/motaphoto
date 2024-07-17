@@ -1,8 +1,8 @@
 // Gestion du template-part block-photo
-
+'use strict';
 //page infos
-const openInfos = document.querySelectorAll(".icon-eye");
-const linkInfos = document.querySelectorAll(".block-lien-photo");
+let openInfos = document.querySelectorAll(".icon-eye");
+let linkInfos = document.querySelectorAll(".block-lien-photo");
 
 for (let i = 0; i < openInfos.length; i++) {
     openInfos[i].addEventListener("click", (e) => {

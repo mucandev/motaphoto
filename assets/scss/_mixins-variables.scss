@@ -26,14 +26,18 @@ $font-size-H1: 6.86rem; /*96px */
 $font-size-H1m: 1.97rem; /*27.6px */
 
 // breakpoints
-$breakpoint__laptop: 1192px;
+$breakpoint__laptop: 1188px;
 $breakpoint__tablet: 1040px;
 $breakpoint__small_tablet: 920px;
 $breakpoint__large_phone: 700px;
 
 //dimensions
+$laptopXedge: 1440px;
+$laptopXcontent: 1148px;
+
 $margeX: 146px;
 $margeXm: 40px;
+$headerY: 56px;
 
 @mixin Position($position, $top, $right, $bottom, $left){
     position: $position;
@@ -43,7 +47,8 @@ $margeXm: 40px;
     left: $left;
 }
 
-// placeholder : marche pas
+// placeholder 
+
 %flex-center {
     display: flex;
     justify-content: center;
@@ -59,7 +64,16 @@ $margeXm: 40px;
     }
 }
 
+
 //----------------------- mixin
+@mixin text-shadow-black ($offsetXY, $blur){
+    text-shadow: 
+    $offsetXY $offsetXY $blur  $color--black,
+    (-$offsetXY) $offsetXY $blur  $color--black,
+    (-$offsetXY) (-$offsetXY) $blur  $color--black,
+    $offsetXY (-$offsetXY) $blur  $color--black;
+}
+
 @mixin submit ($width){
     background: $color--grey;       
     color: $color--black;             
@@ -87,54 +101,3 @@ $margeXm: 40px;
     transition: .3s ease-in-out;
 }
 
-
-//_____________________________ FADE IN 
-$fade_in_time: 150ms;
-
-@mixin fade_in($animationName, $yValue) {
-    @keyframes #{$animationName} {
-        from {
-            opacity: 0;
-            transform: translateY(#{$yValue});
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    animation: #{$animationName} ease $fade_in_time;
-}
-
-$shake-intensity: 5%;
-
-@mixin slide_in($animationSlideName, $yValue) {
-    @keyframes #{$animationSlideName} {
-        from {
-            opacity: 0;
-            transform: translateX(#{$yValue});
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    animation: #{$animationSlideName} ease-in-out 500ms;
-}
-
-
-@keyframes show {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-@keyframes hide {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}

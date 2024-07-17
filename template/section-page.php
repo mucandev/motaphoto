@@ -1,19 +1,22 @@
 <?php
 /**
- * The template for displaying all single posts
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
+ *  * Template Name: section-page
+ * 
+ *  The template for displaying pages with section style
+ * *
  * @package motaphoto
  */
 
 ?>
 
 <?php get_header();?>
+<section>
 
             <?php while(have_posts()) : the_post() ?>
                     <h1><?php the_title() ?></h1>
                     <?php the_content() ?>
                 <?php endwhile; ?>
 
+</section>
 <?php get_footer(); ?>

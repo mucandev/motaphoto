@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const btnBurgerMenu = document.querySelector('.menu-toggle');
-    const fullScreenMenu = document.querySelector('.fullScreenMenu');
-    const siteNav = document.getElementById("site-navigation");
-    const menuLinks = document.querySelectorAll(".fullScreenMenu ul a");
+    const mobileMenu = document.querySelector('nav');
+    const menuLinks = document.querySelectorAll("nav ul a");
 
     let openModal = false;
 
@@ -14,20 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openMenu() {
         btnBurgerMenu.classList.add('active');
-        fullScreenMenu.classList.add('open');
-        fullScreenMenu.classList.remove('fadeOut');
-        fullScreenMenu.classList.add('fadeInDown');
+        btnBurgerMenu.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add('open');
+        mobileMenu.classList.remove('fadeOut');
+        mobileMenu.classList.add('slideUp');
     }
 
     function closeMenu() {
-        fullScreenMenu.classList.remove('fadeInDown');
-        fullScreenMenu.classList.add('fadeOut');
         btnBurgerMenu.classList.remove('active');
         btnBurgerMenu.setAttribute('aria-expanded', 'false');
-        siteNav.classList.remove('toggled');
+        mobileMenu.classList.remove('slideUp');
+        mobileMenu.classList.add('fadeOut');
         setTimeout(() => {
-        fullScreenMenu.classList.remove('open');
-        }, 400); 
+        mobileMenu.classList.remove('open');
+        }, 500);
     }
 
     //toggle principal
@@ -35,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuLinks.forEach((menuLink, index) => {
         // Ajouter la classe et définir le délai d'animation
-        menuLink.classList.add('fadeInDbUp');
         if (index > 0) {
-        menuLink.style.animationDelay = `${index * 0.2}s`;
+        menuLink.classList.add('slideUpSlow');    
+        menuLink.style.animationDelay = `${index * 0.1}s`;
         }
         // Ajouter l'événement de clic
         menuLink.addEventListener("click", (e) => {
@@ -47,4 +46,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-

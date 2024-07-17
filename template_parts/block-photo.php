@@ -1,14 +1,25 @@
 <!-- template block photo -->
-
 <?php
-    // Récupération des informations de la photo
+    // Récupération informations photo sibling
     $titre_post = get_the_title();
-    $titre_nettoye = sanitize_title($titre_post);
-    $lien_post = get_site_url().'/photographies/'. $titre_nettoye;
+    $titre_slug = sanitize_title($titre_post);
+    $lien_post = get_site_url().'/photographies/'. $titre_slug;
+
     $photo_post = get_the_post_thumbnail(get_the_ID(), 'medium large');
     $reference_photo = get_field('reference');
+    $date_post = get_field('annee'); //home
 
-    // Récupération de la catégorie de la photo et stockage pour filtrage
+// Récupération format  photo et stockage pour filtrage : HOME
+    $formats = get_the_terms(get_the_ID(), 'formats');
+        if ($formats && !is_wp_error($formats)) {
+            $noms_formats = array();
+            foreach ($formats as $format) {
+                $noms_formats[] = $format->name;
+            }
+            $liste_formats = join(', ', $noms_formats);
+        }
+
+    // Récupération  catégorie photo et stockage pour filtrage
     $categories = get_the_terms(get_the_ID(), 'photocategories');
         if ($categories && !is_wp_error($categories)) {
             $noms_categories = array();

@@ -2,7 +2,7 @@
 
 //partie 1
 .photo-choice {
-    // height: calc(100vh - 56px);
+    // height: calc(100vh - $headerY);
     width: 100%;
 }
 //partie 1 zone 1
@@ -120,6 +120,7 @@
     width: 100%;
         &-items {
         display: flex;
+        justify-content: center;
         gap: 20px;
         padding-top: 20px;
         flex-wrap: wrap;

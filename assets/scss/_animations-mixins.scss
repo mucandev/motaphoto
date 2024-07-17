@@ -1,0 +1,88 @@
+// styles des animations
+
+
+//******************MODALE style SCSS & script JS
+$fade_in_time: 150ms;
+
+@mixin slideYfade($animationName, $yValue, $animation_time) {
+    @keyframes #{$animationName} {
+        from {
+            opacity: 0;
+            transform: translateY(#{$yValue});
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    animation: #{$animationName} ease $animation_time;
+}
+
+
+@mixin slideXfade($animationName, $yValue) {
+    @keyframes #{$animationName} {
+        from {
+            opacity: 0;
+            transform: translateX(#{$yValue});
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    animation: #{$animationName} ease-in-out 500ms;
+}
+
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+$shake-intensity: 5%;
+
+@keyframes ShakeX {
+    25% {
+        transform: translateX(#{$shake-intensity});
+    }
+    75%{
+        transform: translateX($shake-intensity * -1);
+    }
+}
+
+
+//******************mobile menu style SCSS & script JS
+.slideUp{
+    @include slideYfade('slideXfadeUp', 300px, 200ms);
+}
+
+.slideUpSlow{
+    @include slideYfade('slideXfadeUp', 200px, 400ms);
+}
+
+.fadeOut {
+    animation:  fadeOut  ease 400ms;
+}
+
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

@@ -24,7 +24,7 @@
 .close-btn {
     position: absolute;
     top: 50px;
-    right: -18px;
+    right: -55px;
     @extend %flex-center;
     background: $color--white;
     border-radius: 20px;
@@ -33,7 +33,7 @@
     width: 30px;
     cursor: pointer;
     transition: all 0.4s ease;
-    z-index: 2;
+    z-index: 10;
     & > .line{
         height: 2px;
         background-color: $color--red;
@@ -69,14 +69,14 @@
         margin: 0;
         position: relative;
         right: 140px;
-        @include slide_in('slideInLeft', 100px);  
+        @include slideXfade('slideInLeft', 100px);  
     }
     &-bottom {
         margin: 0;
         padding-bottom: 20px;
         position: relative;
         right: 100px;
-        @include slide_in('slideInRight', -100px);  
+        @include slideXfade('slideInRight', -100px);  
     }
 }
 
@@ -122,6 +122,7 @@
         @include submit(100%);
     }
 
+
     //messages field invalid
     &-not-valid-tip{
         color: $color--clearred;  
@@ -129,7 +130,7 @@
         bottom: 34px;
         left: 60px;   
         text-transform: lowercase;
-        @include fade_in('fadeIndbUp', 200px);
+        @include slideYfade('fadeIndbUp', 200px,200ms);
         & .popup-message {
             bottom: 225px;
         }    
@@ -161,13 +162,11 @@
     margin: 0;
 }
 
-
-
 .wpcf7 form.invalid .wpcf7-response-output,
 .wpcf7 form.spam .wpcf7-response-output {
     color: $color--white;
     background-color: $color--clearred !important;
-    animation: invalidShake 200ms ease;
+    animation: ShakeX 200ms ease;
     animation-iteration-count: 2;
 }
 
@@ -176,22 +175,11 @@
     animation: show 0.25s forwards;
 }
 
-@keyframes invalidShake {
-    25% {
-        transform: translateX(#{$shake-intensity});
-    }
-    75%{
-        transform: translateX($shake-intensity * -1);
-    }
-}
-
-
-
 
 @media screen and (max-width: #{$breakpoint__large_phone}) {
     .close-btn {       
-        top: 13px;
-        right: 10px;
+        top: 64px;
+        right: -30px;
         border: 1px $color--grey solid;
     }
     

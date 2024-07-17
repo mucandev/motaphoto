@@ -28,13 +28,12 @@
 				}
 			?>
 		</div>
-		<nav>
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-				<span class="line"></span>
-				<span class="line"></span>
-				<span class="line"></span>
-			</button>
-			
+		<button class="menu-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="mobile menu" type="button">
+			<span class="line"></span>
+			<span class="line"></span>
+			<span class="line"></span>
+		</button>
+		<nav id="nav-menu">
 			<?php
 			wp_nav_menu(array(
 				'theme_location' =>	'menu_principal',
