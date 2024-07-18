@@ -55,15 +55,24 @@
     </div>  
     <div class="siblings-items">
         <!-- //wp-query $photos_filtrees -->
-        <!-- 'posts_per_page' => 8, -->
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
-        <?php get_template_part('template_parts/block-photo'); ?>
+        <?php
+
+                $photos_siblings = new WP_Query(array(
+                    'post_type' => 'photographies',
+                    'posts_per_page' => 8,
+                    'orderby' => 'rand',                   
+                ));
+
+                if ($photos_siblings->have_posts()) {
+                    while ($photos_siblings->have_posts()) {
+                        $photos_siblings->the_post();
+                        // Affichage  template part
+                        get_template_part('template_parts/block-photo');
+                    }
+                    wp_reset_postdata();
+                }             
+        ?>
+
     <button class="btn-chargerPlus">Charger plus</button>
     </div> 
     

@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnBurgerMenu.addEventListener('click', toggleMenu);
 
         menuLinks.forEach((menuLink, index) => {
-            // Ajouter l'événement de clic
             menuLink.addEventListener("click", (e) => {
             console.log(`j'ai cliqué sur ${e.target.textContent}`);
             openModal = false;

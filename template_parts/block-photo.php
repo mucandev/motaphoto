@@ -4,8 +4,8 @@
     $titre_post = get_the_title();
     $titre_slug = sanitize_title($titre_post);
     $lien_post = get_site_url().'/photographies/'. $titre_slug;
-
-    $photo_post = get_the_post_thumbnail(get_the_ID(), 'medium large');
+    // 'medium' custom size 
+    $photo_post = get_the_post_thumbnail(get_the_ID(), 'medium');
     $reference_photo = get_field('reference');
     $date_post = get_field('annee'); //home
 

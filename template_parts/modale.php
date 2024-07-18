@@ -5,8 +5,16 @@
             <span class="line"></span>
         </button>
         <div class="title-contact">
-            <p class="title-contact-top"> contactcontactcontact</p>
-            <p class="title-contact-bottom"> contactcontactcontact</p>
+            <div class="title-contact-top">
+                <img  src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>
+            </div>
+            <div class="title-contact-bottom">
+                    <img  src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>  
+            </div>
+           
+
+            <!-- <p class="title-contact-top"> contactcontactcontact</p>
+            <p class="title-contact-bottom"> contactcontactcontact</p> -->
          </div>
         <div class="contact-form">
         <?php

@@ -43,8 +43,8 @@ if ($custom_query->have_posts()) :
             <p>année : <?php echo $annee ;?></p>          
         </div>
         <div class="infos-photo">
-            <!-- 'current-thumb' custom size qui optimise 'medium large' -->
-            <?php the_post_thumbnail('current-thumb') ?>
+            <!-- 'medium large' custom size -->
+            <?php the_post_thumbnail('medium large') ?>
         </div>
     </div>
 
@@ -102,10 +102,10 @@ endif;
                 <?php
                     // Récupération de la photo du post précédent
                     if (!empty($previous_post)) {
-                        //  'nav-thumb' custom size qui optimise 'thumbnail' 
-                        $thumbnail_left = get_the_post_thumbnail($previous_post->ID, 'nav-thumb');
+                        //  'thumbnail' custom size 
+                        $thumbnail_left = get_the_post_thumbnail($previous_post->ID, 'thumbnail');
                     } else {
-                        $thumbnail_left = get_the_post_thumbnail($last_post, 'nav-thumb');
+                        $thumbnail_left = get_the_post_thumbnail($last_post, 'thumbnail');
                     }
                     echo $thumbnail_left;
                 ?>
@@ -132,9 +132,9 @@ endif;
                 <?php
                     // Récupération de la photo du post suivant
                     if (!empty($next_post)) {
-                        $thumbnail_right = get_the_post_thumbnail($next_post->ID, 'nav-thumb');
+                        $thumbnail_right = get_the_post_thumbnail($next_post->ID, 'thumbnail');
                     } else {
-                        $thumbnail_right = get_the_post_thumbnail($first_post, 'nav-thumb');
+                        $thumbnail_right = get_the_post_thumbnail($first_post, 'thumbnail');
                     }
 
                     echo $thumbnail_right;

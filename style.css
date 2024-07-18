@@ -496,10 +496,10 @@ footer {
 .close-btn {
   position: absolute;
   top: 50px;
-  right: -55px;
-  background: #ffffff;
+  right: -17px;
+  background: #fe5858;
   border-radius: 20px;
-  border: 5px #000000 solid;
+  border: 1px #fe5858 solid;
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -508,7 +508,7 @@ footer {
 }
 .close-btn > .line {
   height: 2px;
-  background-color: #e00000;
+  background-color: #ffffff;
   display: block;
   margin: auto;
   margin-block: 2px;
@@ -527,16 +527,6 @@ footer {
   overflow: hidden;
   width: 100%;
 }
-.title-contact p {
-  color: #000000;
-  font-family: "SpaceMono", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 4.1rem;
-  line-height: 3.5rem;
-  text-transform: uppercase;
-  padding-bottom: 0;
-}
 .title-contact-top {
   margin: 0;
   position: relative;
@@ -552,6 +542,9 @@ footer {
     opacity: 1;
     transform: translateX(0);
   }
+}
+.title-contact-top > img {
+  width: 140%;
 }
 .title-contact-bottom {
   margin: 0;
@@ -569,6 +562,9 @@ footer {
     opacity: 1;
     transform: translateX(0);
   }
+}
+.title-contact-bottom > img {
+  width: 140%;
 }
 
 .contact-popup {
@@ -633,8 +629,9 @@ footer {
 .wpcf7-not-valid-tip {
   color: #fe5858;
   position: absolute;
-  bottom: 34px;
-  left: 60px;
+  bottom: 37px;
+  left: 70px;
+  font-size: 0.72rem;
   text-transform: lowercase;
   animation: fadeIndbUp ease 200ms;
 }
@@ -652,17 +649,17 @@ footer {
   bottom: 225px;
 }
 .wpcf7-response-output {
-  margin: 4em !important;
-  padding: 30px !important;
+  padding: 20px !important;
   border-radius: 90px !important;
   border: none !important;
   text-align: center;
   background-color: #ffd6d6;
   position: absolute;
   bottom: 40px;
-  left: 440px;
-  width: 110px;
-  font-size: 0.86rem;
+  left: -40px;
+  max-width: 105px;
+  aspect-ratio: 1/1;
+  font-size: 0.72rem;
   font-family: "Poppins", sans-serif;
 }
 .wpcf7-response-output form.invalid {
@@ -692,33 +689,28 @@ footer {
 
 @media screen and (max-width: 700px) {
   .close-btn {
-    top: 64px;
-    right: -30px;
-    border: 1px #c4c4c4 solid;
+    top: -15px;
+    right: 15px;
   }
   .title-contact p {
     font-size: 3rem;
     line-height: 2.5rem;
   }
   .contact-popup {
-    height: 100vh;
-    max-height: 100vh;
-    width: 100vw;
+    top: -40px;
   }
   .wpcf7-textarea {
     height: 150px;
   }
-  .wpcf7-not-valid-tip {
-    font-size: 0.72rem;
-  }
   .wpcf7-response-output {
-    margin: 15px !important;
-    padding: 10px !important;
-    border-radius: 60px !important;
+    padding: 15px !important;
+    border-radius: 70px !important;
     position: absolute;
-    bottom: 10px;
-    left: 150px;
-    font-size: 0.72rem;
+    bottom: -120px;
+    left: 30px;
+  }
+  .popup-message .wpcf7-not-valid-tip {
+    bottom: 165px;
   }
 }
 /***************TEMPLATE _bloc-photo***************/

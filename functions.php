@@ -47,13 +47,22 @@ function motaphoto_custom_logo_setup() {
 }
 add_action('after_setup_theme', 'motaphoto_custom_logo_setup');
 
-//test thumbnails custom
-function motaphoto_thumbnails_sizes() {
-    add_image_size( 'nav-thumb', 80, 70, true ); 
-    add_image_size( 'current-thumb', 564, 0);
-    add_image_size( 'banner-thumb', 1440, 0);
+// custom thumbnails 
+function motaphoto_custom_thumbnails_sizes() {
+    // miniatures hover navigation
+    remove_image_size( 'thumbnail' );
+    add_image_size( 'thumbnail', 80, 70, true); 
+    // vignettes block photo
+    remove_image_size( 'medium' );
+    add_image_size( 'medium', 564, 495, true); 
+    // visuel infos photo  570 pour 564 conflit 'medium' ?
+    remove_image_size( 'medium large' );
+    add_image_size( 'medium large', 570, 0, false); 
+    // visuel bannière accueil
+    remove_image_size( 'large' );
+    add_image_size( 'large', 1440, 0, false); 
 }
-add_action( 'after_setup_theme', 'motaphoto_thumbnails_sizes' );
+add_action( 'after_setup_theme', 'motaphoto_custom_thumbnails_sizes' );
 
 
     

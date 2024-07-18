@@ -18,7 +18,8 @@
     if ($banner->have_posts()) {
         while ($banner->have_posts()) {
             $banner->the_post();
-            the_post_thumbnail('banner-thumb');
+            //  'large' custom size 
+            the_post_thumbnail('large');
         }
         wp_reset_postdata();
     } 
