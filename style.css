@@ -96,11 +96,14 @@ Text Domain: motaphoto
 /*12px */
 /*14px */
 /*18px */
+/*24px */
+/*36px */
 /*46px */
 /*66px */
-/*96px */
 /*27.6px */
-.block-info-eye, .close-btn, #contact-overlay, .hero-title, .hero, footer, .menu li {
+/*46px */
+/*96px */
+.block-info-eye, .close-btn, #contact-overlay, .bouton-front, .hero-title, .hero h1, .hero, footer, .menu li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,6 +168,25 @@ Text Domain: motaphoto
     opacity: 0;
   }
 }
+.apparition {
+  animation: slideXfadeDown ease 500ms;
+}
+@keyframes slideXfadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rotation {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease-in-out;
+}
+
 /***************THEME***************/
 body {
   display: flex;
@@ -180,19 +202,31 @@ section {
 }
 
 h1 {
-  color: #ffffff;
-  text-shadow: 2px 2px 1px #000000, -2px 2px 1px #000000, -2px -2px 1px #000000, 2px -2px 1px #000000;
   font-family: "SpaceMono", sans-serif;
-  font-size: 6.86rem;
+  font-size: 3.28rem;
   font-weight: 700;
   font-style: italic;
   text-transform: uppercase;
 }
 
+.hero > h1 {
+  font-size: 6.86rem;
+  text-align: center;
+}
+
+@supports (-webkit-text-stroke: 2px #000000) {
+  h1 {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px #000000;
+  }
+  .hero > h1 {
+    -webkit-text-stroke: 2px #ffffff;
+  }
+}
 h2 {
   color: #000000;
   font-family: "SpaceMono", sans-serif;
-  font-size: 4.71rem;
+  font-size: 2.57rem;
   font-weight: 400;
   font-style: italic;
   line-height: 58px;
@@ -298,6 +332,7 @@ footer {
   width: 100%;
 }
 
+/***************404***********/
 .quatrecentquatre {
   margin: 100px auto;
 }
@@ -307,10 +342,14 @@ footer {
 .quatrecentquatre > .interactions {
   align-items: center;
 }
+.quatrecentquatre > .interactions > div {
+  display: flex;
+  justify-content: center;
+}
 
 @media screen and (max-width: 1192px) {
   section {
-    max-width: 90%;
+    max-width: 85%;
   }
   .logo {
     margin-left: 40px;
@@ -333,8 +372,20 @@ footer {
     font-size: 1.97rem;
     text-shadow: none;
   }
+  .hero > h1 {
+    font-size: 1.97rem;
+  }
+  @supports (-webkit-text-stroke: 1px #000000) {
+    h1 {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1px #000000;
+    }
+    .hero > h1 {
+      -webkit-text-stroke: 1px #ffffff;
+    }
+  }
   h2 {
-    font-size: 3.28rem;
+    font-size: 1.71rem;
     line-height: 48px;
   }
   .logo img {
@@ -367,7 +418,7 @@ footer {
   }
   nav .menu a {
     color: #ffffff;
-    font-size: 3.28rem;
+    font-size: 1.71rem;
     line-height: 1.1;
   }
   footer .menu {
@@ -381,6 +432,10 @@ footer {
   max-width: 1440px;
   width: 100%;
   position: relative;
+}
+.hero h1 {
+  position: absolute;
+  z-index: 1;
 }
 .hero-title {
   width: 70%;
@@ -407,33 +462,110 @@ footer {
   justify-content: space-between;
   align-items: end;
   margin-top: 60px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
-.filters > div {
+.filters-block {
   width: calc(50% - 15px);
   display: flex;
   column-gap: 30px;
   row-gap: 10px;
+  position: relative;
 }
-.filters > div > div {
+.filters-block > div {
   width: calc(50% - 15px);
 }
-.filters-tax {
+.filters #tax {
   justify-content: space-between;
 }
-.filters-time {
+.filters #filtre-tri {
   justify-content: end;
 }
-.filters p {
-  text-transform: uppercase;
-  font-size: 0.86rem;
+
+.filter-block {
+  position: relative;
 }
 
 .select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 43px;
   border: 2px solid #c4c4c4;
-  border-radius: 10px;
+  border-radius: 8px;
   padding-left: 10px;
+  padding-right: 10px;
+  text-transform: uppercase;
+  font-size: 0.86rem;
+  font-weight: 400;
+}
+
+.menu-options {
+  display: none;
+  position: absolute;
+  top: 44px;
+  flex-direction: column;
+  width: calc(100% - 4px);
+  border-top: none !important;
+  border: 2px solid #c4c4c4;
+  border-radius: 0 0 8px 8px;
+  background-color: #ffffff;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 75;
+}
+
+.menu-option {
+  height: 40px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: 400;
+}
+.menu-option:hover {
+  background-color: #ffd6d6;
+}
+.menu-option:active {
+  background-color: #fe5858;
+}
+.menu-option:focus {
+  background-color: #ffffff;
+}
+.menu-option.selectionne {
+  background-color: #e00000;
+  color: #ffffff;
+}
+.menu-option.dernier-selectionne {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 0 0 8px 8px;
+}
+
+.vide {
+  height: 45px;
+  cursor: pointer;
+}
+
+.dernier {
+  border-radius: 0 0 8px 8px;
+}
+
+.cache {
+  display: none;
+}
+
+.menu-fleche {
+  cursor: pointer;
+}
+
+.bouton-front {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .btn-chargerPlus {
@@ -457,15 +589,19 @@ footer {
   .filters {
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 25px;
   }
-  .filters > div {
+  .filters-block {
     width: 564px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
   }
-  .filters > div > div {
+  .filters-block > div {
     width: 70%;
     min-width: 250px;
+  }
+  .bouton-front {
+    margin-top: 60px;
   }
 }
 /***************TEMPLATE _modale***************/
@@ -476,6 +612,7 @@ footer {
 .modale.show {
   display: flex;
   animation: show 0.5s forwards;
+  z-index: 2;
 }
 .modale.hide {
   animation: hide 0.5s forwards;
@@ -697,10 +834,17 @@ footer {
     line-height: 2.5rem;
   }
   .contact-popup {
-    top: -40px;
+    top: -30px;
+  }
+  #wpcf7-f29-o1 p {
+    margin: 8px auto;
+  }
+  .wpcf7-form-control {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .wpcf7-textarea {
-    height: 150px;
+    height: 120px;
   }
   .wpcf7-response-output {
     padding: 15px !important;
@@ -709,8 +853,11 @@ footer {
     bottom: -120px;
     left: 30px;
   }
+  .wpcf7-not-valid-tip {
+    bottom: 32px;
+  }
   .popup-message .wpcf7-not-valid-tip {
-    bottom: 165px;
+    bottom: 128px;
   }
 }
 /***************TEMPLATE _bloc-photo***************/
@@ -822,6 +969,7 @@ footer {
   border-bottom: 2px solid #000000;
 }
 .description > h2 {
+  font-size: 4.71rem;
   max-width: 75%;
   line-height: 68px;
   margin-bottom: 20px;
@@ -931,7 +1079,7 @@ footer {
     flex-direction: column-reverse;
     gap: 0;
   }
-  .infos-photo {
+  .infos > div {
     width: 100%;
   }
   .description {
@@ -939,14 +1087,17 @@ footer {
     width: 100%;
   }
   .description > h2 {
+    font-size: 3.28rem;
     max-width: 75%;
     margin-bottom: 0;
   }
   .interactions {
     flex-direction: column;
   }
-  .interactions-contact {
+  .interactions > div {
     width: 100%;
+  }
+  .interactions-contact {
     flex-direction: column;
     position: relative;
     align-items: start;
@@ -966,7 +1117,7 @@ footer {
   .siblings {
     border-top: none;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     width: 100%;
   }
   .siblings h3 {

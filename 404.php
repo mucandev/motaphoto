@@ -8,17 +8,17 @@
  
         </div>
         <div class="infos-photo">
-            <a href="<?php echo esc_url(home_url()); ?>">
-                <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/nathalie-mota-404.jpg' ?>" alt="erreur 404" />
+            <a href="<?= esc_url(home_url()); ?>">
+                <img src="<?= get_stylesheet_directory_uri() . '/assets/images/nathalie-mota-404.jpg' ?>" alt="erreur 404" />
             </a>
         </div>
     </div>
     <div class="interactions">
         <div class="interactions-contact">
-                <p>Venez découvrir mon <a href="<?php echo esc_url(home_url()); ?>">catalogue</a>, ou contactez-moi pour m'expliquer votre projet.</p>
+                <p>Venez découvrir mon <a href="<?= esc_url(home_url()); ?>">catalogue</a>, ou contactez-moi pour m'expliquer votre projet.</p>
         </div>
         <div>
-            <button class="btn-choice" >Contact</button>  
+            <button class="btn-contact">Contact</button>  
         </div>
         
     </div>

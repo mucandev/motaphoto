@@ -11,70 +11,78 @@
 
 <?php get_header();?>
 <section class="hero">
-    <img class="hero-title" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/title-hero.svg' ?>" alt="photographe event" />
+    <h1> Photographe Event</h1>
     <div class="hero-banner">
-        <!-- <img class="404" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/nathalie-mota-404.jpg' ?>"/> -->
-        <?php get_template_part('/template_parts/banner'); ?>        
+        <?php get_template_part('/template_parts/front-banner'); ?>
     </div>
 </section>
 <section class="catalogue">
     <div class='filters'>
-        <div class='filters-tax'>
-            <div class="select event">
-                <p>catégories</p>
-                <!-- <form method="get" action="">
-                    <p>
-                        <label for="categorie">catégories</label><br>
-                        <select name="categorie" id="categorie">
-                            <option value="mariage">mariage</option>
-                            <option value="concert">concert</option>
-                        </select>
-                    </p>
-                </form> -->                   
+        <div class='filters-block' id="tax">
+            <div class=filter-block>
+                <div class="select" id="categorie-titre">
+                    <p class="menu-titre visible">catégories</p> 
+                    <p class="menu-titre cache">catégories</p> 
+                    <i class="fa-solid fa-chevron-down menu-fleche"></i>
+                </div> 
+                <div class="menu-options" id="categorie-options">
+                    <?php
+                    $events = get_terms('photocategories');
+
+                    if (!empty($events) && !is_wp_error($events)) { 
+                        foreach ($events as $event) { 
+                            echo '<p class="menu-option" id="' . esc_attr($event->slug) . '">' . esc_html($event->name) . '</p>';
+                        }
+                    }
+                    ?>
+                </div>
             </div>
-            <div class="select format">
-                <p>format</p>
-                <!-- <form method="get" action="">
-                    <p>
-                        <label for="format">format</label><br>
-                        <select name="format" id="format">
-                            <option value="paysage">paysage</option>
-                            <option value="royaume-uni">portrait</option>
-                        </select>
-                    </p>
-                </form> -->        
-                
+            <div class=filter-block>
+                <div class="select" id="format-titre">
+                    <p class="menu-titre visible">formats</p> 
+                    <p class="menu-titre cache">formats</p> 
+                    <i class="fa-solid fa-chevron-down menu-fleche"></i>
+                </div>
+                <div class="menu-options" id="format-options">
+                    <?php
+                    // echo '<div class="vide" id="formats-vide"> </div>';
+                    $sizes = get_terms('formats');
+
+                    if (!empty($sizes) && !is_wp_error($sizes)) { 
+                        foreach ($sizes as $size) { 
+                        echo '<p class="menu-option" id="' . esc_attr($size->slug) . '">' . esc_html($size->name) . '</p>';
+                        }
+                    }
+                    ?>
+
+                </div>
             </div>
         </div>
-        <div class='filters-time'>
-            <div class="select time">
-                <p>trier par</p>
-                <!-- trier par date publication -->
-            </div>            
+        <div class='filters-block' id="filtre-tri">
+            <div class=filter-block>
+                <div class="select" id="tri-titre">
+                    <p class="menu-titre visible">Trier par</p> 
+                    <p class="menu-titre cache">Trier par</p> 
+                    <i class="fa-solid fa-chevron-down menu-fleche"></i>
+                </div>
+                <div class="menu-options" id="tri-options">
+                    <!-- <div class="vide" id="tri-vide"></div> -->
+                    <p class="menu-option" id="DESC">à partir des plus récentes</p>
+                    <p class="menu-option" id="ASC">à partir des plus anciennes</p>
+                </div>  
+            </div>
         </div>
-    </div>  
+
+    </div> 
+
     <div class="siblings-items">
         <!-- //wp-query $photos_filtrees -->
-        <?php
+        <?php get_template_part('/template_parts/catalog_date_ASC'); ?>
 
-                $photos_siblings = new WP_Query(array(
-                    'post_type' => 'photographies',
-                    'posts_per_page' => 8,
-                    'orderby' => 'rand',                   
-                ));
-
-                if ($photos_siblings->have_posts()) {
-                    while ($photos_siblings->have_posts()) {
-                        $photos_siblings->the_post();
-                        // Affichage  template part
-                        get_template_part('template_parts/block-photo');
-                    }
-                    wp_reset_postdata();
-                }             
-        ?>
-
-    <button class="btn-chargerPlus">Charger plus</button>
-    </div> 
     
+    </div>
+    <div class="bouton-front">
+        <button class="btn-chargerPlus">Charger plus</button>
+    </div>
 </section>
 <?php get_footer(); ?>

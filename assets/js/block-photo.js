@@ -7,7 +7,7 @@ let linkInfos = document.querySelectorAll(".block-lien-photo");
 for (let i = 0; i < openInfos.length; i++) {
     openInfos[i].addEventListener("click", (e) => {
         e.preventDefault(); 
-        console.log(`j'ai cliqué sur ${e.target.alt}`, [i]);
+       // console.log(`j'ai cliqué sur ${e.target.alt}`, [i]);
         
         // Récupère l'URL de l'élément correspondant dans linkInfos
         let urlSibling = linkInfos[i].textContent.trim();  

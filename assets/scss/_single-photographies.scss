@@ -37,6 +37,7 @@
     padding-bottom: 20px;
     border-bottom: 2px solid $color--black;
         & > h2 {
+            font-size: $font-size-H2-info;
             max-width: 75%;
             line-height: 68px;
             margin-bottom: 20px;
@@ -138,7 +139,7 @@
     .infos {
         flex-direction: column-reverse;
         gap: 0;
-        &-photo {
+        & > div{
             width: 100%;
         }
     }
@@ -146,6 +147,7 @@
         border-bottom: none;
         width: 100%;
             & > h2 {
+                font-size: $font-size-H2m-info;
                 max-width: 75%;
                 margin-bottom: 0;
             }
@@ -153,8 +155,10 @@
 
     .interactions {
         flex-direction: column;
-        &-contact {
+        & > div {
             width: 100%;
+        }
+        &-contact {
             flex-direction: column;
             position: relative;
             align-items: start;
@@ -176,7 +180,7 @@
     .siblings {
         border-top: none;
         padding-top: 10px;
-        padding-bottom: 20px;
+        padding-bottom: 0px;
         width: 100%;
         & h3{
             text-align: center;
@@ -196,5 +200,4 @@
             border-top: 2px solid $color--black;
         }
     }
-
 }

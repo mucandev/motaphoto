@@ -6,10 +6,10 @@
         </button>
         <div class="title-contact">
             <div class="title-contact-top">
-                <img  src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>
+                <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>
             </div>
             <div class="title-contact-bottom">
-                    <img  src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>  
+                    <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>  
             </div>
            
 

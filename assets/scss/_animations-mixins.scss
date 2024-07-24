@@ -82,3 +82,17 @@ $shake-intensity: 5%;
         opacity: 0;
     }
 }
+
+
+
+
+// filtres front-page
+.apparition {
+    @include slideYfade('slideXfadeDown', (-40px), 500ms);
+    
+}
+
+.rotation{
+    transform: rotate(180deg) ;
+    transition: transform 0.5s ease-in-out;
+}
