@@ -65,7 +65,7 @@ h3 {
     text-transform: uppercase;
 }
 
-p {
+p , li {
     color: $color--black;
     font-family: $font--body;
     font-size: $font-size-M;
@@ -151,7 +151,6 @@ footer {
     width: 100%;
 }
 
-/***************404***********/
 .quatrecentquatre {
     margin: 100px auto;
     & a {
@@ -161,8 +160,7 @@ footer {
     & > .interactions{
         align-items: center;
         & > div{
-            display: flex;
-            justify-content: center;            
+            justify-content: center;
         }
     }
 }

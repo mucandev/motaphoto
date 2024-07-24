@@ -253,7 +253,7 @@ h3 {
   text-transform: uppercase;
 }
 
-p {
+p, li {
   color: #000000;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -332,7 +332,6 @@ footer {
   width: 100%;
 }
 
-/***************404***********/
 .quatrecentquatre {
   margin: 100px auto;
 }
@@ -343,7 +342,6 @@ footer {
   align-items: center;
 }
 .quatrecentquatre > .interactions > div {
-  display: flex;
   justify-content: center;
 }
 
@@ -477,90 +475,8 @@ footer {
 .filters #tax {
   justify-content: space-between;
 }
-.filters #filtre-tri {
+.filters #date {
   justify-content: end;
-}
-
-.filter-block {
-  position: relative;
-}
-
-.select {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 43px;
-  border: 2px solid #c4c4c4;
-  border-radius: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-transform: uppercase;
-  font-size: 0.86rem;
-  font-weight: 400;
-}
-
-.menu-options {
-  display: none;
-  position: absolute;
-  top: 44px;
-  flex-direction: column;
-  width: calc(100% - 4px);
-  border-top: none !important;
-  border: 2px solid #c4c4c4;
-  border-radius: 0 0 8px 8px;
-  background-color: #ffffff;
-  justify-content: flex-start;
-  align-items: center;
-  z-index: 75;
-}
-
-.menu-option {
-  height: 40px;
-  padding-left: 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-weight: 400;
-}
-.menu-option:hover {
-  background-color: #ffd6d6;
-}
-.menu-option:active {
-  background-color: #fe5858;
-}
-.menu-option:focus {
-  background-color: #ffffff;
-}
-.menu-option.selectionne {
-  background-color: #e00000;
-  color: #ffffff;
-}
-.menu-option.dernier-selectionne {
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 0 0 8px 8px;
-}
-
-.vide {
-  height: 45px;
-  cursor: pointer;
-}
-
-.dernier {
-  border-radius: 0 0 8px 8px;
-}
-
-.cache {
-  display: none;
-}
-
-.menu-fleche {
-  cursor: pointer;
 }
 
 .bouton-front {
@@ -604,6 +520,87 @@ footer {
     margin-top: 60px;
   }
 }
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 43px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.dropdown__switch:checked + .dropdown__options-filter .dropdown__select {
+  transform: scaleY(1);
+}
+.dropdown__switch:checked + .dropdown__options-filter .dropdown__filter:after {
+  transform: rotate(-135deg);
+}
+.dropdown__options-filter {
+  width: 100%;
+  cursor: pointer;
+}
+.dropdown__filter {
+  position: relative;
+  display: flex;
+  padding: 14px;
+  background-color: #ffffff;
+  border: 2px solid #c4c4c4;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.dropdown__filter-selected {
+  text-transform: uppercase;
+  font-size: 0.86rem;
+  font-weight: 400;
+}
+.dropdown__filter:focus {
+  border-radius: 8px 8px 0px 0px;
+}
+.dropdown__filter::after {
+  position: absolute;
+  top: 45%;
+  right: 20px;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #313144;
+  border-bottom: 2px solid #313144;
+  transform: rotate(45deg) translateX(-45%);
+  transition: 0.2s ease-in-out;
+}
+.dropdown ul {
+  list-style-type: none;
+}
+.dropdown__select {
+  position: absolute;
+  top: 100%;
+  left: -40px;
+  width: calc(100% + 40px);
+  overflow: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  font-weight: 300;
+  transition: 0.2s ease-in-out;
+  z-index: 80;
+}
+.dropdown__select-option {
+  padding: 14px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d8d8d8;
+  transition: 0.3s;
+  font-size: 0.86rem;
+  font-weight: 400;
+}
+.dropdown__select-option:last-of-type {
+  border-bottom: 0;
+  border-radius: 0px 0px 8px 8px;
+}
+.dropdown__select-option:hover {
+  background-color: #ffd6d6;
+}
+.dropdown__select-option:active {
+  background-color: #fe5858;
+}
+
 /***************TEMPLATE _modale***************/
 /* Modale cachée par défaut */
 .modale {
@@ -640,24 +637,12 @@ footer {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  transition: all 0.4s ease;
   z-index: 10;
 }
-.close-btn > .line {
-  height: 2px;
-  background-color: #ffffff;
-  display: block;
-  margin: auto;
-  margin-block: 2px;
-  width: 15px;
-}
-.close-btn > .line:nth-child(1) {
-  position: absolute;
-  transform: rotate(45deg);
-}
-.close-btn > .line:nth-child(2) {
-  position: absolute;
-  transform: rotate(-45deg);
+.close-btn:hover {
+  color: #ffffff;
+  transform: rotate(90deg);
+  transition: transform 0.5s ease-in-out;
 }
 
 .title-contact {

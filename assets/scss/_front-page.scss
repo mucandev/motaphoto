@@ -48,101 +48,15 @@
         > div { 
         width: calc(50% - ($gap30/2));        
         }
-
     }
 
     & #tax{
         justify-content: space-between;
     }
-    & #filtre-tri{
+    & #date{
         justify-content: end;
     }
 }
-.filter-block {
-    position: relative;
-}
-.select {
-    display: flex;
-    justify-content : space-between;
-    align-items: center;
-    height: 43px;
-    //min-width: 270px;
-    border: 2px solid $color--grey;
-    border-radius: 8px ;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-transform: uppercase;
-    font-size: $font-size-S; 
-    font-weight: 400;
-}
-
-.menu-options {
-    display: none;
-    position: absolute;
-    top: 44px;
-    flex-direction: column;
-    //valeur de bordure otée à width
-    width: calc(100% - 4px);
-    border-top: none !important;
-    border: 2px solid $color--grey;
-    border-radius: 0 0 8px 8px;
-    background-color: $color--white;
-    justify-content : flex-start;
-    align-items: center;
-    z-index: 75;
-}
-//p
-.menu-option{
-    height: 40px;
-    padding-left: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    font-weight: 400;
-
-    &:hover{
-        background-color: $color--palered;
-    }
-    &:active{
-        background-color: $color--clearred;
-    }
-    &:focus{
-        background-color: $color--white;
-    }
-    &.selectionne{
-        background-color: $color--red;
-        color: $color--white;
-    }
-    &.dernier-selectionne{
-        background-color: $color--white;
-        color: $color--black;
-        border-radius: 0 0 8px 8px;
-    }
-}
-
-.vide {
-    height:45px;
-    cursor: pointer;
-}
-
-.dernier{
-    border-radius: 0 0 8px 8px;
-}
-
-.cache{
-    display: none;
-}
-
-.menu-fleche{
-    cursor: pointer;
-}
-
-
 
 .bouton-front{
     @extend %flex-center;

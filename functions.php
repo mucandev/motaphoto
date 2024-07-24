@@ -21,8 +21,11 @@ function motaphoto_enqueue_assets() {
     wp_enqueue_script('script-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(),'1.0.0', true);
     //  scripts JS accueil
     if(is_home(  )){
-        wp_enqueue_script('script-filters-options', get_template_directory_uri() . '/assets/js/filters-options.js', array(),'1.0.0', true);  
+        // wp_enqueue_script('script-filters-options', get_template_directory_uri() . '/assets/js/filters-options.js', array(),'1.0.0', true);  
+        wp_enqueue_script('script-front_filtres', get_template_directory_uri() . '/assets/js/front_filtres.js', array(),'1.0.0', true);  
     }    
+    
+    
 
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_assets');

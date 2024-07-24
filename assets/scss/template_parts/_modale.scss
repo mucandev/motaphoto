@@ -33,27 +33,13 @@
     height: 30px;
     width: 30px;
     cursor: pointer;
-    transition: all 0.4s ease;
     z-index: 10;
-    & > .line{
-        height: 2px;
-        background-color: $color--white;
-        display: block;
-        margin: auto;
-        margin-block: 2px;
-        width: 15px;
-        &:nth-child(1){
-            position: absolute;
-            transform: rotate(45deg);
-        }
-        &:nth-child(2){
-            position: absolute;
-            transform:  rotate(-45deg);
-        }
-    }
+    &:hover{
+        color: $color--white;
+        transform: rotate(90deg);
+        transition: transform 0.5s ease-in-out;
+    }    
 }
-
-
 
 .title-contact {
     overflow: hidden;
