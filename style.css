@@ -600,6 +600,10 @@ footer {
 .dropdown__select-option:active {
   background-color: #fe5858;
 }
+.dropdown__select-option--selected {
+  background-color: #e00000;
+  color: #ffffff;
+}
 
 /***************TEMPLATE _modale***************/
 /* Modale cachée par défaut */

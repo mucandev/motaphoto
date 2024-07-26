@@ -1,5 +1,5 @@
-<!-- template block photo -->
 <?php
+    // template block-photo
     // Récupération informations photo sibling
     $titre_post = get_the_title();
     $titre_slug = sanitize_title($titre_post);

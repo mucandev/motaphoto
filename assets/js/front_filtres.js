@@ -1,13 +1,15 @@
 // gestions des options de filtre front-page
 
-console.log ('front_filters load');
+console.log ('front_filters.js load');
 
 document.addEventListener('DOMContentLoaded', function() {
 
     function openDropdown (dropdownId, switchId ) {
 
         const dropdown = document.querySelector(`#${dropdownId}`);
-        if (!dropdown) return;             
+        const toggle = dropdown.querySelector(`#${switchId}`);
+
+        if (!dropdown || !toggle) return;             
 
 		// Change option selected
         const label = dropdown.querySelector('.dropdown__filter-selected');
@@ -15,23 +17,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         options.forEach((option) => {
             option.addEventListener('click', () => {
+
                 label.textContent = option.textContent;
+
+                options.forEach(opt => opt.classList.remove('dropdown__select-option--selected'));
+
+                // Ajouter la classe de sélection à l'option cliquée
+                option.classList.add('dropdown__select-option--selected');
+
+                // Fermer le dropdown après la sélection
+                toggle.checked = false;
+
             })
         })
 
         // Close dropdown onclick outside        
         document.addEventListener('click', (e) => {
-            const toggle = dropdown.querySelector(`#${switchId}`);
-            const element = e.target
+            const element = e.target;
 
-            if (element == toggle) return;
+            if (element === toggle || element.closest(`#${dropdownId}`)) return;
 
-            const isDropdownChild = element.closest(`#${dropdownId}`);		
-            
-            if (!isDropdownChild) {
-                toggle.checked = false
-            }
-        });   
+            toggle.checked = false;
+        });
     };
 
     openDropdown( "tri-categorie", "filter-switch-categorie");

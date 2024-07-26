@@ -1,3 +1,5 @@
+console.log ('modale.js load');
+
 // Gestion de la modale de contact
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('#menu-header .menu-item');

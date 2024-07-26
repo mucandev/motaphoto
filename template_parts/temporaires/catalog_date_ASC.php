@@ -16,7 +16,7 @@ if ($photos_siblings->have_posts()) {
     } 
     wp_reset_postdata();
 } else {
-    echo 'aucune photo dans cette catégorie';
+    echo 'aucune photo avec le ou les filtres selectionnés';
 }
 
 ?>

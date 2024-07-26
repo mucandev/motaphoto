@@ -185,11 +185,6 @@ if ($custom_query->have_posts()) :
         ?>
     </div>
 </section> 
-      <!-- tests ---------------------------------------------------------------------->
-    <?php var_dump(get_queried_object(  )) ?>  
-<p>test<?= get_queried_object( ) -> post_date ?> </p>
-<p>test<?= esc_html(get_queried_object( ) -> post_date) ?> </p>
-
 
 <?php 
 get_footer(); 

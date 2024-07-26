@@ -1,23 +1,31 @@
 // Gestion du template-part block-photo
 'use strict';
-//page infos
-let openInfos = document.querySelectorAll(".icon-eye");
-let linkInfos = document.querySelectorAll(".block-lien-photo");
+console.log(`block-photo.js load`);
 
-for (let i = 0; i < openInfos.length; i++) {
-    openInfos[i].addEventListener("click", (e) => {
-        e.preventDefault(); 
-       // console.log(`j'ai cliqué sur ${e.target.alt}`, [i]);
-        
-        // Récupère l'URL de l'élément correspondant dans linkInfos
-        let urlSibling = linkInfos[i].textContent.trim();  
-        let linkElement = openInfos[i].parentElement; 
+function openInfosEvent() {
+    let openInfos = document.querySelectorAll(".icon-eye");
+    let linkInfos = document.querySelectorAll(".block-lien-photo");
 
-        linkElement.setAttribute('href', urlSibling);
-        window.location.href = urlSibling;
-    });
+    for (let i = 0; i < openInfos.length; i++) {
+        openInfos[i].addEventListener("click", (e) => {
+            e.preventDefault(); 
+            console.log(`j'ai cliqué sur ${e.target.alt}`, [i]);
+            
+            // Récupère l'URL de l'élément correspondant dans linkInfos
+            let urlSibling = linkInfos[i].textContent.trim();  
+            let linkElement = openInfos[i].parentElement; 
+
+            linkElement.setAttribute('href', urlSibling);
+            window.location.href = urlSibling;
+        });
+    }
 }
 
+// Appel initial au chargement de la page
+document.addEventListener('DOMContentLoaded', openInfosEvent);
+// openInfosEvent();
+// Export de la fonction pour une utilisation après la requête AJAX
+// export { attachEventHandlers };
 
 
 // A faire après la lightbox

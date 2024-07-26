@@ -83,5 +83,10 @@
         &:active{
             background-color: $color--clearred;
         }
+        
+        &--selected{
+            background-color: $color--red;
+            color:  $color--white;
+        }        
     }	
 }

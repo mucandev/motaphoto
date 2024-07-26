@@ -4,7 +4,13 @@
         'post_type' => 'photographies', 
         'posts_per_page' => 1,
         'orderby' => 'rand',
-        
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'formats',
+                'field' => 'slug',
+                'terms' => 'paysage',
+            ),
+        ),
     );
 
     $banner = new WP_Query($args_banner);

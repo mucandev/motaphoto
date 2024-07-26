@@ -19,14 +19,18 @@ function motaphoto_enqueue_assets() {
     wp_enqueue_script('script-modale', get_template_directory_uri() . '/assets/js/modale.js', array(),'1.0.0', true);
     wp_enqueue_script('script-block-photo', get_template_directory_uri() . '/assets/js/block-photo.js', array(),'1.0.0', true);
     wp_enqueue_script('script-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(),'1.0.0', true);
-    //  scripts JS accueil
-    if(is_home(  )){
-        // wp_enqueue_script('script-filters-options', get_template_directory_uri() . '/assets/js/filters-options.js', array(),'1.0.0', true);  
-        wp_enqueue_script('script-front_filtres', get_template_directory_uri() . '/assets/js/front_filtres.js', array(),'1.0.0', true);  
-    }    
-    
-    
 
+    //  scripts JS accueil
+    if(is_home(  )){ 
+        wp_enqueue_script('script-front_filtres', get_template_directory_uri() . '/assets/js/front_filtres.js', array(),'1.0.0', true);  
+        wp_enqueue_script('script-pagination', get_template_directory_uri() . '/assets/js/charger_plus.js', array(),'1.0.0', true);  
+        // wp_localize_script('script-pagination', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php'))); 
+        wp_localize_script('script-pagination', 'myAjax', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('ajax-nonce') // Ajout de la génération de nonce
+        ));
+
+    }  
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_assets');
 
@@ -71,4 +75,33 @@ function motaphoto_custom_thumbnails_sizes() {
 add_action( 'after_setup_theme', 'motaphoto_custom_thumbnails_sizes' );
 
 
+//fonction AJAX pour le charger plus
+function charger_plus(){
+    // vérification du nonce avant exécution de la requête
+    check_ajax_referer( 'ajax-nonce', 'nonce' );
+
+    $page = $_POST['page'];
+    $ordreTriage = $_POST['order'];
     
+    $args = array(
+        'post_type' => 'photographies',
+        'posts_per_page' => 8,
+        'orderby' => 'date',  
+        'order' =>  $ordreTriage, 
+        'paged' => $page, 
+    );
+    
+    $photo_query = new WP_Query($args);
+
+    if ($photo_query->have_posts()){
+        while ($photo_query->have_posts()){
+            $photo_query->the_post();
+            get_template_part('template_parts/block-photo');            
+        }
+        wp_reset_postdata();
+    } 
+    wp_die();
+}
+
+add_action( 'wp_ajax_charger_plus', 'charger_plus');
+add_action( 'wp_ajax_nopriv_charger_plus', 'charger_plus');

@@ -1,3 +1,5 @@
+console.log ('mobile-menu.js load');
+
 document.addEventListener('DOMContentLoaded', () => {
 
     if (window.innerWidth <= 700) {
