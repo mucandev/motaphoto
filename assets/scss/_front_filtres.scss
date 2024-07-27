@@ -65,8 +65,10 @@
         transition: .2s ease-in-out;
         z-index: 80;
     }
-    
-	&__select-option {
+    &__select-full {
+        color: $color--grey;
+    }
+	&__select-option, &__select-full {
         padding: 14px;
         background-color: $color--white;
         border-bottom: 1px solid $color--cleargrey;

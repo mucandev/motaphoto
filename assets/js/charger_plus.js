@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function (){
     let ordreTriage = 'ASC';
 
     const selectionTriDESC = document.getElementById('DESC');
-    console.log('selectionTriDESC',selectionTriDESC)
     const catalog = document.querySelector('.catalog');
     const catalogItems = document.querySelector('.siblings-items');
     const chargerPlusBouton = document.getElementById('charger-plus');

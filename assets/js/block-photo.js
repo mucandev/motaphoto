@@ -21,11 +21,8 @@ function openInfosEvent() {
     }
 }
 
-// Appel initial au chargement de la page
 document.addEventListener('DOMContentLoaded', openInfosEvent);
-// openInfosEvent();
-// Export de la fonction pour une utilisation après la requête AJAX
-// export { attachEventHandlers };
+
 
 
 // A faire après la lightbox

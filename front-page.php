@@ -27,6 +27,7 @@
                         <li class="dropdown__filter-selected" aria-selected="true">catégories</li>
                         <li>
                             <ul class="dropdown__select">
+                                <li id="categorie-full" class="dropdown__select-full" role="option">catégories</li>
                                 <?php
                                 $events = get_terms('photocategories');
                                 if (!empty($events) && !is_wp_error($events)) { 
@@ -47,6 +48,7 @@
                         <li class="dropdown__filter-selected" aria-selected="true">formats</li>
                         <li>
                             <ul class="dropdown__select">
+                                <li id="format-full" class="dropdown__select-full" role="option">formats</li>
                                 <?php
                                 $sizes = get_terms('formats');
                                 if (!empty($sizes) && !is_wp_error($sizes)) { 
@@ -69,12 +71,9 @@
                             <li class="dropdown__filter-selected" aria-selected="true">trier par</li>
                             <li>
                                 <ul class="dropdown__select">
-                                    <li id="DESC" class="dropdown__select-option" role="option">
-                                        à partir des plus récentes
-                                    </li>
-                                    <li id="ASC" class="dropdown__select-option" role="option">
-                                        à partir des plus anciennes
-                                    </li>
+                                    <li id="date-full" class="dropdown__select-full" role="option">trier par</li>
+                                    <li id="DESC" class="dropdown__select-option" role="option">à partir des plus récentes</li>
+                                    <li id="ASC" class="dropdown__select-option" role="option">à partir des plus anciennes</li>
                                 </ul>
                             </li>
                         </ul>			
