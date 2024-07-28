@@ -1,6 +1,6 @@
 <div id="contact-overlay">
     <div class="contact-popup">
-        <button class="close-btn">
+        <button class="close-btn" aria-controls="contact-popup" aria-expanded="false" aria-label="contact" type="button">
             <span class="dashicons dashicons-no-alt"></span>
         </button>
         <div class="title-contact">

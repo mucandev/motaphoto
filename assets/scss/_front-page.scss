@@ -8,14 +8,7 @@
     & h1{
         @extend %flex-center;
         position: absolute;
-        z-index: 1;
-    }
-    &-title {
-        width: 70%;
-        height: auto;
-        @extend %flex-center;
-        position: absolute;
-        z-index: 1;
+        z-index: $zIndex__frontPage__h1hero;
     }
     &-banner{
         width: 100%;

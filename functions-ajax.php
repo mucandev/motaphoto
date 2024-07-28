@@ -81,7 +81,7 @@ function filtrer_photos(){
         }                    
         wp_reset_postdata();
     } else {            
-        echo '<p>aucune photo trouvée</p>';
+        echo '<p>aucune photo dans ces choix de filtres... pour l\'instant !</p>';
     }
 
     //récupérer les photos mises en tampon

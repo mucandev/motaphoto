@@ -85,7 +85,7 @@
         position: relative;
         display: flex;
         align-items: flex-end;
-        z-index: 1; 
+        z-index: $zIndex__infos__arrowsNav; 
     } 
     &-left:hover ~  .thumbnail-left,
     &-right:hover ~ .thumbnail-right {

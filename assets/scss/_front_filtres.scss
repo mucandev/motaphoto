@@ -54,7 +54,8 @@
 
     //ul
     &__select {
-        position: absolute;        top: 100%;
+        position: absolute;        
+        top: 100%;
         left: -40px;
         width: calc(100% + 40px);
         // margin-top: 5px;
@@ -63,7 +64,7 @@
         transform-origin: top;
         font-weight: 300;
         transition: .2s ease-in-out;
-        z-index: 80;
+        z-index: $zIndex__frontFilters_dropdown__select;
     }
     &__select-full {
         color: $color--grey;

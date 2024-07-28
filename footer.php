@@ -23,6 +23,7 @@
                     ));
             ?>
         </div>
+        <?php get_template_part('/template_parts/lightbox'); ?>
     </footer>
     <?php wp_footer(); ?>
 </body>
