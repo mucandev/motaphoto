@@ -22,24 +22,20 @@ function motaphoto_enqueue_assets() {
     wp_enqueue_script('script-modale', get_template_directory_uri() . '/assets/js/modale.js', array(),'1.0.0', true);
     wp_enqueue_script('script-block-photo', get_template_directory_uri() . '/assets/js/block-photo.js', array(),'1.0.0', true);
     wp_enqueue_script('script-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(),'1.0.0', true);
-    wp_enqueue_script('script-single_photographies', get_template_directory_uri() . '/assets/js/single_photographies.js', array(),'1.0.0', true);
+    wp_enqueue_script('scripts', get_template_directory_uri() . '/assets/js/scripts.js', array(),'1.0.0', true);
+    wp_enqueue_script('scroll-arrows', get_template_directory_uri() . '/assets/js/scroll-arrows.js', array(), null, true);
+
 
     //  scripts JS accueil
     if(is_home(  )){ 
-        wp_enqueue_script('script-pagination', get_template_directory_uri() . '/assets/js/charger_plus.js', array(),'1.0.0', true);  
-        wp_localize_script('script-pagination', 'myAjax', array( 
+        wp_enqueue_script('script-pagination-filtres', get_template_directory_uri() . '/assets/js/pagination-filtres.js', array(),'1.0.0', true);  
+        wp_localize_script('script-pagination-filtres', 'myAjax', array( 
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('ajax-nonce') // Ajout de la génération de nonce            
         ));
-        wp_enqueue_script('script-front_filtres', get_template_directory_uri() . '/assets/js/front_filtres.js', array(),'1.0.0', true); 
-        wp_localize_script('script-front_filtres', 'myAjax', array( 
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('ajax-nonce') // Ajout de la génération de nonce            
-        )); 
     }  
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_assets');
-
 
 // Ajout gestion menus dashboard 
 function register_custom_menu() {

@@ -30,35 +30,36 @@
         }
 ?>
 <div class="block">
-    <div class="block-lien-photo">
+    <div class="block__linkPhoto">
         <?= $lien_post; ?>
     </div>
-    <div class="block-photo">
+    <div class="block__photo">
         <?= $photo_post; ?>
     </div>
-    <div class="block-survol">
-        <div class="block-overlay">
-            <div class="block-lightbox-expand">
+
+    <div class="blockSurvol">
+        <div class="blockSurvol__overlay">
+            <div class="blockSurvol__iconLightbox">
                 <a href="#">
-                    <img class="icon-lightbox" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-lightbox.svg' ?>" alt="lightbox" />
+                    <img id="icon-lightbox" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-lightbox.svg' ?>" alt="lightbox" />
                 </a>
             </div>
-            <div class="block-info-eye">
+            <div class="blockSurvol__iconEye">
                 <a href="#">
-                    <img class="icon-eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="infos photo" />
+                    <img id="icon-eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="infos photo" />
                 </a>
             </div>
-            <div class="block-infos">
-                <div class="block-infos-ref">
+            <div class="blockSurvol__infos">
+                <div class="blockSurvol__infos--Ref">
                 <p><?= $reference_photo ?></p>
                 </div>
-                <div class="block-infos-categorie">
+                <div class="blockSurvol__infos--Categorie">
                     <p><?=  $liste_categories ?></p>
                 </div>
             </div>
-
         </div>
     </div>
+    
 </div>
 
 

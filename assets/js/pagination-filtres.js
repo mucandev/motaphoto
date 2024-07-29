@@ -1,20 +1,18 @@
-// Gestion des options de filtre front-page
-console.log('front_filters.js load');
 
+console.log('pagination-filtres.js load');
+// Code exécuté une fois le DOM entièrement chargé
 document.addEventListener('DOMContentLoaded', function() {
-
-    // Fonction pour ouvrir et gérer les dropdowns
+    // Fonction pour gérer l'ouverture et la sélection des dropdowns
     function openDropdown(dropdownId, switchId) {
         const dropdown = document.querySelector(`#${dropdownId}`);
         const toggle = dropdown.querySelector(`#${switchId}`);
 
         if (!dropdown || !toggle) return;
 
-        // Change option selected
         const label = dropdown.querySelector('.dropdown__filter-selected');
         const options = Array.from(dropdown.querySelectorAll('.dropdown__select-option'));
 
-        options.forEach((option, index) => {
+        options.forEach((option) => {
             option.addEventListener('click', () => {
                 label.textContent = option.textContent;
                 options.forEach(opt => opt.classList.remove('dropdown__select-option--selected'));
@@ -23,22 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Close dropdown onclick outside
         document.addEventListener('click', (e) => {
             if (e.target === toggle || e.target.closest(`#${dropdownId}`)) return;
             toggle.checked = false;
         });
     }
 
+    // Initialisation des dropdowns
     function initDropdowns() {
         openDropdown("tri-categorie", "filter-switch-categorie");
         openDropdown("tri-format", "filter-switch-format");
         openDropdown("tri-date", "filter-switch-date");
     }
 
-    //////////////////////////////////////////////////////
-
-    // Fonction pour ajouter des événements aux éléments de filtre
+        //////////////////////////////////////////////////
+        
+    // Fonction pour initialiser les événements sur les éléments de filtre
     function initEventItems(elements, callback) {
         elements.forEach(function (element) {
             element.addEventListener("click", function() {
@@ -47,8 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fonction pour envoyer une requête AJAX et mettre à jour le catalogue
-    function newCatalog(category, format, order) {
+    let currentPage = 1; // Variable pour suivre la page actuelle
+    let totalPhotos = 0; // Variable pour stocker le nombre total de photos
+
+    // Fonction pour effectuer la requête AJAX et mettre à jour le catalogue
+    function newCatalog(category, format, order, page = 1, append = false) {
         jQuery.ajax({
             url: myAjax.ajaxurl,
             method: 'POST',
@@ -57,12 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 category: category,
                 format: format,
                 order: order,
+                page: page,
                 nonce: myAjax.nonce
             },
             success: function(response) {
-                catalogItems.innerHTML = response;
-                compterChargerPlus();
-                openInfosEvent();
+                if (response.success) {
+                    if (page === 1 || !append) {
+                        catalogItems.innerHTML = response.data.html;
+                    } else {
+                        catalogItems.insertAdjacentHTML('beforeend', response.data.html);
+                    }
+                    totalPhotos = response.data.total;
+                    totalPhotosCount.textContent = `Total photos: ${totalPhotos}`;
+                    compterChargerPlus(totalPhotos);
+
+                    // réintialisation des fonctions déjà exécutées
+                    openInfosEvent(); 
+                     //lightbox
+                    document.dispatchEvent(new Event('ajaxComplete')); // events scroll-arrow.js
+                } else {
+                    console.log('Erreur dans la réponse Ajax');
+                }
             },
             error: function(error) {
                 console.log(error);
@@ -70,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fonction pour gérer le bouton "Charger Plus"
-    function compterChargerPlus() {
-        const nombrePhotos = catalogItems.querySelectorAll('.block-photo').length;
-        BtnChargerPlus.style.display = (nombrePhotos < 8) ? 'none' : 'block';
+    // Fonction pour gérer l'affichage du bouton "Charger Plus"
+    function compterChargerPlus(total) {
+        const nombrePhotosAffichees = catalogItems.querySelectorAll('.block__photo').length;
+        BtnChargerPlus.style.display = (nombrePhotosAffichees < total) ? 'block' : 'none';
     }
 
     const elementsCategorie = document.querySelectorAll('#tri-categorie .dropdown__select-option');
@@ -81,32 +97,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const elementsTri = document.querySelectorAll('#tri-date .dropdown__select-option');
     const catalogItems = document.querySelector('.siblings-items');
     const BtnChargerPlus = document.getElementById('charger-plus');
+    const totalPhotosCount = document.getElementById('total-photos-count');
 
-    // Valeurs par défaut
     let itemsCategorie = 'all';
     let itemsFormat = 'all';
     let itemsTri = 'all';
 
+    // Initialisation des dropdowns
     initDropdowns();
 
-    // Gestion des événements des filtres
+    // Initialisation des événements des filtres
     initEventItems(elementsCategorie, (element) => {
         itemsCategorie = element.id;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri);
+        currentPage = 1;
+        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
     });
 
     initEventItems(elementsFormats, (element) => {
         itemsFormat = element.id;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri);
+        currentPage = 1;
+        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
     });
 
     initEventItems(elementsTri, (element) => {
         itemsTri = element.id;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri);
+        currentPage = 1;
+        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
     });
 
+    // Événement pour le bouton "Charger Plus"
+    BtnChargerPlus.addEventListener('click', () => {
+        currentPage++;
+        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
+    });
 
-    // Fonction pour réinitialiser les filtres
     const categorieLabel = document.querySelector('#tri-categorie .dropdown__filter-selected');
     const formatLabel = document.querySelector('#tri-format .dropdown__filter-selected');
     const dateLabel = document.querySelector('#tri-date .dropdown__filter-selected');
@@ -115,21 +139,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const formatFull = document.getElementById('format-full');
     const triFull = document.getElementById('date-full');
 
+    // Fonction pour réinitialiser les filtres
     function resetFilter(elementFull, elements, label, setDefaultValue) {
         elementFull.addEventListener("click", function() {
-            setDefaultValue(); 
+            setDefaultValue();
             elements.forEach(element => element.classList.remove('dropdown__select-option--selected'));
             label.textContent = elementFull.textContent;
-            newCatalog(itemsCategorie, itemsFormat, itemsTri);
+            currentPage = 1;
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
         });
     }
 
-    // Réinitialisation des filtres
+    // Réinitialisation des filtres pour chaque type de filtre
     resetFilter(categorieFull, elementsCategorie, categorieLabel, () => itemsCategorie = 'all');
     resetFilter(formatFull, elementsFormats, formatLabel, () => itemsFormat = 'all');
     resetFilter(triFull, elementsTri, dateLabel, () => itemsTri = 'all');
-
 });
-
-
-

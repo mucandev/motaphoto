@@ -3,8 +3,8 @@
 console.log(`block-photo.js load`);
 
 function openInfosEvent() {
-    let openInfos = document.querySelectorAll(".icon-eye");
-    let linkInfos = document.querySelectorAll(".block-lien-photo");
+    let openInfos = document.querySelectorAll("#icon-eye");
+    let linkInfos = document.querySelectorAll(".block__linkPhoto");
 
     for (let i = 0; i < openInfos.length; i++) {
         openInfos[i].addEventListener("click", (e) => {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', openInfosEvent);
 
 // A faire après la lightbox
 //lightbox
-const openLightbox = document.querySelectorAll(".icon-lightbox");
+const openLightbox = document.querySelectorAll("#icon-lightbox");
 console.log('nodelist iconlightbox', openLightbox)
 
 for (let i=0; i<openLightbox.length; i++) {
@@ -38,5 +38,5 @@ for (let i=0; i<openLightbox.length; i++) {
 
 
 
-const backPhoto = document.querySelectorAll(".block-photo");
+const backPhoto = document.querySelectorAll(".block__photo");
 console.log('nodelist photo sibling',backPhoto)

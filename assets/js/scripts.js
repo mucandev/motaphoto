@@ -1,6 +1,6 @@
-console.log ('single_photographies.js load');
+console.log ('scripts.js load');
 
-// Gestion longueur titre h2
+// Gestion longueur h2 sur single_photographies
 document.addEventListener('DOMContentLoaded', () => {
     const titleDescription = document.querySelector('.description > h2');  
 
@@ -15,5 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
+
+
+
 
 

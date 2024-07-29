@@ -107,9 +107,11 @@
         }
 
         ?>
+
         </div>
     </div>
     <div class="bouton-front">
+        <div id="total-photos-count"></div>
         <button id="charger-plus" class="btn-chargerPlus">Charger plus</button>
     </div>
 </section>

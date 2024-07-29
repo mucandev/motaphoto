@@ -3,6 +3,7 @@
         <span class="dashicons dashicons-no-alt"></span>
     </button>
     <div class="lightbox__open">
+        <!-- <img src="" /> -->
         <img src="<?= get_stylesheet_directory_uri() . '/assets/images/nathalie-mota_1783X1920.jpg' ?>"  />
         <!-- <img src="https://picsum.photos/1920"  /> -->
     </div>
@@ -16,8 +17,8 @@
             <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right-white.svg' ?>" alt="next" />
         </div>
     </div>
-    <div class="informations-photo">
-        <p class="reference-photo"></p>
-        <p class="categorie-photo"></p>
+    <div class="lightbox__infos">
+        <p class="lightbox__infos--Ref">référence exemple</p>
+        <p class="lightbox__infos--Categorie">exemple catégorie</p>
     </div>
 </div>

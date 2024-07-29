@@ -3,17 +3,16 @@
     width: 100%;
     aspect-ratio: 10/8.8;
     max-width: $current_width_blockPhoto;
-    min-width: 300px;
     max-height: $current_height_blockPhoto;
     position: relative;
     overflow: hidden;
     background: rgba($color--palegrey, 0.5);
-    &-lien-photo{
+    &__linkPhoto{
         opacity: 0;
         position: absolute;
         color: $color--white; 
     }
-    &-photo {
+    &__photo {
         width: 100%;
         height: 100%;
         & > img {
@@ -23,16 +22,18 @@
             object-fit: cover;
         }
     } 
-    &-survol {
-        display: block;
-        opacity: 0;
-        transition: opacity 0.3s ease;  
-        @include Position(absolute, 0, 0, 0, 0); 
-        &:hover {
-            opacity: 1;
-        }
+}
+
+.blockSurvol {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;  
+    @include Position(absolute, 0, 0, 0, 0); 
+    &:hover {
+        opacity: 1;
     }
-    &-overlay {
+    
+    &__overlay {
         width: 100%;
         height: 100%;
         background: rgba($color--black, 0.6);
@@ -42,14 +43,14 @@
         flex-direction: column;
         justify-content: space-between;
     }
-    &-lightbox-expand {       
+    &__iconLightbox {       
         display: flex;
         justify-content: end;
     }
-    &-info-eye {       
+    &__iconEye {       
         @extend %flex-center;
     }
-    &-infos {       
+    &__infos {       
         display: flex;
         justify-content: space-between;
         & p {
@@ -57,7 +58,7 @@
             text-transform: uppercase;
             margin-bottom: 0;
         }
-        &-categorie p {
+        &--Categorie p {
             font-family: $font--heading ;
             letter-spacing: 1.4px;
         } 
