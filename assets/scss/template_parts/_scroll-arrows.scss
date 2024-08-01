@@ -5,7 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;    
+<<<<<<< HEAD
     z-index: $zIndex__scroll-arrows;
+=======
+    z-index: $zIndex__scroll-arrow;
+>>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
 }
 
 .scroll-arrow {    
@@ -18,7 +22,11 @@
     }
     & i{ 
         color: $color--white;    
+<<<<<<< HEAD
         font-size: $fontSize__M;
+=======
+        font-size: $font-size-M;
+>>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
         &.fa-sort-up{
             padding-top: 8px;
         }
