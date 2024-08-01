@@ -11,9 +11,11 @@
     </main >
 
     <footer>
+    <?php get_template_part('/template_parts/scroll-arrows'); ?>
         <div class="modale">
 			<?php get_template_part('/template_parts/modale'); ?>
         </div>
+        <?php get_template_part('/template_parts/lightbox'); ?>
         <div>
             <?php
                 wp_nav_menu(array(
@@ -22,8 +24,7 @@
                     'menu_class' => 'menu',
                     ));
             ?>
-        </div>
-        <?php get_template_part('/template_parts/lightbox'); ?>
+        </div>        
     </footer>
     <?php wp_footer(); ?>
 </body>

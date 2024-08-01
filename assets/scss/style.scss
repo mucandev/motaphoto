@@ -9,16 +9,23 @@ Tags: Nathalie Mota, photographie, catalogue photo, lightbox
 Text Domain: motaphoto
 */
 
-/** imports parts**/
-//@import "utilities/alignments";
 
-@import 'fonts';
-@import 'variables-mixins';
-@import 'animations-mixins';
+
+// Import  variables, animations, mixins , @font'face
+@import 'tools/_fonts';
+@import 'tools/_variables-mixins';
+@import 'tools/_animations-mixins';
+
+
 @import 'theme';
 @import 'front-page';
-@import 'front_filtres';
+
+// Import template_part
+@import 'template_parts/_front-filtres.scss';
+@import 'template_parts/_scroll-arrows';
 @import 'template_parts/_modale';
 @import 'template_parts/_lightbox.scss';
 @import 'template_parts/_block-photo';
+
+// Import single-post
 @import 'single-photographies';

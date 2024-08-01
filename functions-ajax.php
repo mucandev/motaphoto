@@ -1,46 +1,19 @@
 <?php
 
-//fonction AJAX pour le charger plus
-function charger_plus(){
-    // vérification du nonce avant exécution de la requête
-    check_ajax_referer( 'ajax-nonce', 'nonce' );
+// Fonction pour gérer le filtrage et la pagination des photos
+function filtrer_paginer_catalogue() {
+    // Vérification du nonce : sécurité
+    check_ajax_referer('ajax-nonce', 'nonce');
 
-    $page = $_POST['page'];
-    $ordreTriage = $_POST['order'];
-    
-    $args = array(
-        'post_type' => 'photographies',
-        'posts_per_page' => 8,
-        'orderby' => 'date',  
-        'order' =>  $ordreTriage, 
-        'paged' => $page, 
-    );
-    
-    $photo_query = new WP_Query($args);
-
-    if ($photo_query->have_posts()){
-        while ($photo_query->have_posts()){
-            $photo_query->the_post();
-            get_template_part('template_parts/block-photo');            
-        }
-        wp_reset_postdata();
-    } 
-    wp_die();
-}
-
-add_action( 'wp_ajax_charger_plus', 'charger_plus');
-add_action( 'wp_ajax_nopriv_charger_plus', 'charger_plus');
-
-
-//fonction ajax pour récupérer les photos filtrées
-function filtrer_photos(){
-    check_ajax_referer( 'ajax-nonce', 'nonce' );
-
-    $tax_query = array ('relation' =>  'AND');
+    // Initialisation de la requête taxonomique
+    $tax_query = array('relation' => 'AND');
+    // Récupération de l'ordre de tri, par défaut 'ASC'
     $order = $_POST['order'] ?? 'ASC';
+    // Récupération de la page actuelle pour la pagination, par défaut 1
+    $paged = $_POST['page'] ?? 1;
 
-    //si une catégorie est présente et n'est pas égale à all
-    if (isset ($_POST['category']) && $_POST[ 'category']  !=='all') {
+    // Ajout du filtre de catégorie si présent
+    if (isset($_POST['category']) && $_POST['category'] !== 'all') {
         $category = $_POST['category'];
         $tax_query[] = array(
             'taxonomy' => 'photocategories',
@@ -49,8 +22,8 @@ function filtrer_photos(){
         );
     }
 
-    //si un format est présent et n'est pas égal à all
-    if (isset ($_POST['format']) && $_POST[ 'format']  !=='all') {
+    // Ajout du filtre de format si présent
+    if (isset($_POST['format']) && $_POST['format'] !== 'all') {
         $format = $_POST['format'];
         $tax_query[] = array(
             'taxonomy' => 'formats',
@@ -59,38 +32,46 @@ function filtrer_photos(){
         );
     }
 
+    // Arguments de la requête WP_Query
     $args = array(
         'post_type' => 'photographies', 
-        'posts_per_page' => 8,
+        'posts_per_page' => 8, 
         'orderby' => 'date',
         'order' => $order,
-        'paged' => 1, 
-        'tax_query' => $tax_query,      
+        'paged' => $paged, 
+        'tax_query' => $tax_query,
     );
 
+    // Exécution de la requête WP_Query
     $photo_query = new WP_Query($args);
 
-    // stockage du résultat en tampon temporairement
+    // Démarrage de la mise en tampon de sortie
     ob_start();
 
-    //définition de la structure d'affichage des nouveaux éléments
+    // Affichage des résultats de la requête
     if ($photo_query->have_posts()) {
         while ($photo_query->have_posts()) {
             $photo_query->the_post();
             get_template_part('template_parts/block-photo');
-        }                    
+        }
         wp_reset_postdata();
-    } else {            
-        echo '<p>aucune photo dans ces choix de filtres... pour l\'instant !</p>';
+    } else {
+        // Message si aucune photo n'est trouvée
+        echo '<p>aucune photo avec cette selection... pour l\'instant !</p>';
     }
 
-    //récupérer les photos mises en tampon
+    // Récupération de la sortie tamponnée
     $output = ob_get_clean();
-    echo $output;
+    // Récupération du nombre total de photos trouvées
+    $total_photos = $photo_query->found_posts;
 
-    wp_die();
+    // Envoi de la réponse en JSON
+    wp_send_json_success(array(
+        'html' => $output,
+        'total' => $total_photos,
+    ));
 }
 
-add_action( 'wp_ajax_filtrer_photos', 'filtrer_photos');
-add_action( 'wp_ajax_nopriv_filtrer_photos', 'filtrer_photos');
-
+// Ajout de la fonction aux hooks AJAX
+add_action('wp_ajax_filtrer_paginer_catalogue', 'filtrer_paginer_catalogue');
+add_action('wp_ajax_nopriv_filtrer_paginer_catalogue', 'filtrer_paginer_catalogue');

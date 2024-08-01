@@ -13,7 +13,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title><?php bloginfo('name') ?> | <?php bloginfo('description') ?> | <?= the_title();?></title>
+	<meta name="keywords" content="photographe événementiel, photographe event, nathalie mota"/>
+	<meta name="description" content="Nathalie Mota - Projet formation développeur WordPress avec OpenClassrooms."/>
+
+    <title> <?php bloginfo('description') ?> | <?= the_title();?></title>
 	<?php wp_head(); ?>
 </head>
 

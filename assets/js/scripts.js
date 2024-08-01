@@ -1,6 +1,6 @@
-console.log ('single_photographies.js load');
+console.log ('scripts.js load');
 
-// Gestion longueur titre h2
+// Gestion longueur h2 sur single_photographies
 document.addEventListener('DOMContentLoaded', () => {
     const titleDescription = document.querySelector('.description > h2');  
 
@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (titleDescription.textContent.length >= 18) {
             // Modifier la règle CSS
             titleDescription.style.maxWidth = '100%';
-        } else {
-            // Appliquer la règle initiale
-        }
+        } 
     }
-
 })
+
+
+
 
 

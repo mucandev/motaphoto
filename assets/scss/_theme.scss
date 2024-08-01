@@ -165,9 +165,8 @@ footer {
     }
 }
 
-
 // @media screen and (max-width: var(--breakpoint-laptop)){
-@media screen and (max-width: #{$breakpoint__laptop}) {
+@media screen and (max-width: #{$breakpoint__desktop}) {
     section {
         max-width: 85% ;
     }

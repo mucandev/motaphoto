@@ -9,7 +9,7 @@
         </div>
         <div class="infos-photo">
             <a href="<?= esc_url(home_url()); ?>">
-                <img src="<?= get_stylesheet_directory_uri() . '/assets/images/nathalie-mota-404.jpg' ?>" alt="erreur 404" />
+                <img src="<?= get_stylesheet_directory_uri() . '/assets/images/mota-404-matteo-vistocco-iv420eRkZWc-unsplash_564x607.jpg' ?>" alt="erreur 404" />
             </a>
         </div>
     </div>

@@ -10,47 +10,28 @@
 
 <?php get_header();?>
 
-<h1>template_parts</h1>
-<section class="hero">
-    <div class="hero-banner"> 
-        <h2>front-banner</h2>
-        <?php get_template_part('/template_parts/front-banner'); ?>
+<h1>page test</h1>
+<section class="siblings">
+
+    <div class="siblings-items">
+    
+        <?php
+            $photos_siblings = new WP_Query(array(
+                'post_type' => 'photographies',
+                'posts_per_page' => 1,
+                'orderby' => 'rand',
+            ));
+
+            if ($photos_siblings->have_posts()) {
+                while ($photos_siblings->have_posts()) {
+                    $photos_siblings->the_post();
+                    // Affichage  template part
+                    get_template_part('template_parts/block-photo');                    
+                }
+                wp_reset_postdata();
+            }
+        ?>
     </div>
-</section>
+</section> 
 
-
-<section>
-<div class='filters'>
-        <div class='filters-block' id="tax">
-            <div class="select" id="event">
-                <?php get_template_part('/template_parts/test_filtre'); ?>
-            </div>
-
-        </div>
-        <div class='filters-block' id="chronos">
-            <div class="select" id="time">
-                <!-- <p>trier par</p> -->
-                <label for="timer">trier par</label>
-                <select name="timer" id="timer">
-                    <option value="DESC">à partir des plus récentes</option>
-                    <option value="ASC">à partir des plus anciennes</option>
-                </select>
-            </div>
-                <!-- trier par date publication -->
-            </div>
-        </div>
-    </div> 
-    
-
-
-    
-        <h2>catalog_random</h2> 
-    <div class="siblings-items">
-        <?php get_template_part('/template_parts/catalog_random'); ?>
-    </div >
-    <h2>catalog_order</h2> 
-    <div class="siblings-items">
-        <?php get_template_part('/template_parts/catalog_date_ASC'); ?>
-    </div >
-</section>
 <?php get_footer(); ?>
