@@ -31,12 +31,17 @@
         }
 ?>
 <div class="block">
+<<<<<<< HEAD
     <div class="block__link">
+=======
+    <div class="block__linkPhoto">
+>>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
         <?= $lien_post; ?>
     </div>
     <div class="block__photo">
         <?= $photo_post; ?>
     </div>
+<<<<<<< HEAD
     <div class="blockSurvol">
         <div class="blockSurvol__overlay">
             <button class="blockSurvol__iconLightbox" type="button"  data-full-image="<?= $photo_post_full[0]; ?>">
@@ -48,13 +53,36 @@
             <div class="blockSurvol__infos">
                 <div class="blockSurvol__infos--Ref">
                     <p><?= $reference_photo ?></p>
+=======
+
+    <div class="blockSurvol">
+        <div class="blockSurvol__overlay">
+            <div class="blockSurvol__iconLightbox">
+                <a href="#">
+                    <img id="icon-lightbox" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-lightbox.svg' ?>" alt="lightbox" />
+                </a>
+            </div>
+            <div class="blockSurvol__iconEye">
+                <a href="#">
+                    <img id="icon-eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="infos photo" />
+                </a>
+            </div>
+            <div class="blockSurvol__infos">
+                <div class="blockSurvol__infos--Ref">
+                <p><?= $reference_photo ?></p>
+>>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
                 </div>
                 <div class="blockSurvol__infos--Categorie">
                     <p><?=  $liste_categories ?></p>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>    
+=======
+    </div>
+    
+>>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
 </div>
 
 

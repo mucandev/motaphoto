@@ -1,8 +1,10 @@
 <?php
 
 // Fonction pour gérer le filtrage et la pagination des photos
+
 function filtrer_paginer_catalogue() {
 
+    // Vérification du nonce : sécurité
     check_ajax_referer('ajax-nonce', 'nonce');
 
     // Initialisation de la requête taxonomique
@@ -75,3 +77,4 @@ function filtrer_paginer_catalogue() {
 // Ajout de la fonction aux hooks AJAX
 add_action('wp_ajax_filtrer_paginer_catalogue', 'filtrer_paginer_catalogue');
 add_action('wp_ajax_nopriv_filtrer_paginer_catalogue', 'filtrer_paginer_catalogue');
+
