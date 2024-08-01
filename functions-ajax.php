@@ -2,7 +2,7 @@
 
 // Fonction pour gérer le filtrage et la pagination des photos
 function filtrer_paginer_catalogue() {
-    // Vérification du nonce : sécurité
+
     check_ajax_referer('ajax-nonce', 'nonce');
 
     // Initialisation de la requête taxonomique
