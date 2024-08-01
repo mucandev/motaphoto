@@ -14,14 +14,14 @@ section {
 
 h1{
     font-family: $font--heading;
-    font-size: $font-size-H1;
+    font-size: $fontSize__H1;
     font-weight: 700;
     font-style: italic;
     text-transform: uppercase;    
 }
 
 .hero > h1 {
-    font-size: $font-size-H1-hero;
+    font-size: $fontSize__H1--hero;
     text-align: center;
 }
 
@@ -38,7 +38,7 @@ h1{
 h2 {
     color: $color--black;
     font-family: $font--heading;
-    font-size: $font-size-H2;
+    font-size: $fontSize__H2;
     font-weight: 400;
     font-style: italic;
     line-height: 58px;
@@ -48,7 +48,7 @@ h2 {
 h3 {
     color: $color--black;
     font-family: $font--heading;
-    font-size: $font-size-H3;
+    font-size: $fontSize__H3;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 1.8px;
@@ -58,7 +58,7 @@ h3 {
 .description p{
     color: $color--black;
     font-family: $font--heading;
-    font-size: $font-size-M;
+    font-size: $fontSize__M;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 1.4px;
@@ -68,7 +68,7 @@ h3 {
 p , li {
     color: $color--black;
     font-family: $font--body;
-    font-size: $font-size-M;
+    font-size: $fontSize__M;
     font-weight: 300;
     font-style: normal;
 }
@@ -113,7 +113,7 @@ header {
     display: block;
     border: 0;
     background-color: transparent;
-    margin-right: $margeXm;
+    margin-right: $margeX--m;
     & > .line {
         height: 2px;
         background-color: $color--black;
@@ -171,10 +171,10 @@ footer {
         max-width: 85% ;
     }
     .logo {
-        margin-left: $margeXm;
+        margin-left: $margeX--m;
     }
     nav {
-        margin-right: $margeXm;    
+        margin-right: $margeX--m;    
     }
 }
 
@@ -193,11 +193,11 @@ footer {
 @media screen and (max-width: #{$breakpoint__large_phone}) {
     h1{
         color: $color--black;
-        font-size: $font-size-H1m;
+        font-size: $fontSize__H1--m;
         text-shadow: none;
     }
     .hero > h1 {
-        font-size: $font-size-H1m;
+        font-size: $fontSize__H1--m;
     }
     @supports (-webkit-text-stroke: 1px $color--black) {
         h1 {
@@ -209,7 +209,7 @@ footer {
         }
     }
     h2 {
-        font-size: $font-size-H2m;
+        font-size: $fontSize__H2--m;
         line-height: 48px;
     }
     .logo {
@@ -229,7 +229,7 @@ footer {
         display: none;
         position: fixed;
         justify-content: center; 
-        margin-right: $margeXm;
+        margin-right: $margeX--m;
         margin-top: $headerY;
         height: calc(100vh - $headerY);
         width: 100vw;  
@@ -247,7 +247,7 @@ footer {
         & .menu {
             & a {
                 color: $color--white;
-                font-size: $font-size-H2m;
+                font-size: $fontSize__H2--m;
                 line-height: 1.1;
             }
         }

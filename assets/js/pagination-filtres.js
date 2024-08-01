@@ -1,9 +1,7 @@
-
 console.log('pagination-filtres.js load');
-// Code exécuté une fois le DOM entièrement chargé
-document.addEventListener('DOMContentLoaded', function() {
-    // Fonction pour gérer l'ouverture et la sélection des dropdowns : filtres
-    function openDropdown(dropdownId, switchId) {
+
+document.addEventListener('DOMContentLoaded', () => {
+    const openDropdown = (dropdownId, switchId) => {
         const dropdown = document.querySelector(`#${dropdownId}`);
         const toggle = dropdown.querySelector(`#${switchId}`);
 
@@ -25,31 +23,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === toggle || e.target.closest(`#${dropdownId}`)) return;
             toggle.checked = false;
         });
-    }
+    };
 
-    // Initialisation des dropdowns
-    function initDropdowns() {
+    const initDropdowns = () => {
         openDropdown("tri-categorie", "filter-switch-categorie");
         openDropdown("tri-format", "filter-switch-format");
         openDropdown("tri-date", "filter-switch-date");
-    }
+    };
 
-    //////////////////////////////////////////////////
-        
-    // Fonction pour initialiser les événements sur les éléments de filtre
-    function initEventItems(elements, callback) {
-        elements.forEach(function (element) {
-            element.addEventListener("click", function() {
+    const initEventItems = (elements, callback) => {
+        elements.forEach(element => {
+            element.addEventListener("click", () => {
                 callback(element);
             });
         });
-    }
+    };
 
     let currentPage = 1; 
-    let totalPhotos = 0; //  nombre total de photos selectionnées par filtres
+    let totalPhotos = 0; 
 
-    // Fonction pour effectuer la requête AJAX et mettre à jour le catalogue
-    function newCatalog(category, format, order, page = 1, append = false) {
+    const newCatalog = (category, format, order, page = 1, append = false) => {
         jQuery.ajax({
             url: myAjax.ajaxurl,
             method: 'POST',
@@ -61,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 page: page,
                 nonce: myAjax.nonce
             },
-            success: function(response) {
+            success: (response) => {
                 if (response.success) {
                     if (page === 1 || !append) {
                         catalogItems.innerHTML = response.data.html;
@@ -72,24 +65,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     totalPhotosCount.textContent = `Total photos: ${totalPhotos}`;
                     compterChargerPlus(totalPhotos);
 
-                    // réintialisation des fonctions déjà exécutées
-                     //lightbox
-                    document.dispatchEvent(new Event('ajaxComplete')); // events scroll-arrow.js
+                    document.dispatchEvent(new Event('ajaxComplete'));
+                    document.dispatchEvent(new CustomEvent('refreshLightboxEvents'));
                 } else {
                     console.log('Erreur dans la réponse Ajax');
                 }
             },
-            error: function(error) {
+            error: (error) => {
                 console.log(error);
             }
         });
-    }
+    };
 
-    // Fonction pour gérer l'affichage du bouton "Charger Plus"
-    function compterChargerPlus(total) {
+    const compterChargerPlus = (total) => {
         const nombrePhotosAffichees = catalogItems.querySelectorAll('.block__photo').length;
         BtnChargerPlus.style.display = (nombrePhotosAffichees < total) ? 'block' : 'none';
-    }
+    };
 
     const elementsCategorie = document.querySelectorAll('#tri-categorie .dropdown__select-option');
     const elementsFormats = document.querySelectorAll('#tri-format .dropdown__select-option');
@@ -102,10 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let itemsFormat = 'all';
     let itemsTri = 'all';
 
-    // Initialisation des dropdowns
     initDropdowns();
 
-    // Initialisation des événements des filtres
     initEventItems(elementsCategorie, (element) => {
         itemsCategorie = element.id;
         currentPage = 1;
@@ -124,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
     });
 
-    // Événement pour le bouton "Charger Plus"
     BtnChargerPlus.addEventListener('click', () => {
         currentPage++;
         newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
@@ -138,18 +126,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const formatFull = document.getElementById('format-full');
     const triFull = document.getElementById('date-full');
 
-    // Fonction pour réinitialiser les filtres
-    function resetFilter(elementFull, elements, label, setDefaultValue) {
-        elementFull.addEventListener("click", function() {
+    const resetFilter = (elementFull, elements, label, setDefaultValue) => {
+        elementFull.addEventListener("click", () => {
             setDefaultValue();
             elements.forEach(element => element.classList.remove('dropdown__select-option--selected'));
             label.textContent = elementFull.textContent;
             currentPage = 1;
             newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
         });
-    }
+    };
 
-    // Réinitialisation des filtres pour chaque type de filtre
     resetFilter(categorieFull, elementsCategorie, categorieLabel, () => itemsCategorie = 'all');
     resetFilter(formatFull, elementsFormats, formatLabel, () => itemsFormat = 'all');
     resetFilter(triFull, elementsTri, dateLabel, () => itemsTri = 'all');

@@ -14,13 +14,31 @@
     background-color: rgba($color--black, 0.8); 
     animation: show 0.5s ease-in-out;
     z-index: $zIndex__lightbox;
+    &__open{
+        max-width: 100%;
+        max-height: 100%;
+        @extend %flex-center;
+        margin-left: 160px;
+        margin-right: 160px;
+        margin-top: 40px;
+        overflow: auto; 
+        // overflow: scroll; 
+        z-index: $zIndex__lightbox__img;     
+        & img{
+            animation: show 0.8s ease-in-out;
+            max-width: 100%;
+            height: auto;
+        }
+    } 
+    & button{
+        cursor: pointer;
+        border: none;   
+        background: transparent;   
+    }
     &__close{
         position: absolute;
         top: 50px;
         right: 50px;
-        background: none;
-        border: none;        
-        cursor: pointer;
         z-index: $zIndex__lightbox__btnClose;          
         & > span{
             color: $color--white;      
@@ -35,65 +53,79 @@
             }        
         }  
     }
-    &__open{
-        width: 100%;
-        max-height: 100%;
-        @extend %flex-center;
-        overflow: scroll;      
-        &::-webkit-scrollbar{
-            width: 0;
-            height: 0;
-        }
-        & img{
-            animation: show 0.8s ease-in-out;
-            @extend %flex-center;
-            object-fit: cover;
-        }
-    } 
+
     &__arrows{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        position: fixed;  
-        //height pour extension zone activable
-        height: 80%;      
         &--previous, &--next {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: fixed;  
+            //height pour extension zone activable
+            height: 100%;
             @extend %flex-center;
-            gap: 20px;
             z-index: $zIndex__lightbox__arrows;
-            cursor: pointer;
+            & >img{
+                padding:10px;
+            }
             & >p{
                 color: $color--white;
                 font-family: $font--heading;  
                 font-weight: 400;
                 font-style: normal;
-                font-size: $font-size-H3;
-            }
-            &:hover{
-                color: $color--red;   
-            }
-        }
-        &--previous{
-            padding-left: 20px; 
-        }
-        &--next{
-            padding-right: 20px;
+                font-size: $fontSize__M;
+                padding:40px;
+                &:hover{
+                color: $color--grey;   
+                }
+            }           
         }
     }
     &__infos {       
-        width: 100%;
+        width: 70%;
         display: flex;
         justify-content: space-between;
         & p {
             color: $color--white;
             text-transform: uppercase;
-            margin-bottom: 0;
-            padding: 0 20px;
-        }         
+            margin-bottom: 5px;
+        } 
         &--Categorie {
-        font-family: $font--heading ;
-        letter-spacing: 1.4px;
+            font-family: $font--heading ;
+            letter-spacing: 1.4px;  
         } 
     }
 }
 
+@media screen and (max-width: #{$breakpoint__laptop}) {
+    .lightbox{
+        &__open{
+            margin-left: 40px;
+            margin-right: 40px; 
+        } 
+
+        &__arrows{
+            z-index: $zIndex__lightbox__arrows--m; 
+        }
+    }
+}
+
+@media screen and (max-width: #{$breakpoint__large_phone}) {
+    .lightbox{
+        &__open{
+            margin-left: 0px;
+            margin-right: 0px; 
+            margin-top: 0px;
+        } 
+        &__arrows{
+            &--previous, &--next {
+                & >img{
+                    @include circle-icon(20px, rgba($color--black, 0.6));
+                    padding: 2px;
+                    }
+                & >p{
+                    display: none;
+                    }
+                }           
+            }   
+        }
+    }

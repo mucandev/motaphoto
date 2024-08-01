@@ -1,6 +1,3 @@
-
-
-
 <?php
     // template block-photo
 
@@ -34,10 +31,12 @@
         }
 ?>
 <div class="block">
+    <div class="block__link">
+        <?= $lien_post; ?>
+    </div>
     <div class="block__photo">
         <?= $photo_post; ?>
     </div>
-
     <div class="blockSurvol">
         <div class="blockSurvol__overlay">
             <button class="blockSurvol__iconLightbox" type="button"  data-full-image="<?= $photo_post_full[0]; ?>">

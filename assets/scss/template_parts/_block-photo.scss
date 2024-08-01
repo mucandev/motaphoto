@@ -7,6 +7,11 @@
     position: relative;
     overflow: hidden;
     background: rgba($color--palegrey, 0.5);
+    &__link{
+        opacity: 0;
+        position: absolute;
+        color: $color--white; 
+    }
     &__photo {
         width: 100%;
         height: 100%;

@@ -1,54 +1,71 @@
-console.log ('lightbox.js load');
+document.addEventListener('DOMContentLoaded', () => {
+    attachLightboxEvents();
 
-const openLightbox = document.querySelectorAll('#icon-lightbox');
-console.log('icon openLightbox', openLightbox)
+    document.addEventListener('refreshLightboxEvents', () => {
+        attachLightboxEvents();
+    });
+});
 
-for (let i=0; i<openLightbox.length; i++) {
-    openLightbox[i].addEventListener( "click", (e) =>{
-        console.log (`j'ai cliqué sur ${e.target.alt}`, [i])
-    })
-}
-
-document.addEventListener('DOMContentLoaded', function () {
+const attachLightboxEvents = () => {
     const lightbox = document.querySelector('.lightbox');
     const lightboxImage = lightbox.querySelector('.lightbox__image');
     const lightboxRef = lightbox.querySelector('.lightbox__infos--Ref');
     const lightboxCategorie = lightbox.querySelector('.lightbox__infos--Categorie');
     const closeBtn = lightbox.querySelector('.lightbox__close');
+    const prevBtn = lightbox.querySelector('.lightbox__arrows--previous');
+    const nextBtn = lightbox.querySelector('.lightbox__arrows--next');
 
-    document.querySelectorAll('.blockSurvol__iconLightbox').forEach(function (trigger) {
-        trigger.addEventListener('click', function (event) {
-            event.preventDefault();
-            const fullImage = trigger.getAttribute('data-full-image');
-            const ref = trigger.closest('.blockSurvol').querySelector('.blockSurvol__infos--Ref p').innerText;
-            const categorie = trigger.closest('.blockSurvol').querySelector('.blockSurvol__infos--Categorie p').innerText;
+    const images = [];
+    document.querySelectorAll('.blockSurvol__iconLightbox').forEach((trigger, index) => {
+        const fullImage = trigger.getAttribute('data-full-image');
+        const ref = trigger.closest('.blockSurvol').querySelector('.blockSurvol__infos--Ref p').innerText;
+        const categorie = trigger.closest('.blockSurvol').querySelector('.blockSurvol__infos--Categorie p').innerText;
 
-            lightboxImage.src = fullImage;
-            lightboxRef.innerText = ref;
-            lightboxCategorie.innerText = categorie;
-            lightbox.style.display = 'flex';
+        images.push({ fullImage, ref, categorie });
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLightbox(index);
         });
     });
 
-    closeBtn.addEventListener('click', function () {
+    let currentIndex = 0;
+
+    const openLightbox = (index) => {
+        if (index < 0 || index >= images.length) {
+            console.error(`Invalid index: ${index}`);
+            return;
+        }
+
+        currentIndex = index;
+        const image = images[currentIndex];
+
+        if (!image) {
+            console.error(`Image not found at index: ${currentIndex}`);
+            return;
+        }
+
+        lightboxImage.src = image.fullImage;
+        lightboxRef.innerText = image.ref;
+        lightboxCategorie.innerText = image.categorie;
+        lightbox.style.display = 'flex';
+    };
+
+    const changeImage = (direction) => {
+        const newIndex = (currentIndex + direction + images.length) % images.length;
+        openLightbox(newIndex);
+    };
+
+    prevBtn.addEventListener('click', () => changeImage(-1));
+    nextBtn.addEventListener('click', () => changeImage(1));
+    closeBtn.addEventListener('click', () => {
         lightbox.style.display = 'none';
     });
 
-    lightbox.addEventListener('click', function (event) {
-        if (event.target === lightbox) {
+    lightbox.addEventListener('click', (e) => {
+        console.log("Lightbox clicked, target: ", e.target);
+        if (e.target === lightbox) {
             lightbox.style.display = 'none';
         }
     });
-});
-
-
-
-
-
-
-
-
-
-// const reference = element.querySelector('.blockSurvol__infos--Ref');
-// const categorie = element.querySelector('.blockSurvol__infos--Categorie');
-
+};

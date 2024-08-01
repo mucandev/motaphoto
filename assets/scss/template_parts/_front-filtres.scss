@@ -27,7 +27,7 @@
         transition: .3s;
         &-selected{
             text-transform: uppercase;
-            font-size: $font-size-S; 
+            font-size: $fontSize__S; 
             font-weight: 400;
         }		
         &:focus {
@@ -74,7 +74,7 @@
         background-color: $color--white;
         border-bottom: 1px solid $color--cleargrey;
         transition: .3s;
-        font-size: $font-size-S; 
+        font-size: $fontSize__S; 
         font-weight: 400;
         &:last-of-type {
             border-bottom: 0;
