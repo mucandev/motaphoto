@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuLinks.forEach((menuLink, index) => {
             menuLink.addEventListener("click", (e) => {
-            console.log(`j'ai cliqué sur ${e.target.textContent}`);
             openModal = false;
             closeMenu();
             });

@@ -16,16 +16,11 @@ Text Domain: motaphoto
 @import 'tools/_variables-mixins';
 @import 'tools/_animations-mixins';
 
-
 @import 'theme';
 @import 'front-page';
-<<<<<<< HEAD
 
 // Import template_part
 @import 'template_parts/_front-filtres.scss';
-=======
-@import 'front_filtres';
->>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
 @import 'template_parts/_scroll-arrows';
 @import 'template_parts/_modale';
 @import 'template_parts/_lightbox.scss';

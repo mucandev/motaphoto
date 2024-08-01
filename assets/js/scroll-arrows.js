@@ -49,6 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Custom event listener for AJAX updates
     document.addEventListener('ajaxComplete', function () {
-        setTimeout(toggleScrollArrows, 100); // Adjust delay if needed
+        setTimeout(toggleScrollArrows, 100); 
     });
 });

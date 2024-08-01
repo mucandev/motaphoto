@@ -7,15 +7,6 @@
     position: relative;
     overflow: hidden;
     background: rgba($color--palegrey, 0.5);
-<<<<<<< HEAD
-    &__link{
-=======
-    &__linkPhoto{
->>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
-        opacity: 0;
-        position: absolute;
-        color: $color--white; 
-    }
     &__photo {
         width: 100%;
         height: 100%;
@@ -36,7 +27,6 @@
     &:hover {
         opacity: 1;
     }
-    
     &__overlay {
         width: 100%;
         height: 100%;
@@ -71,4 +61,3 @@
         } 
     }
 }
-

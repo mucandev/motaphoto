@@ -26,32 +26,19 @@ $fontSize__H2: 2.57rem; /*36px */
 $fontSize__H2info--m: 3.28rem; /*46px */
 $fontSize__H2info: 4.71rem; /*66px */
 
-<<<<<<< HEAD:assets/scss/tools/_variables-mixins.scss
 $fontSize__H1--m: 1.97rem; /*27.6px */
 $fontSize__H1: 3.28rem; /*46px */
 $fontSize__H1--hero: 6.86rem; /*96px */
-=======
+
 $font-size-H1m: 1.97rem; /*27.6px */
 $font-size-H1: 3.28rem; /*46px */
 $font-size-H1-hero: 6.86rem; /*96px */
 
-// variables CSS globales récupérables en javascript
-// :root {
-     // breakpoints 
-    // --breakpoint__desktop: 1192px;
-    // --breakpoint__tablet: 768px;
-    // --breakpoint__large_phone: 576px;
-    // --breakpoint__small_phone: 480px;
-// }
->>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b:assets/scss/_variables-mixins.scss
 
 
 // breakpoints
 $breakpoint__desktop: 1192px;
-<<<<<<< HEAD:assets/scss/tools/_variables-mixins.scss
 $breakpoint__laptop: 1040px;
-=======
->>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b:assets/scss/_variables-mixins.scss
 $breakpoint__tablet: 768px;
 $breakpoint__large_phone: 576px;
 $breakpoint__small_phone: 480px;
@@ -72,24 +59,10 @@ $current_height_blockPhoto: 495px;
 
 //z-index-
 $zIndex__frontPage__h1hero: 1;
-<<<<<<< HEAD:assets/scss/tools/_variables-mixins.scss
 $zIndex__frontFilters_dropdown__select: 3;
 $zIndex__scroll-arrows: 5;
 
 $zIndex__infosPhoto__arrowsNav: 12;
-=======
-$zIndex__lightbox: 2;
-$zIndex__modale: 3;
-$zIndex__NavMobileMenu: 5;
-$zIndex__frontFilters_dropdown__select: 8;
-
-$zIndex__scroll-arrow: 10;
-$zIndex__infos__arrowsNav: 11;
-$zIndex__lightbox__arrows: 12;
-$zIndex__lightbox__btnClose: 22;
-$zIndex__modale__btnClose: 23;
-$zIndex__modale__overlay: 33;
->>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b:assets/scss/_variables-mixins.scss
 
 $zIndex__lightbox: 20;
 $zIndex__lightbox__arrows: 22;

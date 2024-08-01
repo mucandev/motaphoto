@@ -63,7 +63,6 @@ const attachLightboxEvents = () => {
     });
 
     lightbox.addEventListener('click', (e) => {
-        console.log("Lightbox clicked, target: ", e.target);
         if (e.target === lightbox) {
             lightbox.style.display = 'none';
         }
