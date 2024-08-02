@@ -33,7 +33,14 @@ function filtrer_paginer_catalogue() {
             'terms' => $format,
         );
     }
-
+    // Validation du paramètre order(sinon charger plus bugge en initial)
+    switch ($order) {
+        case 'ASC':
+        case 'DESC':
+            break;
+        default:
+            $order = 'ASC';
+    }
     // Arguments de la requête WP_Query
     $args = array(
         'post_type' => 'photographies', 

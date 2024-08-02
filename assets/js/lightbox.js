@@ -58,9 +58,7 @@ const attachLightboxEvents = () => {
 
     prevBtn.addEventListener('click', () => changeImage(-1));
     nextBtn.addEventListener('click', () => changeImage(1));
-    closeBtn.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-    });
+    closeBtn.addEventListener('click', () => { lightbox.style.display = 'none';});
 
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {

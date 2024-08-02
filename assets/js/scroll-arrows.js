@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+        // AJAX updates
+        document.addEventListener('refreshLightboxEvents', () => {
+            setTimeout(toggleScrollArrows, 100); 
+        });
+
+
     const scrollDown = document.getElementById('scroll-down');
     const scrollUp = document.getElementById('scroll-up');
     const scrollThreshold = 200; // Adjust this value as needed
@@ -25,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Scroll down on arrow click
-    scrollDown.addEventListener('click', function () {
+    scrollDown.addEventListener('click', () => {
         window.scrollBy({
             top: window.innerHeight,
             left: 0,
@@ -34,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Scroll up on arrow click
-    scrollUp.addEventListener('click', function () {
+    scrollUp.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             left: 0,
@@ -47,8 +53,4 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', toggleScrollArrows);
     window.addEventListener('scroll', toggleScrollArrows);
 
-    // Custom event listener for AJAX updates
-    document.addEventListener('refreshLightboxEvents', function () {
-        setTimeout(toggleScrollArrows, 100); 
-    });
 });

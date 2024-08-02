@@ -20,7 +20,6 @@ function motaphoto_enqueue_assets() {
     //  Chargement des scripts JS
     wp_enqueue_script('jquery');
     wp_enqueue_script('script-modale', get_template_directory_uri() . '/assets/js/modale.js', array(),null, true);
-    wp_enqueue_script('script-block-photo', get_template_directory_uri() . '/assets/js/block-photo.js', array(),null, true);
     wp_enqueue_script('script-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array(),null, true);
     wp_enqueue_script('script-lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array(),null, true);
     wp_enqueue_script('scripts', get_template_directory_uri() . '/assets/js/scripts.js', array(),null, true);

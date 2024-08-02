@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalPhotos = 0; 
 
     const newCatalog = (category, format, order, page = 1, append = false) => {
+
         jQuery.ajax({
             url: myAjax.ajaxurl,
             method: 'POST',

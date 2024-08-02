@@ -26,11 +26,7 @@
                 while ($photos_siblings->have_posts()) {
                     $photos_siblings->the_post();
                     // Affichage  template part
-<<<<<<< HEAD
                     get_template_part('template_parts/block-photo');                    
-=======
-                    get_template_part('template_parts/block-photo');
->>>>>>> 07594daf0c9365b2bd4c6c20539cb39c532f169b
                 }
                 wp_reset_postdata();
             }
