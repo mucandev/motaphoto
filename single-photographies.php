@@ -89,12 +89,12 @@ if ($custom_query->have_posts()) :
 
                     <?php if (!empty($previous_post)): ?>
                         <a href="<?= get_permalink($previous_post); ?>">
-                            <img class="arrow-left-img" src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
+                            <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
                         </a>
                     <!-- boucle-->
                     <?php else : $last_post = $last_post->posts[0]; ?>
                         <a href="<?= get_permalink($last_post); ?>">
-                            <img class="arrow-left-img" src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
+                            <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
                         </a>
                     <?php endif; ?>
                 </div>
@@ -117,13 +117,13 @@ if ($custom_query->have_posts()) :
 
                     <?php if (!empty($next_post)): ?>
                         <a href="<?= get_permalink($next_post); ?>">
-                            <img class="arrow-right-img" src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
+                            <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
                         </a>
 
                     <!-- boucle-->
                     <?php else : $first_post = $first_post->posts[0]; ?>
                         <a href="<?= get_permalink($first_post); ?>">
-                            <img class="arrow-right-img" src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
+                            <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
                         </a>
                     <?php endif; ?>
 

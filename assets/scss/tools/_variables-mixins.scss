@@ -7,9 +7,9 @@ $color--grey:#c4c4c4; //bordure field form
 $color--cleargrey:#d8d8d8;
 $color--palegrey:#e5e5e5;
 
-$color--red:#e00000;  //button selected
-$color--clearred:#fe5858;  //button pressing
-$color--palered:#ffd6d6;  //button hover
+$color--primary:#e00000;  //button selected
+$color--clearprimary:#fe5858;  //button pressing
+$color--paleprimary:#ffd6d6;  //button hover
 
 
 //fonts
@@ -65,7 +65,7 @@ $zIndex__scroll-arrows: 5;
 $zIndex__infosPhoto__arrowsNav: 12;
 
 $zIndex__lightbox: 20;
-$zIndex__lightbox__arrows: 22;
+$zIndex__lightbox__arrows: 24;//temp
 $zIndex__lightbox__img: 23;
 $zIndex__lightbox__arrows--m: 24;
 $zIndex__lightbox__btnClose: 25;

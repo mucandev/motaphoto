@@ -1,6 +1,9 @@
 console.log('pagination-filtres.js load');
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
+    //////////// FILTRES :  selections de filtrage
     const openDropdown = (dropdownId, switchId) => {
         const dropdown = document.querySelector(`#${dropdownId}`);
         const toggle = dropdown.querySelector(`#${switchId}`);
@@ -31,14 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         openDropdown("tri-date", "filter-switch-date");
     };
 
-    const initEventItems = (elements, callback) => {
-        elements.forEach(element => {
-            element.addEventListener("click", () => {
-                callback(element);
-            });
-        });
-    };
-
+    
+    ////////////  FILTRATION  ET PAGINATION :  requête AJAX de nouveaux catalogues sur sélection
     let currentPage = 1; 
     let totalPhotos = 0; 
 
@@ -64,9 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalPhotos = response.data.total;
                     totalPhotosCount.textContent = `Total photos: ${totalPhotos}`;
                     compterChargerPlus(totalPhotos);
-                    
-                    document.dispatchEvent(new Event('ajaxComplete'));
+                    //refresh Lightbox sur nouveau DOM (lightbox.js)
                     document.dispatchEvent(new CustomEvent('refreshLightboxEvents'));
+                    //refresh fleches défilement sur nouveau DOM (scroll-arrows.js)
+                    document.dispatchEvent(new Event('refreshArrowEvents'));
                 } else {
                     console.log('Erreur dans la réponse Ajax');
                 }
@@ -77,47 +75,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+     // Fonction pour gérer le bouton "Charger Plus"
     const compterChargerPlus = (total) => {
         const nombrePhotosAffichees = catalogItems.querySelectorAll('.block__photo').length;
-        BtnChargerPlus.style.display = (nombrePhotosAffichees < total) ? 'block' : 'none';
+        btnChargerPlus.style.display = (nombrePhotosAffichees < total) ? 'block' : 'none';
     };
-
+   // Mise à jour du catalogue en fonction des filtres :
     const elementsCategorie = document.querySelectorAll('#tri-categorie .dropdown__select-option');
     const elementsFormats = document.querySelectorAll('#tri-format .dropdown__select-option');
     const elementsTri = document.querySelectorAll('#tri-date .dropdown__select-option');
     const catalogItems = document.querySelector('.siblings-items');
-    const BtnChargerPlus = document.getElementById('charger-plus');
+    const btnChargerPlus = document.getElementById('charger-plus');
     const totalPhotosCount = document.getElementById('total-photos-count');
 
+     // Valeurs par défaut
     let itemsCategorie = 'all';
     let itemsFormat = 'all';
     let itemsTri = 'all';
 
     initDropdowns();
 
-    initEventItems(elementsCategorie, (element) => {
-        itemsCategorie = element.id;
-        currentPage = 1;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+    // détection  sélection dans "catégories" et filtrage en fonction
+    elementsCategorie.forEach(function (element) {
+        element.addEventListener("click", function() {
+            itemsCategorie = element.id;
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+        });
     });
 
-    initEventItems(elementsFormats, (element) => {
-        itemsFormat = element.id;
-        currentPage = 1;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+    // détection sélection dans "format" et filtrage en fonction
+    elementsFormats.forEach(function (element) {
+        element.addEventListener("click", function() {
+            itemsFormat = element.id;
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+        });
+    });
+    
+    // détection  sélection dans "tri" et filtrage en fonction
+    elementsTri.forEach(function (element) {
+        element.addEventListener("click", function() {
+            itemsTri = element.id;
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+        });
     });
 
-    initEventItems(elementsTri, (element) => {
-        itemsTri = element.id;
-        currentPage = 1;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
-    });
 
-    BtnChargerPlus.addEventListener('click', () => {
+    btnChargerPlus.addEventListener('click', () => {
         currentPage++;
         newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
     });
 
+    ////////////  FILTRES : reset des selections de filtrage
     const categorieLabel = document.querySelector('#tri-categorie .dropdown__filter-selected');
     const formatLabel = document.querySelector('#tri-format .dropdown__filter-selected');
     const dateLabel = document.querySelector('#tri-date .dropdown__filter-selected');

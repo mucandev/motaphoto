@@ -32,7 +32,6 @@
         }		
         &:focus {
             border-radius: 8px 8px 0px 0px ;
-            // background-color: $color--red;	
         }
     // curseur
         &::after {
@@ -81,14 +80,14 @@
             border-radius: 0px 0px 8px 8px ;
         }
         &:hover {
-            background-color: $color--palered;
+            background-color: $color--paleprimary;
         }
         &:active{
-            background-color: $color--clearred;
+            background-color: $color--clearprimary;
         }
         
         &--selected{
-            background-color: $color--red;
+            background-color: $color--primary;
             color:  $color--white;
         }        
     }	

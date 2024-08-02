@@ -17,13 +17,19 @@
 
     & button{
         cursor: pointer;
-        border: none;   
-        background: transparent;   
+        border: none;  
+        background-color: transparent; 
+        transition: 0.3s;
+        opacity: 0.8; 
+        &:hover{
+            opacity: 1;
+        }         
     }
     &__close{
         position: absolute;
         top: 50px;
         right: 50px;
+        background: transparent;   
         z-index: $zIndex__lightbox__btnClose;          
         & > span{
             color: $color--white;      
@@ -32,40 +38,24 @@
             justify-content: center;
             font-size: 50px;
             &:hover{      
-                color: $color--clearred;     
                 transform: rotate(90deg);            
                 transition: transform 0.2s ease-in-out;
             }        
         }  
     }
-    &__open{
-        max-width: 100%;
-        max-height: 100%;
-        @extend %flex-center;
-        margin-left: 160px;
-        margin-right: 160px;
-        margin-top: 40px;
-        overflow: auto; 
-        // overflow: scroll; 
-        z-index: $zIndex__lightbox__img;     
-        & img{
-            animation: show 0.8s ease-in-out;
-            max-width: 100%;
-            height: auto;
-        }
-    } 
     &__arrows{
         &--previous, &--next {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
+            width: 35px;
+            display: flex;            
+            align-items: center;
             position: fixed;  
+            top: 50px;        
             //height pour extension zone activable
             height: 100%;
             @extend %flex-center;
             z-index: $zIndex__lightbox__arrows;
             & >img{
-                padding:10px;
+                padding:0px;
             }
             & >p{
                 color: $color--white;
@@ -73,13 +63,35 @@
                 font-weight: 400;
                 font-style: normal;
                 font-size: $fontSize__M;
-                padding:40px;
-                &:hover{
-                color: $color--grey;   
-                }
-            }           
+                padding:35px;
+            } 
         }
-    }
+        &--previous {
+            left: 20px;
+            justify-content: start;
+        }   
+        &--next {
+            right: 20px;
+            justify-content: end;
+        }  
+    } 
+
+    &__open{
+        max-width:70%;
+        max-height: 100%;
+        @extend %flex-center;
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-top: 40px;
+        overflow: auto; 
+        z-index: $zIndex__lightbox__img;     
+        & img{
+            animation: show 0.8s ease-in-out;
+            max-width: 100%;
+            height: auto;
+            max-height: 110%;
+        }
+    } 
     &__infos {       
         width: 70%;
         display: flex;
@@ -96,37 +108,36 @@
     }
 }
 
+
 @media screen and (max-width: #{$breakpoint__laptop}) {
     .lightbox{
-        &__open{
-            margin-left: 40px;
-            margin-right: 40px; 
-        } 
-
         &__arrows{
             z-index: $zIndex__lightbox__arrows--m; 
         }
+        &__open{         
+            max-width:90%;
+            margin-right: 0px; 
+            margin-left: 0px;
+        } 
     }
-
 }
 
 @media screen and (max-width: #{$breakpoint__large_phone}) {
     .lightbox{
-        &__open{
-            margin-left: 0px;
-            margin-right: 0px; 
-            margin-top: 0px;
-        } 
         &__arrows{
             &--previous, &--next {
                 & >img{
                     @include circle-icon(20px, rgba($color--black, 0.6));
                     padding: 2px;
-                    }
+                }
                 & >p{
                     display: none;
-                    }
-                }           
-            }   
-        }
+                }
+            }           
+        }  
+
+        &__open{
+            margin-left: 0px;            
+        } 
     }
+}

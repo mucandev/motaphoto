@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', toggleScrollArrows);
 
     // Custom event listener for AJAX updates
-    document.addEventListener('ajaxComplete', function () {
+    document.addEventListener('refreshLightboxEvents', function () {
         setTimeout(toggleScrollArrows, 100); 
     });
 });

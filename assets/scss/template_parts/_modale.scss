@@ -27,9 +27,9 @@
     top: 50px;
     right: -17px;
     @extend %flex-center;
-    background: $color--clearred;
+    background: $color--clearprimary;
     border-radius: 20px;
-    border: 1px $color--clearred solid;
+    border: 1px $color--clearprimary solid;
     height: 30px;
     width: 30px;
     cursor: pointer;
@@ -110,7 +110,7 @@
 
     //messages field invalid
     &-not-valid-tip{
-        color: $color--clearred;  
+        color: $color--clearprimary;  
         position: absolute;
         bottom: 37px;
         left: 70px;   
@@ -126,7 +126,7 @@
         border-radius: 90px !important ;
         border: none !important;
         text-align: center;
-        background-color: $color--palered;
+        background-color: $color--paleprimary;
         position: absolute;  
         bottom: 40px;
         left: -40px;
@@ -135,7 +135,7 @@
         font-size: $fontSize__XS;      
         font-family: $font--body;    
         & form.invalid{
-            background-color: $color--clearred !important;
+            background-color: $color--clearprimary !important;
         }
     }
 }
@@ -151,7 +151,7 @@
 .wpcf7 form.invalid .wpcf7-response-output,
 .wpcf7 form.spam .wpcf7-response-output {
     color: $color--white;
-    background-color: $color--clearred !important;
+    background-color: $color--clearprimary !important;
     animation: ShakeX 200ms ease;
     animation-iteration-count: 2;
 }

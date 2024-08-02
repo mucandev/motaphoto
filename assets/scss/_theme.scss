@@ -233,7 +233,7 @@ footer {
         margin-top: $headerY;
         height: calc(100vh - $headerY);
         width: 100vw;  
-        background-color: $color--red;
+        background-color: $color--primary;
         z-index: $zIndex__NavMobileMenu;
 
         & .open{
