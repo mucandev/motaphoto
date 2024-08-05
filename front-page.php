@@ -13,7 +13,6 @@
 <section class="hero">
     <h1> Photographe Event</h1>
     <div class="hero-banner">
-        <!-- <?php get_template_part('/template_parts/front-banner'); ?> -->
         <?php get_template_part('/template_parts/front-banner_landscape'); ?>
     </div>
 </section>

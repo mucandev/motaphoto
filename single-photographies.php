@@ -32,7 +32,6 @@ if ($custom_query->have_posts()) :
     $annee = get_the_date('Y');
 ?>
 
-<!-- partie 1-->
 <section class="photo-choice"> 
     <div class="infos">
         <div class="description"> 
@@ -55,11 +54,9 @@ if ($custom_query->have_posts()) :
     endif;
     ?>
 
-    <!-- zone d'interactions -->
     <div class="interactions">
         <div class="interactions-contact">
             <p>Cette photo vous intéresse ?</p> 
-            <!-- appel de la modale contact avec numéro photo ref pré rempli  -->
             <button class="btn-contact" >Contact</button>
         </div>     
 
@@ -91,7 +88,7 @@ if ($custom_query->have_posts()) :
                         <a href="<?= get_permalink($previous_post); ?>">
                             <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
                         </a>
-                    <!-- boucle-->
+
                     <?php else : $last_post = $last_post->posts[0]; ?>
                         <a href="<?= get_permalink($last_post); ?>">
                             <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-left.svg' ?>" alt="previous" />
@@ -120,7 +117,6 @@ if ($custom_query->have_posts()) :
                             <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
                         </a>
 
-                    <!-- boucle-->
                     <?php else : $first_post = $first_post->posts[0]; ?>
                         <a href="<?= get_permalink($first_post); ?>">
                             <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow-right.svg' ?>" alt="next" />
@@ -174,7 +170,6 @@ if ($custom_query->have_posts()) :
                 if ($photos_siblings->have_posts()) {
                     while ($photos_siblings->have_posts()) {
                         $photos_siblings->the_post();
-                        // Affichage  template part
                         get_template_part('template_parts/block-photo');
                     }
                     wp_reset_postdata();

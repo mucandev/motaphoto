@@ -9,10 +9,20 @@ function filtrer_paginer_catalogue() {
 
     // Initialisation de la requête taxonomique
     $tax_query = array('relation' => 'AND');
-    // Récupération de l'ordre de tri, par défaut 'ASC'
-    $order = $_POST['order'] ?? 'ASC';
+    
     // Récupération de la page actuelle pour la pagination, par défaut 1
-    $paged = $_POST['page'] ?? 1;
+    $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'ASC';
+    // Validation du paramètre order(sinon "charger plus" dysfonctionne)
+    switch ($order) {
+        case 'ASC':
+        case 'DESC':
+            break;
+        default:
+            $order = 'ASC';
+    }
+
+    // Récupération de l'ordre de tri, par défaut 'ASC'
+    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
     // Ajout du filtre de catégorie si présent
     if (isset($_POST['category']) && $_POST['category'] !== 'all') {
@@ -33,14 +43,7 @@ function filtrer_paginer_catalogue() {
             'terms' => $format,
         );
     }
-    // Validation du paramètre order(sinon charger plus bugge en initial)
-    switch ($order) {
-        case 'ASC':
-        case 'DESC':
-            break;
-        default:
-            $order = 'ASC';
-    }
+
     // Arguments de la requête WP_Query
     $args = array(
         'post_type' => 'photographies', 

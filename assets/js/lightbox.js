@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', () => {
     attachLightboxEvents();
 
@@ -49,6 +51,9 @@ const attachLightboxEvents = () => {
         lightboxRef.innerText = image.ref;
         lightboxCategorie.innerText = image.categorie;
         lightbox.style.display = 'flex';
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', handleKeydown);
     };
 
     const changeImage = (direction) => {
@@ -56,13 +61,31 @@ const attachLightboxEvents = () => {
         openLightbox(newIndex);
     };
 
+    const closeLightbox = () => {
+        lightbox.style.display = 'none';
+        // Remove keyboard navigation when the lightbox is closed
+        document.removeEventListener('keydown', handleKeydown);
+    };
+
+    const handleKeydown = (e) => {
+        if (e.key === 'ArrowLeft') {
+            changeImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    };
+
+    closeBtn.addEventListener('click', closeLightbox);
+
     prevBtn.addEventListener('click', () => changeImage(-1));
+    
     nextBtn.addEventListener('click', () => changeImage(1));
-    closeBtn.addEventListener('click', () => { lightbox.style.display = 'none';});
 
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
-            lightbox.style.display = 'none';
+            closeLightbox();
         }
     });
 };

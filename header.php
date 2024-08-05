@@ -36,7 +36,7 @@
 			<span class="line"></span>
 			<span class="line"></span>
 		</button>
-		<nav id="nav-menu">
+		<nav id="nav-menu" role="navigation">
 			<?php
 			wp_nav_menu(array(
 				'theme_location' =>	'menu_principal',

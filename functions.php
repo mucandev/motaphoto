@@ -28,7 +28,7 @@ function motaphoto_enqueue_assets() {
 
     //  scripts JS accueil
     if(is_home(  )){ 
-        wp_enqueue_script('script-pagination-filtres', get_template_directory_uri() . '/assets/js/pagination-filtres.js', array(),null, true);  
+        wp_enqueue_script('script-pagination-filtres', get_template_directory_uri() . '/assets/js/pagination-filtres.js', array('jquery'),null, true);  
         wp_localize_script('script-pagination-filtres', 'myAjax', array( 
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('ajax-nonce') // Ajout de la génération de nonce            
@@ -82,3 +82,54 @@ function motaphoto_custom_thumbnails_sizes() {
 }
 add_action( 'after_setup_theme', 'motaphoto_custom_thumbnails_sizes' );
 
+// custom color palette
+function motaphoto_setup_theme_supported_colors() {
+    add_theme_support('editor-color-palette', array(
+        array(
+            'name'  => __('White', 'motaphoto'),
+            'slug'  => 'white',
+            'color' => '#ffffff',
+        ),
+        array(
+            'name'  => __('Black', 'motaphoto'),
+            'slug'  => 'black',
+            'color' => '#000000',
+        ),
+        array(
+            'name'  => __('Deep Grey', 'motaphoto'),
+            'slug'  => 'deepgrey',
+            'color' => '#313144',
+        ),
+        array(
+            'name'  => __('Grey', 'motaphoto'),
+            'slug'  => 'grey',
+            'color' => '#c4c4c4',
+        ),
+        array(
+            'name'  => __('Clear Grey', 'motaphoto'),
+            'slug'  => 'cleargrey',
+            'color' => '#d8d8d8',
+        ),
+        array(
+            'name'  => __('Pale Grey', 'motaphoto'),
+            'slug'  => 'palegrey',
+            'color' => '#e5e5e5',
+        ),
+        array(
+            'name'  => __('Primary', 'motaphoto'),
+            'slug'  => 'primary',
+            'color' => '#e00000',
+        ),
+        array(
+            'name'  => __('Clear Primary', 'motaphoto'),
+            'slug'  => 'clearprimary',
+            'color' => '#fe5858',
+        ),
+        array(
+            'name'  => __('Pale Primary', 'motaphoto'),
+            'slug'  => 'paleprimary',
+            'color' => '#ffd6d6',
+        ),
+    ));
+}
+add_action('after_setup_theme', 'motaphoto_setup_theme_supported_colors');

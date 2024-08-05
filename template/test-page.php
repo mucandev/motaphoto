@@ -16,6 +16,7 @@
     <div class="siblings-items">
     
         <?php
+  
             $photos_siblings = new WP_Query(array(
                 'post_type' => 'photographies',
                 'posts_per_page' => 1,
@@ -31,6 +32,9 @@
                 wp_reset_postdata();
             }
         ?>
+
+
+
     </div>
 </section> 
 

@@ -1,8 +1,10 @@
+'use strict';
+
 console.log ('mobile-menu.js load');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 768) {
         const btnBurgerMenu = document.querySelector('.menu-toggle');
         const mobileMenu = document.querySelector('nav');
         const menuLinks = document.querySelectorAll("nav ul a");
@@ -20,17 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btnBurgerMenu.setAttribute('aria-expanded', 'true');
             mobileMenu.classList.add('open');
             mobileMenu.classList.remove('fadeOut');
-            mobileMenu.classList.add('slideUp');
+            mobileMenu.classList.add('slideRight');
         }
 
         function closeMenu() {
             btnBurgerMenu.classList.remove('active');
             btnBurgerMenu.setAttribute('aria-expanded', 'false');
-            mobileMenu.classList.remove('slideUp');
+            mobileMenu.classList.remove('slideRight');
             mobileMenu.classList.add('fadeOut');
+            mobileMenu.classList.remove('open');
             setTimeout(() => {
             mobileMenu.classList.remove('open');
-            }, 500);
+            }, 200);
         }
 
         //toggle principal

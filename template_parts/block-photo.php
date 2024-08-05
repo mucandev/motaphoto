@@ -36,17 +36,17 @@
     </div>
     <div class="blockSurvol">
         <div class="blockSurvol__overlay">
-            <button class="blockSurvol__iconLightbox" type="button"  data-full-image="<?= $photo_post_full[0]; ?>">
+            <button class="blockSurvol__iconLightbox" type="button" aria-label="ouvrir une lightbox sur la photo : <?php the_title(); ?>" data-full-image="<?= $photo_post_full[0]; ?>">
                 <img src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-lightbox.svg' ?>" alt="lightbox" />
             </button>
-            <a class="blockSurvol__iconEye" href=" <?= $lien_post; ?>" aria-label="<?php the_title(); ?>">
+            <a class="blockSurvol__iconEye" href=" <?= $lien_post; ?>" aria-label="obtenir les infos de la photo : <?php the_title(); ?>">
                 <img id="icon-eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" alt="Afficher les infos de la photo" />
             </a>
             <div class="blockSurvol__infos">
-                <div class="blockSurvol__infos--Ref">
+                <div class="blockSurvol__infos--Ref" aria-label="référence de la photo : <?php the_title(); ?>">
                     <p><?= $reference_photo ?></p>
                 </div>
-                <div class="blockSurvol__infos--Categorie">
+                <div class="blockSurvol__infos--Categorie" aria-label="catégorie de la photo : <?php the_title(); ?>">
                     <p><?=  $liste_categories ?></p>
                 </div>
             </div>

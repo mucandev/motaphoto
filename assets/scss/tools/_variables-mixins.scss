@@ -30,12 +30,6 @@ $fontSize__H1--m: 1.97rem; /*27.6px */
 $fontSize__H1: 3.28rem; /*46px */
 $fontSize__H1--hero: 6.86rem; /*96px */
 
-$font-size-H1m: 1.97rem; /*27.6px */
-$font-size-H1: 3.28rem; /*46px */
-$font-size-H1-hero: 6.86rem; /*96px */
-
-
-
 // breakpoints
 $breakpoint__desktop: 1192px;
 $breakpoint__laptop: 1040px;
@@ -93,12 +87,21 @@ $zIndex__NavMobileMenu: 50;
 }
 
 //----------------------- mixin
-@mixin Position($position, $top, $right, $bottom, $left){
+
+@mixin Position($position, $top: auto, $right: auto, $bottom: auto, $left: auto) {
     position: $position;
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
+    @if $top != auto {
+        top: $top;
+    }
+    @if $right != auto {
+        right: $right;
+    }
+    @if $bottom != auto {
+        bottom: $bottom;
+    }
+    @if $left != auto {
+        left: $left;
+    }
 }
 
 @mixin submit ($width){

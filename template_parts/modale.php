@@ -1,14 +1,14 @@
 <div id="contact-overlay">
     <div class="contact-popup">
         <button class="close-btn" aria-controls="contact-popup" aria-expanded="false" aria-label="contact" type="button">
-            <span class="dashicons dashicons-no-alt"></span>
+            <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/cross-white.svg' ?>"/> 
         </button>
         <div class="title-contact">
             <div class="title-contact-top">
-                <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>
+                <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/contact-line.svg' ?>"/>
             </div>
             <div class="title-contact-bottom">
-                    <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/Contact line.svg' ?>"/>  
+                    <img  src="<?= get_stylesheet_directory_uri() . '/assets/images/contact-line.svg' ?>"/>  
             </div>
         </div>
 

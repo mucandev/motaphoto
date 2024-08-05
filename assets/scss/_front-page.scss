@@ -38,8 +38,8 @@
         column-gap: $gapM;
         row-gap: $gapS;
         position: relative;  
-        > div { 
-        width: calc(50% - ($gapM/2));        
+        > menu { 
+            width: calc(50% - ($gapM/2));        
         }
     }
 
@@ -74,7 +74,7 @@
                 width: $current_width_blockPhoto;
                 flex-direction: column-reverse;
                 align-items: center;
-                > div {
+                > menu {
                     width: 70%;
                     min-width: 250px;
                 }

@@ -1,3 +1,5 @@
+'use strict';
+
 console.log ('modale.js load');
 
 // Gestion de la modale de contact

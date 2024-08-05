@@ -1,3 +1,5 @@
+'use strict';
+
 console.log('pagination-filtres.js load');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,11 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const label = dropdown.querySelector('.dropdown__filter-selected');
         const options = Array.from(dropdown.querySelectorAll('.dropdown__select-option'));
 
+        // Met à jour l'attribut aria-expanded du menu
+        toggle.addEventListener('change', () => {
+            const isChecked = toggle.checked;
+            dropdown.setAttribute('aria-expanded', isChecked ? 'true' : 'false');
+        });
+
         options.forEach((option) => {
             option.addEventListener('click', () => {
                 label.textContent = option.textContent;
-                options.forEach(opt => opt.classList.remove('dropdown__select-option--selected'));
+                options.forEach(opt => {
+                    opt.classList.remove('dropdown__select-option--selected');
+                    opt.setAttribute('aria-selected', 'false');
+                });
                 option.classList.add('dropdown__select-option--selected');
+                option.setAttribute('aria-selected', 'true');
                 toggle.checked = false;
             });
         });
@@ -25,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => {
             if (e.target === toggle || e.target.closest(`#${dropdownId}`)) return;
             toggle.checked = false;
+            dropdown.setAttribute('aria-expanded', 'false');
         });
     };
 
@@ -36,11 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     ////////////  FILTRATION  ET PAGINATION :  requête AJAX de nouveaux catalogues sur sélection
-    let currentPage = 1; 
-    let totalPhotos = 0; 
+    let currentPage = 1;
+    let totalPhotos = 0;
 
-    const newCatalog = (category, format, order, page = 1, append = false) => {
-
+    const newCatalog = (category, format, order = 'ASC', page = 1, reset = false) => {
         jQuery.ajax({
             url: myAjax.ajaxurl,
             method: 'POST',
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             success: (response) => {
                 if (response.success) {
-                    if (page === 1 || !append) {
+                    if (reset || page === 1) {
                         catalogItems.innerHTML = response.data.html;
                     } else {
                         catalogItems.insertAdjacentHTML('beforeend', response.data.html);
@@ -62,9 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalPhotos = response.data.total;
                     totalPhotosCount.textContent = `Total photos: ${totalPhotos}`;
                     compterChargerPlus(totalPhotos);
-                    //refresh Lightbox sur nouveau DOM (lightbox.js)
                     document.dispatchEvent(new CustomEvent('refreshLightboxEvents'));
-                    //refresh fleches défilement sur nouveau DOM (scroll-arrows.js)
                     document.dispatchEvent(new Event('refreshArrowEvents'));
                 } else {
                     console.log('Erreur dans la réponse Ajax');
@@ -76,12 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-     // Fonction pour gérer le bouton "Charger Plus"
     const compterChargerPlus = (total) => {
         const nombrePhotosAffichees = catalogItems.querySelectorAll('.block__photo').length;
         btnChargerPlus.style.display = (nombrePhotosAffichees < total) ? 'block' : 'none';
     };
-   // Mise à jour du catalogue en fonction des filtres :
+
     const elementsCategorie = document.querySelectorAll('#tri-categorie .dropdown__select-option');
     const elementsFormats = document.querySelectorAll('#tri-format .dropdown__select-option');
     const elementsTri = document.querySelectorAll('#tri-date .dropdown__select-option');
@@ -89,44 +98,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnChargerPlus = document.getElementById('charger-plus');
     const totalPhotosCount = document.getElementById('total-photos-count');
 
-     // Valeurs par défaut
     let itemsCategorie = 'all';
     let itemsFormat = 'all';
-    let itemsTri = 'all';
+    let itemsTri = 'ASC';
 
     initDropdowns();
 
-    // détection  sélection dans "catégories" et filtrage en fonction
     elementsCategorie.forEach(function (element) {
         element.addEventListener("click", function() {
             itemsCategorie = element.id;
-            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+            currentPage = 1; // Reset pagination
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
         });
     });
 
-    // détection sélection dans "format" et filtrage en fonction
     elementsFormats.forEach(function (element) {
         element.addEventListener("click", function() {
             itemsFormat = element.id;
-            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+            currentPage = 1; // Reset pagination
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
         });
     });
-    
-    // détection  sélection dans "tri" et filtrage en fonction
+
     elementsTri.forEach(function (element) {
         element.addEventListener("click", function() {
             itemsTri = element.id;
-            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+            currentPage = 1; // Reset pagination
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
         });
     });
 
-
     btnChargerPlus.addEventListener('click', () => {
         currentPage++;
-        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
+        newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
     });
 
-    ////////////  FILTRES : reset des selections de filtrage
     const categorieLabel = document.querySelector('#tri-categorie .dropdown__filter-selected');
     const formatLabel = document.querySelector('#tri-format .dropdown__filter-selected');
     const dateLabel = document.querySelector('#tri-date .dropdown__filter-selected');
@@ -138,14 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetFilter = (elementFull, elements, label, setDefaultValue) => {
         elementFull.addEventListener("click", () => {
             setDefaultValue();
-            elements.forEach(element => element.classList.remove('dropdown__select-option--selected'));
+            elements.forEach(element => {
+                element.classList.remove('dropdown__select-option--selected');
+                element.setAttribute('aria-selected', 'false');
+            });
             label.textContent = elementFull.textContent;
+            label.setAttribute('aria-selected', 'false');
             currentPage = 1;
-            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
+            newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage, true);
         });
     };
 
     resetFilter(categorieFull, elementsCategorie, categorieLabel, () => itemsCategorie = 'all');
     resetFilter(formatFull, elementsFormats, formatLabel, () => itemsFormat = 'all');
-    resetFilter(triFull, elementsTri, dateLabel, () => itemsTri = 'all');
+    resetFilter(triFull, elementsTri, dateLabel, () => itemsTri = 'ASC');
 });

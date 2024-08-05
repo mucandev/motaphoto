@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', () => {
         // AJAX updates
         document.addEventListener('refreshLightboxEvents', () => {
