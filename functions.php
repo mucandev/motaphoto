@@ -82,6 +82,27 @@ function motaphoto_custom_thumbnails_sizes() {
 }
 add_action( 'after_setup_theme', 'motaphoto_custom_thumbnails_sizes' );
 
+// Fonction pour modifier l'attribut 'alt' et 'title' de l'image mise en avant
+function motaphoto_custom_featured_image_attributes($attr, $attachment, $size) {
+    global $post;
+
+    if (isset($post) && $post->post_type == 'photographies') {
+        $post_title = get_the_title($post->ID);
+        $site_description = get_bloginfo('description');
+        
+        $custom_text = $post_title . ' - ' . $site_description;
+
+        $attr['alt'] = $custom_text;
+        $attr['title'] = $custom_text;
+    }
+
+    return $attr;
+}
+
+add_filter('wp_get_attachment_image_attributes', 'motaphoto_custom_featured_image_attributes', 10, 3);
+
+
+
 // custom color palette
 function motaphoto_setup_theme_supported_colors() {
     add_theme_support('editor-color-palette', array(

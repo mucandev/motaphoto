@@ -5,7 +5,9 @@ console.log('pagination-filtres.js load');
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    //////////// FILTRES :  selections de filtrage
+    //////////// FILTRES :  selections de filtrage/////////////
+
+    // Fonction pour ouvrir les menus déroulants
     const openDropdown = (dropdownId, switchId) => {
         const dropdown = document.querySelector(`#${dropdownId}`);
         const toggle = dropdown.querySelector(`#${switchId}`);
@@ -15,12 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const label = dropdown.querySelector('.dropdown__filter-selected');
         const options = Array.from(dropdown.querySelectorAll('.dropdown__select-option'));
 
-        // Met à jour l'attribut aria-expanded du menu
+        // Met à jour l'attribut aria-expanded selon l'état du menu
         toggle.addEventListener('change', () => {
             const isChecked = toggle.checked;
             dropdown.setAttribute('aria-expanded', isChecked ? 'true' : 'false');
         });
 
+        // Gestion du choix des options dans le menu
         options.forEach((option) => {
             option.addEventListener('click', () => {
                 label.textContent = option.textContent;
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Fermer le menu lors du clic à l'extérieur de celui-ci
         document.addEventListener('click', (e) => {
             if (e.target === toggle || e.target.closest(`#${dropdownId}`)) return;
             toggle.checked = false;
@@ -41,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Initialiser tous les menus déroulants
     const initDropdowns = () => {
         openDropdown("tri-categorie", "filter-switch-categorie");
         openDropdown("tri-format", "filter-switch-format");
@@ -52,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     let totalPhotos = 0;
 
+    // Fonction pour charger un nouveau catalogue via AJAX
     const newCatalog = (category, format, order = 'ASC', page = 1, reset = false) => {
         jQuery.ajax({
             url: myAjax.ajaxurl,
@@ -86,11 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Fonction pour gérer l'affichage du bouton "Charger plus"
     const compterChargerPlus = (total) => {
         const nombrePhotosAffichees = catalogItems.querySelectorAll('.block__photo').length;
         btnChargerPlus.style.display = (nombrePhotosAffichees < total) ? 'block' : 'none';
     };
 
+    // Sélecteurs pour les options de filtrage
     const elementsCategorie = document.querySelectorAll('#tri-categorie .dropdown__select-option');
     const elementsFormats = document.querySelectorAll('#tri-format .dropdown__select-option');
     const elementsTri = document.querySelectorAll('#tri-date .dropdown__select-option');
@@ -104,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initDropdowns();
 
+    // Ajouter des écouteurs pour le filtrage et la pagination
     elementsCategorie.forEach(function (element) {
         element.addEventListener("click", function() {
             itemsCategorie = element.id;
@@ -128,11 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Gestion du clic sur le bouton "Charger plus"
     btnChargerPlus.addEventListener('click', () => {
         currentPage++;
         newCatalog(itemsCategorie, itemsFormat, itemsTri, currentPage);
     });
 
+
+    //////////// FILTRES :  reset /////////////
+
+     // Sélecteurs pour nettoyer les options de filtrage
     const categorieLabel = document.querySelector('#tri-categorie .dropdown__filter-selected');
     const formatLabel = document.querySelector('#tri-format .dropdown__filter-selected');
     const dateLabel = document.querySelector('#tri-date .dropdown__filter-selected');
@@ -141,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatFull = document.getElementById('format-full');
     const triFull = document.getElementById('date-full');
 
+    // Réinitialiser les filtres
     const resetFilter = (elementFull, elements, label, setDefaultValue) => {
         elementFull.addEventListener("click", () => {
             setDefaultValue();
@@ -155,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Appliquer la réinitialisation pour chaque filtre
     resetFilter(categorieFull, elementsCategorie, categorieLabel, () => itemsCategorie = 'all');
     resetFilter(formatFull, elementsFormats, formatLabel, () => itemsFormat = 'all');
     resetFilter(triFull, elementsTri, dateLabel, () => itemsTri = 'ASC');

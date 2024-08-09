@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollUp = document.getElementById('scroll-up');
     const scrollThreshold = 200; // Adjust this value as needed
 
-    // Function to toggle visibility of scroll arrows
+    // Fonction pour alterner (toggle) la visibilité des flèches de défilement
     function toggleScrollArrows() {
         if (document.body.scrollHeight > window.innerHeight + scrollThreshold) {
             scrollDown.classList.add('visible');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Scroll down on arrow click
+    // Défilement vers le bas lors du clic sur la flèche
     scrollDown.addEventListener('click', () => {
         window.scrollBy({
             top: window.innerHeight,
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll up on arrow click
+    // Défilement vers le haut lors du clic sur la flèche
     scrollUp.addEventListener('click', () => {
         window.scrollTo({
             top: 0,

@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+
+<!-- Section principale de la page d'erreur 404 -->
 <section class="quatrecentquatre" >
     <div class="infos">
         <div class="description"> 
@@ -13,14 +15,15 @@
             </a>
         </div>
     </div>
+
+    <!-- Section pour encourager l'utilisateur à interagir malgré l'erreur -->
     <div class="interactions">
         <div class="interactions-contact">
                 <p>Venez découvrir mon <a href="<?= esc_url(home_url()); ?>">catalogue</a>, ou contactez-moi pour m'expliquer votre projet.</p>
         </div>
         <div>
             <button class="btn-contact">Contact</button>  
-        </div>
-        
+        </div>  
     </div>
  </section>
 

@@ -51,8 +51,6 @@ const attachLightboxEvents = () => {
         lightboxRef.innerText = image.ref;
         lightboxCategorie.innerText = image.categorie;
         lightbox.style.display = 'flex';
-
-        // Add keyboard navigation
         document.addEventListener('keydown', handleKeydown);
     };
 
@@ -63,7 +61,6 @@ const attachLightboxEvents = () => {
 
     const closeLightbox = () => {
         lightbox.style.display = 'none';
-        // Remove keyboard navigation when the lightbox is closed
         document.removeEventListener('keydown', handleKeydown);
     };
 

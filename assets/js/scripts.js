@@ -25,16 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
         blocks.forEach(block => {
             const blockSurvol = block.querySelector('.blockSurvol');
 
+             // Ajouter une classe lors d'une touche tactile
             block.addEventListener('touchstart', () => {
                 blockSurvol.classList.add('touch-hover');
             });
 
+             // Retirer la classe après avoir fini de toucher
             block.addEventListener('touchend', () => {
                 setTimeout(() => {
                     blockSurvol.classList.remove('touch-hover');
                 }, 300); 
             });
 
+            // Retirer la classe si le doigt glisse/déplace sur l'élément
             block.addEventListener('touchmove', () => {
                 blockSurvol.classList.remove('touch-hover');
             });
