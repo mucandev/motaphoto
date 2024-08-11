@@ -82,6 +82,29 @@ function motaphoto_custom_thumbnails_sizes() {
 }
 add_action( 'after_setup_theme', 'motaphoto_custom_thumbnails_sizes' );
 
+
+// Ajout de la colonne de miniature dans le menu d'administration de "photographies" custom posts
+function ajouter_colonnes_photographies($columns) {
+    $columns['thumbnail'] = __('Miniatures', 'motaphoto');
+    return $columns;
+}
+add_filter('manage_photographies_posts_columns', 'ajouter_colonnes_photographies');
+
+// Affichage des données dans la colonne
+function afficher_contenu_colonnes_photographies($column, $post_id) {
+    if ($column === 'thumbnail') {
+        if (has_post_thumbnail($post_id)) {
+            echo get_the_post_thumbnail($post_id, 'custom-thumbnail');
+        } else {
+            _e('No Thumbnail', 'motaphoto');
+        }
+    }
+}
+add_action('manage_photographies_posts_custom_column', 'afficher_contenu_colonnes_photographies', 10, 2);
+
+
+
+
 // Fonction pour modifier l'attribut 'alt' et 'title' de l'image mise en avant
 function motaphoto_custom_featured_image_attributes($attr, $attachment, $size) {
     global $post;
@@ -100,8 +123,6 @@ function motaphoto_custom_featured_image_attributes($attr, $attachment, $size) {
 }
 
 add_filter('wp_get_attachment_image_attributes', 'motaphoto_custom_featured_image_attributes', 10, 3);
-
-
 
 // custom color palette
 function motaphoto_setup_theme_supported_colors() {
