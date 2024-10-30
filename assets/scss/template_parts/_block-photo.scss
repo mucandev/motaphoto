@@ -43,7 +43,8 @@
         display: flex;
         justify-content: end;
         background-color: transparent;
-        border: none;        
+        border: none;
+        cursor: pointer;        
     }
     &__iconEye {       
         @extend %flex-center;

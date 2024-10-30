@@ -59,7 +59,6 @@ function filtrer_paginer_catalogue() {
 
     // Démarrage de la mise en tampon de sortie
     ob_start();
-
     // Affichage des résultats de la requête
     if ($photo_query->have_posts()) {
         while ($photo_query->have_posts()) {
@@ -74,9 +73,9 @@ function filtrer_paginer_catalogue() {
 
     // Récupération de la sortie tamponnée
     $output = ob_get_clean();
+
     // Récupération du nombre total de photos trouvées
     $total_photos = $photo_query->found_posts;
-
     // Envoi de la réponse en JSON
     wp_send_json_success(array(
         'html' => $output,

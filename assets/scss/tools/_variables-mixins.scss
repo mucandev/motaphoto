@@ -112,7 +112,8 @@ $zIndex__NavMobileMenu: 50;
     font-size: $fontSize__XS;  
     font-family: $font--heading; 
     border: 0;               
-    border-radius: 3px;   
+    border-radius: 3px;  
+    cursor: pointer; 
     transition: .3s ease-in-out;
     width: $width;
     &:hover{
